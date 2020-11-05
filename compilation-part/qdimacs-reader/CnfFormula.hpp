@@ -17,6 +17,10 @@ public:
 	void operator|=(const CnfClause& other);
 	CnfClause operator|(const CnfClause& other) const;
 
+	int operator[](size_t i) const;
+
+	size_t size() const;
+
 	/** Iterators */
 
 	using const_iterator = std::vector<int>::const_iterator;
@@ -38,6 +42,8 @@ public:
 	CnfFormula operator&(const CnfFormula& other) const;
 
 	const CnfClause& operator[](size_t i) const;
+
+	size_t size() const;
 
 	/** Iterators */
 
