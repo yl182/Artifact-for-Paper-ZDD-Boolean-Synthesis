@@ -32,6 +32,14 @@ CnfClause CnfClause::operator|(const CnfClause& other) const {
 	return newClause;
 }
 
+int CnfClause::operator[](size_t i) const {
+	return lits_[i];
+}
+
+size_t CnfClause::size() const {
+	return lits_.size();
+}
+
 /** CnfFormula **/
 
 CnfFormula::CnfFormula() {}
@@ -62,3 +70,6 @@ const CnfClause& CnfFormula::operator[](size_t i) const {
 	return clauses_[i];
 }
 
+size_t CnfFormula::size() const {
+	return clauses_.size();
+}
