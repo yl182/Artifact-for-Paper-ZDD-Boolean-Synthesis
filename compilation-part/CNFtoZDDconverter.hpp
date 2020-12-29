@@ -15,6 +15,8 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <unordered_map>
+#include <stdexcept>
 #include "qdimacs-reader/QCnfFormula.hpp"
 #include "qdimacs-reader/QDimacsReader.hpp"
 #include "qdimacs-reader/CnfFormula.hpp"
@@ -28,14 +30,16 @@ public:
 	CNFtoZDDconverter();
 
 	//helper functions
-	ZDD CLtoZDD(const CnfClause& cl, Cudd mgr, int maxvar); 
+	std::runtime_error EmptyFormulaException(const std::string& filepath) const;
+
+	ZDD ClausetoZDD(const CnfClause& cl, Cudd& mgr, int maxvar); 
 	int indexConverter(int g);
 	int maxVarRange(const QCnfFormula& qcnf);	
-	std::map<int, int> produce_indices_map(int maxvar);
+	std::unordered_map<int, int> produceIndicesMap(int maxvar);
 	
 	
 	//main converter
-	void convertCNFtoZDD(const std::string& path);
+	std::vector<ZDD> convertCNFtoZDD(const std::string& path);
 	
 	//draw ZDD
 	void ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames);

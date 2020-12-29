@@ -12,6 +12,8 @@
 #include <string>
 #include <map>
 #include <algorithm>
+#include <unordered_map>
+#include <stdexcept>
 #include "qdimacs-reader/CnfFormula.hpp"
 #include "qdimacs-reader/QCnfFormula.hpp"
 #include "qdimacs-reader/QDimacsReader.hpp"
@@ -21,31 +23,35 @@
 CNFtoZDDconverter::CNFtoZDDconverter() {}
 
 
+std::runtime_error CNFtoZDDconverter::EmptyFormulaException(const std::string& filepath) const {
+	return std::runtime_error(filepath + ", formula is empty, 0 clause-ZDDs");
+}		
+
 //helper functions: given a reference of a clause, return the ZDD representing the clause
-ZDD CNFtoZDDconverter::CLtoZDD(const CnfClause& cl, Cudd mgr, int maxvar) {
+ZDD CNFtoZDDconverter::ClausetoZDD(const CnfClause& cl, Cudd& mgr, int maxvar) {
 	// convert literals into indices:
 	std::vector<int> literals;
-	for (int j : cl) {
-		literals.push_back(indexConverter(j));
+	for (int lit : cl) {
+		literals.push_back(indexConverter(lit));
 	}
 
 	// draw ZDD for the clause
-	ZDD newZDDofCL = mgr.zddVar(literals[0]);
+	ZDD newZDDofClause = mgr.zddVar(literals[0]);
 	// eliminate other variables
-	for (int innn = 0; innn <= 2*maxvar; innn++) {					if (innn != literals[0]) {
-			newZDDofCL =newZDDofCL.Subset0(innn);
+	for (int i = 0; i <= 2*maxvar; i++) {					if (i != literals[0]) {
+			newZDDofClause =newZDDofClause.Subset0(i);
 		}
 	}
 	// append other variables to the clause
-	for (int innn = 0; innn <= 2*maxvar; innn++) {
-		if (std::find(literals.begin(), literals.end(), innn) != literals.end()) {
-			if (innn != literals[0]) {
-				newZDDofCL =newZDDofCL.Change(innn);	
+	for (int i = 0; i <= 2*maxvar; i++) {
+		if (std::find(literals.begin(), literals.end(), i) != literals.end()) {
+			if (i != literals[0]) {
+				newZDDofClause =newZDDofClause.Change(i);	
 			}	
 		}
 	}
 	// return the ZDD of the clause
-	return newZDDofCL;
+	return newZDDofClause;
 }
 
 // helper function: given index->node index
@@ -66,8 +72,8 @@ int CNFtoZDDconverter::maxVarRange(const QCnfFormula& qcnf) {
 }
 
 // map given indices to positive node indices-pairs
-std::map<int,int> CNFtoZDDconverter::produce_indices_map(int maxvar) {
-	std::map <int, int> index_map;
+std::unordered_map<int,int> CNFtoZDDconverter::produceIndicesMap(int maxvar) {
+	std::unordered_map <int, int> index_map;
 	for (int k=1; k <= maxvar; k++) {
 		//for example, x3 and -x3: pair (3, 5) (-3, 6)
 		index_map.insert(std::pair<int, int>(k, indexConverter(k)) );
@@ -77,7 +83,7 @@ std::map<int,int> CNFtoZDDconverter::produce_indices_map(int maxvar) {
 }
 
 //main converter
-void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
+std::vector<ZDD> CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
 	// from instream get CNF and lists of x's and y's variables
 	QDimacsReader qreader;
@@ -90,44 +96,58 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
 
 	// produce map of given indices and node indices
-	std::map <int, int> index_to_nodes_map = produce_indices_map(maxVar);
+	std::unordered_map <int, int> index_to_nodes_map = produceIndicesMap(maxVar);
 	
 	// draw ZDDs of the i-th clause
 	Cudd mgr;
-	Cudd& mgr1 = mgr;
+	//Cudd& mgr1 = mgr;
 
 	// initiate a vector of clause-ZDDs
-	std::vector<ZDD> CL_ZDDs;
+	std::vector<ZDD> Clause_ZDDs;
 	
-	// iterate over clauses, build ZDDs and add them to CL_ZDDs
+	// iterate over clauses, build ZDDs and add them to Clause_ZDDs
 	const int n_clauses = cnf.size();
-	for (int i = 0; i < n_clauses; i++) {
+	/*for (int i = 0; i < n_clauses; i++) {
 		if (cnf[i].size() <= 0) {
 			continue;
 			std::cout << "clause empty" << std::endl;
 		}
 		//CnfClause& cl;
 		//cl = cnf[i];
-		ZDD Z_cl = CLtoZDD(cnf[i], mgr1, maxVar);
+		ZDD Z_cl = ClausetoZDD(cnf[i], mgr, maxVar);
 
 		// add the ZDD of this clause to the vector of ZDDs
-		CL_ZDDs.push_back(Z_cl);	
+		Clause_ZDDs.push_back(Z_cl);	
+	}*/
+
+	for (const CnfClause& clause : cnf) {
+		if (clause.size() <= 0) {
+			continue;
+			std::cout << "clause empty" << std::endl;
+		}
+		//CnfClause& cl;
+		//cl = cnf[i];
+		ZDD Z_cl = ClausetoZDD(clause, mgr, maxVar);
+
+		// add the ZDD of this clause to the vector of ZDDs
+		Clause_ZDDs.push_back(Z_cl);	
 	}
 	
 	// union the clause-zdds into ZDD of the CNF
-	if (CL_ZDDs.size() <= 0) {
+	if (Clause_ZDDs.size() <= 0) {
 		std::cout << "formula is empty, 0 clause-ZDDs" << std::endl;
+		throw EmptyFormulaException(path); 
 	}
-	ZDD unionedZDDs = CL_ZDDs[0];
-	for (ZDD zdd : CL_ZDDs) {
+	ZDD unionedZDDs = Clause_ZDDs[0];
+	for (const ZDD& zdd : Clause_ZDDs) {
 		unionedZDDs = unionedZDDs.Union(zdd);
 	}
 	
 
 	std::vector<ZDD> zdds = {unionedZDDs};
 	// draw the entire CNF's ZDD
-	ZDDtoDot(mgr1, zdds, "ZDD.dot", NULL, NULL);
-	return;
+	ZDDtoDot(mgr, zdds, "ZDD.dot", NULL, NULL);
+	return zdds;
 	
 
 }
