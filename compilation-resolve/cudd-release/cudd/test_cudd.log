@@ -1,0 +1,12 @@
+TAP version 13
+1..2
+mkfifo: cannot create fifo './cudd/tst_fifo': Operation not permitted
+mkfifo: cannot create fifo './cudd/out_fifo': Operation not permitted
+# comparing ./cudd/r7x8.1.tst to ./cudd/r7x8.1.out
+ok 1 cudd basic
+PASS: cudd/test_cudd.test 1 cudd basic
+mkfifo: cannot create fifo './cudd/tst_fifo': Operation not permitted
+mkfifo: cannot create fifo './cudd/out_fifo': Operation not permitted
+# comparing ./cudd/extra.tst to ./cudd/extra.out
+ok 2 cudd extra
+PASS: cudd/test_cudd.test 2 cudd extra

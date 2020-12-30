@@ -1,0 +1,7 @@
+TAP version 13
+1..1
+mkfifo: cannot create fifo './mtr/tst_fifo': Operation not permitted
+mkfifo: cannot create fifo './mtr/out_fifo': Operation not permitted
+# comparing ./mtr/test.tst to ./mtr/test.out
+ok 1
+PASS: mtr/test_mtr.test 1
