@@ -8,4 +8,5 @@ resolution part:
 		2) ClauseDistribution
 	(cuddObj.c has ZDD class)
 	in our part, we extract f_y^-, f_y^+, f_y' and call wrapper functions in cuddObj.c to operate resolution
-	there are some mistakes in the way of including headers and in make statement, will fix soon
+	there are some bugs in the way of calling QMRes functions
+	zdd_myunion( zdd_myproduct(z(f_x^+), z(f_x^-)), z(f_x'))

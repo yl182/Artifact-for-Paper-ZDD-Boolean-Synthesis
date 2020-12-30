@@ -17,7 +17,7 @@
 #include "qdimacs-reader/CnfFormula.hpp"
 #include "qdimacs-reader/QCnfFormula.hpp"
 #include "qdimacs-reader/QDimacsReader.hpp"
-
+#include "QMRes/manip.h"
 #include "CNFtoZDDconverter.hpp"
 
 //constructors
@@ -72,6 +72,7 @@ int CNFtoZDDconverter::maxVarRange(const QCnfFormula& qcnf) {
 
 }
 
+
 // map given indices to positive node indices-pairs
 std::unordered_map<int,int> CNFtoZDDconverter::produceIndicesMap(int maxvar) {
 	std::unordered_map <int, int> index_map;
@@ -79,6 +80,10 @@ std::unordered_map<int,int> CNFtoZDDconverter::produceIndicesMap(int maxvar) {
 		//for example, x3 and -x3: pair (3, 5) (-3, 6)
 		index_map.insert(std::pair<int, int>(k, indexConverter(k)) );
 		index_map.insert(std::pair<int, int>(-k, indexConverter((-1)*k)) );
+	}
+
+	for (auto& n : index_map) {
+		std::cout << n.first << "\t" << n.second << std::endl;
 	}
 	return index_map;
 }
@@ -88,8 +93,27 @@ void CNFtoZDDconverter::ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std:
 	mgr.DumpDot(z, inames, onames, fopen(dotfile.c_str(), "w"));
 }
 
+//resolve a variable
+ZDD CNFtoZDDconverter::Resolution(const ZDD& zdd, const std::vector<int> y_vars, std::unordered_map <int, int> index_map) const {
+	ZDD resolvedZDD = zdd;
+	for (int y : y_vars) {
+		std::cout << "y posY negY " << std::endl;
+		int posY = index_map[y];
+		int negY = index_map[(-1)*y];
+		std::cout << y << " " << posY << " " << negY << std::endl;
+		
+		// build ZDDs for f_y^+, f_y^-, f_y'
+		ZDD f_y_plus = zdd.Subset1(posY).Change(posY);
+		ZDD f_y_minus = zdd.Subset1(negY).Change(negY);
+		ZDD f_y_prime = zdd.Subset0(posY).Subset0(negY);
+		ZDD f_y_plus_OR_f_y_minus = f_y_plus.ClauseDistribution(f_y_minus);
+		ZDD resolvedZDD = f_y_plus_OR_f_y_minus.SubSumptionFreeUnion(f_y_prime);
+	}
+	return resolvedZDD;
+}
+
 //main converter
-ZDD CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
+void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
 	// from instream get CNF and lists of x's and y's variables
 	QDimacsReader qreader;
@@ -177,7 +201,14 @@ ZDD CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	std::cout << "maxVar = " << maxVar << std::endl;
 	*/
 	ZDDtoDot(mgr, zdds, "ZDD.dot", NULL,NULL);
-	return unionedZDDs;
+	
+	// resolve on y variables and output the ZDD as .dot and .png
+	//ZDD ResolvedZDD = Resolution(unionedZDDs, qcnf2.existential_vars, "resolved.dot", indexToNodesMap);
+	ZDD ResolvedZDD = Resolution(unionedZDDs, qcnf2.existential_vars, indexToNodesMap);
+	
+	std::vector<ZDD> resolvedZdds = {ResolvedZDD};
+	ZDDtoDot(mgr, resolvedZdds, "ResolvedZDD.dot", NULL,NULL);
+	return;
 	
 
 }

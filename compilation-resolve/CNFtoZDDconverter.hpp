@@ -40,8 +40,12 @@ public:
 	//draw ZDD
 	void ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames);
 	
+	//resolution
+	//ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, const std::string& outputpath, std::unordered_map <int, int> index_map) const;
+	ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, std::unordered_map <int, int> index_map) const;
+
 	//main converter
-	ZDD convertCNFtoZDD(const std::string& path);
+	void convertCNFtoZDD(const std::string& path);
 	
 
 	

@@ -434,8 +434,8 @@ DdNode * zdd_myunion(DdManager * dd, DdNode * Zbdd_A, DdNode * Zbdd_B);
 DdNode * zdd_myunion_aux(DdManager * dd, DdNode * Zbdd_A, DdNode * Zbdd_B);
 
 	// resolution functions
-    ZDD SubSumptionFreeUnion(ZDD& other) const;
-    ZDD ClauseDistribution(ZDD& other) const;
+    ZDD SubSumptionFreeUnion(ZDD& other);
+    ZDD ClauseDistribution(ZDD& other);
 
     ZDD Change(int var) const;
     void PrintMinterm() const;

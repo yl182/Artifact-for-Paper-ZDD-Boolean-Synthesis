@@ -20,7 +20,7 @@ int premier_cas_xn_xn = 0;
 int premier_cas_x_D = 0;
 #endif
 
-EXTERN DdManager * manager;
+ DdManager * manager;
 
 DdNode *
 cuddCacheLookup1IntZdd(

@@ -6446,14 +6446,14 @@ DdNode * zdd_myproduct(DdManager * dd, DdNode * Zbdd_A, DdNode * Zbdd_B) {
 }
 
 // new functions for resolution here
-ZDD ZDD::SubSumptionFreeUnion(ZDD& other) const {
+ZDD ZDD::SubSumptionFreeUnion(ZDD& other) {
 	DdManager *mgr = p->manager;
 	DdNode* otherNode = other.getNode();
 	DdNode *result = zdd_myunion(mgr, node, otherNode);
 	return ZDD(p, result);
 }
 
-ZDD ZDD::ClauseDistribution(ZDD& other) const {
+ZDD ZDD::ClauseDistribution(ZDD& other) {
 	DdManager *mgr = p->manager;
 	DdNode* otherNode = other.getNode();
 	DdNode *result = zdd_myproduct(mgr, node, otherNode);
