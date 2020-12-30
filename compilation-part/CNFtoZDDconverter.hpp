@@ -37,12 +37,13 @@ public:
 	int maxVarRange(const QCnfFormula& qcnf);	
 	std::unordered_map<int, int> produceIndicesMap(int maxvar);
 	
-	
-	//main converter
-	std::vector<ZDD> convertCNFtoZDD(const std::string& path);
-	
 	//draw ZDD
 	void ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames);
+	
+	//main converter
+	ZDD convertCNFtoZDD(const std::string& path);
+	
+
 	
 };
 

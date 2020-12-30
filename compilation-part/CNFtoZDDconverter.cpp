@@ -82,8 +82,13 @@ std::unordered_map<int,int> CNFtoZDDconverter::produceIndicesMap(int maxvar) {
 	return index_map;
 }
 
+//draw ZDD
+void CNFtoZDDconverter::ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames) {
+	mgr.DumpDot(z, inames, onames, fopen(dotfile.c_str(), "w"));
+}
+
 //main converter
-std::vector<ZDD> CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
+ZDD CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
 	// from instream get CNF and lists of x's and y's variables
 	QDimacsReader qreader;
@@ -96,7 +101,7 @@ std::vector<ZDD> CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
 
 	// produce map of given indices and node indices
-	std::unordered_map <int, int> index_to_nodes_map = produceIndicesMap(maxVar);
+	std::unordered_map <int, int> indexToNodesMap = produceIndicesMap(maxVar);
 	
 	// draw ZDDs of the i-th clause
 	Cudd mgr;
@@ -137,25 +142,46 @@ std::vector<ZDD> CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	if (Clause_ZDDs.size() <= 0) {
 		std::cout << "formula is empty, 0 clause-ZDDs" << std::endl;
 		throw EmptyFormulaException(path); 
+		
 	}
 	ZDD unionedZDDs = Clause_ZDDs[0];
 	for (const ZDD& zdd : Clause_ZDDs) {
 		unionedZDDs = unionedZDDs.Union(zdd);
 	}
-	
 
 	std::vector<ZDD> zdds = {unionedZDDs};
+
 	// draw the entire CNF's ZDD
-	ZDDtoDot(mgr, zdds, "ZDD.dot", NULL, NULL);
-	return zdds;
+	/*std::vector<char*> inames;
+ 	const std::vector<std::string> variable_labels;
+	
+	for (auto& nodepair : indexToNodesMap) {
+
+		std::cout << nodepair.first;
+		std::cout << " " << nodepair.second << std::endl;
+		char* label = (char*)nodepair.first;
+		variable_labels.push_back(label);
+	}
+	for (int i = 0; i < 2*maxVar; ++i) {
+		std::string label = variable_labels[i];
+
+		// Return value of label.c_str() is temporary, so need to make a copy
+		inames[i] = new char[label.length() + 1]; // need space for '\0' terminator
+		strcpy(inames[i], label.c_str());
+	}
+	for (auto& c : inames) {
+		std::cout << c;
+	}
+
+	std::cout << "maxVar = " << maxVar << std::endl;
+	*/
+	ZDDtoDot(mgr, zdds, "ZDD.dot", NULL,NULL);
+	return unionedZDDs;
 	
 
 }
 
-//draw ZDD
-void CNFtoZDDconverter::ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames) {
-	mgr.DumpDot(z, NULL, NULL, fopen(dotfile.c_str(), "w"));
-}
+
 
 
 
