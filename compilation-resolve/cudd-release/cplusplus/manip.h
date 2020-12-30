@@ -1,5 +1,5 @@
 #define REF(i) (Cudd_Ref(i))
-#define DEREF(i) (Cudd_RecursiveDerefZdd(mgr,i))
+#define DEREF(i) (Cudd_RecursiveDerefZdd(dd,i))
 
  DdNode * filtre_tautologie(DdManager * dd, DdNode *zbdd);
 

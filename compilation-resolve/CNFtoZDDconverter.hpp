@@ -40,6 +40,12 @@ public:
 	//draw ZDD
 	void ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames);
 	
+	// check partial realizability
+	bool partialRealizability(const ZDD& zdd) const;
+
+	// check full realizability
+	//bool fullRealizability(const ZDD& zdd) const;
+
 	//resolution
 	//ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, const std::string& outputpath, std::unordered_map <int, int> index_map) const;
 	ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, std::unordered_map <int, int> index_map) const;

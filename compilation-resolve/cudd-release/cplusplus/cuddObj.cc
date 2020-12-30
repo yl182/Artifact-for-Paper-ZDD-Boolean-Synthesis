@@ -52,7 +52,8 @@
 #include "../epd/epdInt.h"
 #include "cuddInt.h"
 #include "cuddObj.hh"
-
+#include "manip.h"
+#include "manip2.c"
 using std::cout;
 using std::cerr;
 using std::ostream;

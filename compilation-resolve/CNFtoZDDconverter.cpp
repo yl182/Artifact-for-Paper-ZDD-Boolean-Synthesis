@@ -112,6 +112,20 @@ ZDD CNFtoZDDconverter::Resolution(const ZDD& zdd, const std::vector<int> y_vars,
 	return resolvedZDD;
 }
 
+// check partial realizability
+bool CNFtoZDDconverter::partialRealizability(const ZDD& zdd) const {
+	if (zdd.Count() > 0) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+// check full realizability
+/*bool CNFtoZDDconverter::fullRealizability(const ZDD& zdd) const {
+	ZDD xResolved = Resolution(unionedZDDs, qcnf2.universal_vars, indexToNodesMap);
+	ireturn (xResolved.Count());
+}*/
+
 //main converter
 void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
