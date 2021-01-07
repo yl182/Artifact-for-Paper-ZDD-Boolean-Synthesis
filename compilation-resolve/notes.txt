@@ -8,6 +8,20 @@ resolution part (realizability set):
 		2) ClauseDistribution
 	(cuddObj.c has ZDD class)
 	in our part, we extract f_y^-, f_y^+, f_y' and call wrapper functions in cuddObj.c to operate resolution
-	there are some bugs in the way of calling QMRes functions
+	【there are some bugs in the way of calling QMRes functions】
+	【since the helper functions are distributed in many QMRes files】
 	zdd_myunion( zdd_myproduct(z(f_x^+), z(f_x^-)), z(f_x'))
 	problem: QMRes' manip.c calls a lot of functions that I don't know they are defined
+
+	have used QMRes functions to do resolution and generate the ZDD for realizability set
+
+	manage QMRes
+	witness construction
+	full realizability
+	portfolio 
+	lucas has some naive way of constructing BDD clause by clause
+	would be interesting to take planner for DPMC
+	synthesis comparison there
+	logarithmic
+
+	first have end-to-end, given a formula, have witnesses

@@ -121,10 +121,14 @@ bool CNFtoZDDconverter::partialRealizability(const ZDD& zdd) const {
 	}
 }
 // check full realizability
-/*bool CNFtoZDDconverter::fullRealizability(const ZDD& zdd) const {
-	ZDD xResolved = Resolution(unionedZDDs, qcnf2.universal_vars, indexToNodesMap);
-	ireturn (xResolved.Count());
-}*/
+bool CNFtoZDDconverter::fullRealizability(const ZDD& zdd) const {
+	ZDD Resolved = Resolution(unionedZDDs, qcnf2.universal_vars, indexToNodesMap);
+	return (Resolved.Count());
+	// thoughts:
+	/* either take resolutions on all x variables or directly check whether there is only 1 terminal or only 0 terminal???
+	but doesn't seem to work in this way
+	*/
+}
 
 //main converter
 void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
