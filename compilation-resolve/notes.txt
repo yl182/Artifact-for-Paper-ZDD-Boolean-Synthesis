@@ -15,13 +15,4 @@ resolution part (realizability set):
 
 	have used QMRes functions to do resolution and generate the ZDD for realizability set
 
-	manage QMRes
-	witness construction
-	full realizability
-	portfolio 
-	lucas has some naive way of constructing BDD clause by clause
-	would be interesting to take planner for DPMC
-	synthesis comparison there
-	logarithmic
-
-	first have end-to-end, given a formula, have witnesses
+	
