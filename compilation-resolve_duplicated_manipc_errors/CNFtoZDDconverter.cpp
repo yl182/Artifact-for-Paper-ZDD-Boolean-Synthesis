@@ -122,7 +122,7 @@ bool CNFtoZDDconverter::partialRealizability(const ZDD& zdd) const {
 	}
 }
 // check full realizability
-bool CNFtoZDDconverter::fullRealizability(const ZDD& zdd, std::unordered_map <int, int> index_map ) const {
+bool CNFtoZDDconverter::fullRealizability(const ZDD& zdd, std::unordered_map <int, int> index_map, QCnfFormula& qcnf2 ) const {
 	ZDD Resolved = Resolution(zdd, qcnf2.universal_vars, index_map);
 	Resolved = Resolution(zdd, qcnf2.existential_vars, index_map);
 	Cudd mgr2;
@@ -132,6 +132,68 @@ bool CNFtoZDDconverter::fullRealizability(const ZDD& zdd, std::unordered_map <in
 	}
 	return 1;
 	
+}
+
+//substitution helper function: cross(z)
+//??????????????????????????
+ZDD CNFtoZDDconverter::crossZDD(const ZDD& z) const {
+	Cudd mgr0;
+	return mgr0.zddZero();
+
+}
+
+ZDD CNFtoZDDconverter::negCrossZDD(const ZDD& z) const {
+	Cudd mgr0;
+	return mgr0.zddZero();
+
+}
+
+// substitution function
+ZDD CNFtoZDDconverter::CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_map <int, int>& index_map, int maxVar, const ZDD& z, CnfFormula& cnf, std::vector<ZDD>& Clause_ZDDs) {
+	
+	int num_clauses = cnf.size();
+	std::vector<ZDD> newClausesZDDs;
+	for (int i = 0; i < num_clauses; i++) {
+		
+		if (std::find(cnf[i].begin(), cnf[i].end(), y) != cnf[i].end()) {
+			// CASE 1: pos y occurs
+			// cnf[i].
+			ZDD Z_cl = ClausetoZDD(cnf[i], mgr, maxVar);//clause ZDD
+			int posY = index_map[y];
+			int negY = index_map[(-1)*y];
+			//ZDD f_y_minus = Z_cl.Subset1(negY).Change(negY);//witness we select (assume g0)
+			ZDD newClauseZDD = Z_cl.Subset0(posY);
+
+			// cross
+			ZDD clauseSubstitution = crossZDD(Z_cl).ClauseDistribution(newClauseZDD);
+			newClausesZDDs.push_back(clauseSubstitution);
+
+			
+		} else if (std::find(cnf[i].begin(), cnf[i].end(), (-1)*y) != cnf[i].end()) {
+			// CASE 2: neg y occurs in clause
+			// 
+			ZDD Z_cl = ClausetoZDD(cnf[i], mgr, maxVar);//clause ZDD
+			int posY = index_map[y];
+			int negY = index_map[(-1)*y];
+			//ZDD f_y_minus = Z_cl.Subset1(negY).Change(negY);//witness we select (assume g0)
+			ZDD newClauseZDD = Z_cl.Subset0(negY);
+
+			// cross
+			ZDD clauseSubstitution = negCrossZDD(Z_cl).ClauseDistribution(newClauseZDD);
+			newClausesZDDs.push_back(clauseSubstitution);
+
+		} 
+		// CASE 3: neither pos y nor neg y occurs
+		ZDD Z_cl = ClausetoZDD(cnf[i], mgr, maxVar);// clause ZDD
+		newClausesZDDs.push_back(Z_cl);
+	}
+
+	ZDD substitutedZDD = newClausesZDDs[0];
+	for (const ZDD& zdd : newClausesZDDs) {
+		substitutedZDD = substitutedZDD.Union(zdd);
+	}
+
+	return substitutedZDD;
 }
 
 //main converter
@@ -200,7 +262,7 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 
 	//check realizability
 	partialRealizability(unionedZDDs);
-	fullRealizability(unionedZDDs);
+	fullRealizability(unionedZDDs, indexToNodesMap, qcnf2);
 
 
 
@@ -237,7 +299,8 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	std::vector<ZDD> resolvedZdds = {ResolvedZDD};
 	ZDDtoDot(mgr, resolvedZdds, "ResolvedZDD.dot", NULL,NULL);
 
-	
+
+
 	return;
 	
 

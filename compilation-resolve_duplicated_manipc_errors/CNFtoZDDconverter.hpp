@@ -44,11 +44,19 @@ public:
 	bool partialRealizability(const ZDD& zdd) const;
 
 	// check full realizability
-	bool fullRealizability(const ZDD& zdd,, std::unordered_map <int, int> index_map ) const;
+	bool fullRealizability(const ZDD& zdd, std::unordered_map <int, int> index_map, QCnfFormula& qcnf2 ) const;
 
 	//resolution
 	//ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, const std::string& outputpath, std::unordered_map <int, int> index_map) const;
 	ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, std::unordered_map <int, int> index_map) const;
+
+	// substitution
+	ZDD crossZDD(const ZDD& z) const;
+
+	ZDD negCrossZDD(const ZDD& z) const;
+
+	ZDD CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_map <int, int>& index_map, int maxVar, const ZDD& z, CnfFormula& cnf, std::vector<ZDD>& Clause_ZDDs);
+
 
 	//main converter
 	void convertCNFtoZDD(const std::string& path);
