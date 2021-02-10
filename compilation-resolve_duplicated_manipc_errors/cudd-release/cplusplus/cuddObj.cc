@@ -53,7 +53,10 @@
 #include "epdInt.h"
 #include "cuddInt.h"
 #include "cuddObj.hh"
-#include "manip.h"
+extern "C" {
+    #include "manip.c"
+}
+
 
 
 

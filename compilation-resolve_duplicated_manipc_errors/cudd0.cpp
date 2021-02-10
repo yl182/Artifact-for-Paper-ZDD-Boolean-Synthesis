@@ -5,8 +5,6 @@
 #include <time.h>
 #include <math.h>
 #include <stdlib.h>
-#include "cudd.h"
-#include "cudd-release/cplusplus/cuddObj.hh"
 #include <iostream>
 #include <vector>
 #include <fstream>   
@@ -14,6 +12,8 @@
 #include <map>
 #include <string>  
 #include <algorithm>
+#include "cudd.h"
+#include "cuddObj.hh"
 #include "qdimacs-reader/CnfFormula.hpp"
 #include "qdimacs-reader/QCnfFormula.hpp"
 #include "qdimacs-reader/QDimacsReader.hpp"  

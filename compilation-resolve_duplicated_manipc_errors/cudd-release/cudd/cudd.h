@@ -49,7 +49,7 @@
   @endparblock
 
 */
-#include <cstddef>
+
 #ifndef CUDD_H_
 #define CUDD_H_
 
