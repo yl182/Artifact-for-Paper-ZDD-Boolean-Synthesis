@@ -147,11 +147,14 @@ bool CNFtoZDDconverter::fullRealizability(const ZDD& zdd, std::unordered_map <in
 //substitution helper function: cross(z)
 
 ZDD CNFtoZDDconverter::crossZDD(const ZDD& z) const {
+	std::cout << "no errors until this line000111" << std::endl;
 	Cudd mgr0;
+
 	//??????????????????????????
 	// only ZDD parameter, or more parameters like literals?
+	std::cout << "no errors until this line000222" << std::endl;
 	return mgr0.zddZero();
-
+	
 }
 
 ZDD CNFtoZDDconverter::negCrossZDD(const ZDD& z) const {
@@ -178,7 +181,9 @@ ZDD CNFtoZDDconverter::CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_ma
 			ZDD newClauseZDD = Z_cl.Subset0(posY);
 
 			// cross
-			ZDD clauseSubstitution = crossZDD(Z_cl).ClauseDistribution(newClauseZDD);
+			ZDD clauseSubstitution = crossZDD(Z_cl);
+			std::cout << "no errors until this line000" << std::endl;
+			clauseSubstitution = clauseSubstitution.ClauseDistribution(newClauseZDD);
 			newClausesZDDs.push_back(clauseSubstitution);
 
 			

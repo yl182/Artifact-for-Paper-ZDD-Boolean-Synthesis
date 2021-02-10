@@ -6101,9 +6101,13 @@ ZDD ZDD::SubSumptionFreeUnion(ZDD& other) {
 }
 
 ZDD ZDD::ClauseDistribution(ZDD& other) {
+    std::cout << "no errors until this line0" << std::endl;
 	DdManager *mgr = p->manager;
+    std::cout << "no errors until this line1" << std::endl;
 	DdNode* otherNode = other.getNode();
+    std::cout << "no errors until this line2" << std::endl;
 	DdNode *result = zdd_myproduct(mgr, node, otherNode);
+    std::cout << "no errors until this line3" << std::endl;
 	return ZDD(p, result);
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
