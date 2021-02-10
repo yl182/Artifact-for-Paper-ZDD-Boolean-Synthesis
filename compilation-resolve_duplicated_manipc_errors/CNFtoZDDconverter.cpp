@@ -101,15 +101,22 @@ ZDD CNFtoZDDconverter::Resolution(const ZDD& zdd, const std::vector<int> y_vars,
 		std::cout << "y posY negY " << std::endl;
 		int posY = index_map[y];
 		int negY = index_map[(-1)*y];
-		std::cout << y << " " << posY << " " << negY << std::endl;
+		std::cout << "inside resolution for loop\n" << y << " " << posY << " " << negY << std::endl;
 		
 		// build ZDDs for f_y^+, f_y^-, f_y'
 		ZDD f_y_plus = zdd.Subset1(posY).Change(posY);
+		
 		ZDD f_y_minus = zdd.Subset1(negY).Change(negY);
+		
 		ZDD f_y_prime = zdd.Subset0(posY).Subset0(negY);
+		std::cout << "no errors by this line" << std::endl;
+		// core dumped after this line in first iteration
 		ZDD f_y_plus_OR_f_y_minus = f_y_plus.ClauseDistribution(f_y_minus);
+		std::cout << "no errors until this line" << std::endl;
 		ZDD resolvedZDD = f_y_plus_OR_f_y_minus.SubSumptionFreeUnion(f_y_prime);
+		
 	}
+	// core dumped before this line
 	return resolvedZDD;
 }
 
@@ -298,7 +305,7 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	// resolve on y variables and output the ZDD as .dot and .png
 	//ZDD ResolvedZDD = Resolution(unionedZDDs, qcnf2.existential_vars, "resolved.dot", indexToNodesMap);
 	ZDD ResolvedZDD = Resolution(unionedZDDs, qcnf2.existential_vars, indexToNodesMap);
-	
+	// core dumped before this line
 	std::vector<ZDD> resolvedZdds = {ResolvedZDD};
 	ZDDtoDot(mgr, resolvedZdds, "ResolvedZDD.dot", NULL,NULL);
 
