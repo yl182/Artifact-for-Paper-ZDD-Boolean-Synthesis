@@ -32,7 +32,7 @@ public:
 	//helper functions
 	std::runtime_error EmptyFormulaException(const std::string& filepath) const;
 
-	ZDD ClausetoZDD(const CnfClause& cl, Cudd& mgr, int maxvar); 
+	ZDD ClausetoZDD(const CnfClause& cl, Cudd& mgr, const int maxRange) const; 
 	int indexConverter(int g);
 	int maxVarRange(const QCnfFormula& qcnf);	
 	std::unordered_map<int, int> produceIndicesMap(int maxvar);
@@ -41,14 +41,14 @@ public:
 	void ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames);
 	
 	// check partial realizability
-	bool partialRealizability(const ZDD& zdd) const;
+	bool partialRealizability(Cudd& mgr, const ZDD& zdd,QCnfFormula& qcnf2) ;
 
 	// check full realizability
-	bool fullRealizability(const ZDD& zdd, std::unordered_map <int, int> index_map, QCnfFormula& qcnf2 ) const;
+	bool fullRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2 ) ;
 
 	//resolution
 	//ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, const std::string& outputpath, std::unordered_map <int, int> index_map) const;
-	ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, std::unordered_map <int, int> index_map) const;
+	ZDD Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int> y_vars);
 
 	// substitution
 	ZDD crossZDD(const ZDD& z) const;

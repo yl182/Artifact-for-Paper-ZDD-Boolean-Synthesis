@@ -30,38 +30,53 @@ std::runtime_error CNFtoZDDconverter::EmptyFormulaException(const std::string& f
 }		
 
 //helper functions: given a reference of a clause, return the ZDD representing the clause
-ZDD CNFtoZDDconverter::ClausetoZDD(const CnfClause& cl, Cudd& mgr, int maxvar) {
-	// convert literals into indices:
-	std::vector<int> literals;
-	for (int lit : cl) {
-		literals.push_back(indexConverter(lit));
-	}
+ZDD CNFtoZDDconverter::ClausetoZDD(const CnfClause& cl, Cudd& mgr, int maxRange) const {
+
+	
 
 	// draw ZDD for the clause
-	ZDD newZDDofClause = mgr.zddVar(literals[0]);
+	ZDD newZDDofClause = mgr.zddVar(cl[0]);
+	//return newZDDofClause;
+	std::cout << "Start with Node " << cl[0] << std::endl;
+	
+	//std::vector<int> subset0list;
+	//std::vector<int> changelist;
+	
 	// eliminate other variables
-	for (int i = 0; i <= 2*maxvar; i++) {					if (i != literals[0]) {
-			newZDDofClause =newZDDofClause.Subset0(i);
+	for (int i = 0; i <= 2*maxRange; i++) {					
+		if (i != cl[0]) {
+			newZDDofClause = newZDDofClause.Subset0(i);
+			std::cout << "Subset0 with Node " << i << std::endl;
+			
 		}
 	}
+	
+	
+
 	// append other variables to the clause
-	for (int i = 0; i <= 2*maxvar; i++) {
-		if (std::find(literals.begin(), literals.end(), i) != literals.end()) {
-			if (i != literals[0]) {
-				newZDDofClause =newZDDofClause.Change(i);	
-			}	
+	
+	for (int i : cl) {
+		if (i != cl[0]) {
+			newZDDofClause =newZDDofClause.Change(i);	
+			std::cout << "Change with Node " << i << std::endl;
 		}
 	}
+
 	// return the ZDD of the clause
+	std::cout << "Done Building ZDD for the clause above." << std::endl;
+	
 	return newZDDofClause;
 }
 
 // helper function: given index->node index
 int CNFtoZDDconverter::indexConverter(int g) {
+	// example: +10, -10 => 18,19, 
+	// example: +1,-1 => 0, 1
+	// +n, -n => (2n-2), (2n-1)
 	if (g < 0) {
-		return (-1)*g*2;
+		return (-1)*g*2-1;
 	} else {
-		return 2*g-1;
+		return 2*g-2;
 	}
 }
 
@@ -82,7 +97,7 @@ std::unordered_map<int,int> CNFtoZDDconverter::produceIndicesMap(int maxvar) {
 		index_map.insert(std::pair<int, int>(k, indexConverter(k)) );
 		index_map.insert(std::pair<int, int>(-k, indexConverter((-1)*k)) );
 	}
-
+	std::cout << "File Index\tNode Index" << std::endl;
 	for (auto& n : index_map) {
 		std::cout << n.first << "\t" << n.second << std::endl;
 	}
@@ -91,32 +106,53 @@ std::unordered_map<int,int> CNFtoZDDconverter::produceIndicesMap(int maxvar) {
 
 //draw ZDD
 void CNFtoZDDconverter::ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames) {
+	std::cout << "Output ZDD for the CNF above to file " << dotfile << std::endl;
 	mgr.DumpDot(z, inames, onames, fopen(dotfile.c_str(), "w"));
 }
 
 //resolve a variable
-ZDD CNFtoZDDconverter::Resolution(const ZDD& zdd, const std::vector<int> y_vars, std::unordered_map <int, int> index_map) const {
-	ZDD resolvedZDD = zdd;
+ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int> y_vars) {
+	ZDD resolvedZDD;
 	for (int y : y_vars) {
-		std::cout << "new iteration in Resolution for-loop starts, this time\n";
+		std::cout << "Resolving for" << std::endl;
 		std::cout << "y posY negY " << std::endl;
-		int posY = index_map[y];
-		int negY = index_map[(-1)*y];
+		int posY = indexConverter(y);
+		int negY = indexConverter((-1)*y);
 		std::cout << y << " " << posY << " " << negY << std::endl;
 		
 		// build ZDDs for f_y^+, f_y^-, f_y'
-		ZDD f_y_plus = zdd.Subset1(posY).Change(posY);
+		std::vector<ZDD> tmpZDDs;
+		ZDD f_y_plus = zdd.Subset1(posY);
 		
-		ZDD f_y_minus = zdd.Subset1(negY).Change(negY);
-		
+		std::cout << "To get f_y^+ for y = " << y << ", subset1(" << posY << ")." << std::endl; 
+		tmpZDDs = {f_y_plus};
+		ZDDtoDot(mgr, tmpZDDs, "plusZDD_" + std::to_string(y) + ".dot", NULL, NULL);
+
+		ZDD f_y_minus = zdd.Subset1(negY);
+		std::cout << "To get f_y^- for y = " << y << ", subset1(" << negY << ")." << std::endl; 
+		tmpZDDs = {f_y_minus};
+		ZDDtoDot(mgr, tmpZDDs, "minusZDD_" + std::to_string(y) + ".dot", NULL, NULL);
+
 		ZDD f_y_prime = zdd.Subset0(posY).Subset0(negY);
-		std::cout << "no errors by producing f_y_plus, f_y_minus, f_y_prime" << std::endl;
-		
+		std::cout << "To get f_y\' for y = " << y << ", subset0(" << posY << "), subset0(" << negY << ")." << std::endl; 
+		tmpZDDs = {f_y_prime};
+		ZDDtoDot(mgr, tmpZDDs, "primeZDD_" + std::to_string(y) + ".dot", NULL, NULL);
+
+		std::cout << "Done producing f_y_plus, f_y_minus, f_y_prime for y value above." << std::endl;
+		//std::cout << "before going into clauseDistribution function in cuddObj.c" << std::endl;
 		// core dumped after this line in first iteration
+		
+		//std::cout << "after first step of clauseDistribution function in cuddObj.c\nnow manager is: " << (mgr == NULL) << std::endl;
 		ZDD f_y_plus_OR_f_y_minus = f_y_plus.ClauseDistribution(f_y_minus);
-		std::cout << "no errors until this line" << std::endl;
-		ZDD resolvedZDD = f_y_plus_OR_f_y_minus.SubSumptionFreeUnion(f_y_prime);
-		std::cout << "no errors until this line" << std::endl;
+		std::cout << "To get ZDD of (f_y^- or f_y^+):" << std::endl;
+		tmpZDDs = {f_y_plus_OR_f_y_minus};
+		ZDDtoDot(mgr, tmpZDDs, "or_ZDD_" + std::to_string(y) + ".dot", NULL, NULL);
+
+		std::cout << "To get ZDD of (f_y^- or f_y^+) and f_y\'" << std::endl;
+		resolvedZDD = f_y_plus_OR_f_y_minus.SubSumptionFreeUnion(f_y_prime);
+		tmpZDDs = {resolvedZDD};
+		ZDDtoDot(mgr, tmpZDDs, "resolvedZDD_" + std::to_string(y) + ".dot", NULL, NULL);
+		std::cout << "Done resolving." << std::endl;
 		
 	}
 	// core dumped before this line
@@ -124,22 +160,33 @@ ZDD CNFtoZDDconverter::Resolution(const ZDD& zdd, const std::vector<int> y_vars,
 }
 
 // check partial realizability
-bool CNFtoZDDconverter::partialRealizability(const ZDD& zdd) const {
-	if (zdd.Count() > 0) {
+bool CNFtoZDDconverter::partialRealizability(Cudd& mgr, const ZDD& zdd,QCnfFormula& qcnf2) {
+	std::cout << "Checking Partial Realizability: " << std::endl;
+	ZDD resolved = Resolution(mgr, zdd, qcnf2.existential_vars);
+	std::cout << "Count = " << resolved.Count() << std::endl;
+	// it is confirmed that when empty clause satisfies CNF, Count = 1, when no clauses satisfies CNF, Count = 0
+	// so Count() can be used to count the number of path to terminal-1
+	// i.e., partial realizability
+	if (resolved.Count() > 0) {
+		std::cout << "Partial Realizability: YES" << std::endl;
 		return 1;
 	} else {
+		std::cout << "Partial Realizability: NO" << std::endl;
 		return 0;
 	}
 }
 // check full realizability
-bool CNFtoZDDconverter::fullRealizability(const ZDD& zdd, std::unordered_map <int, int> index_map, QCnfFormula& qcnf2 ) const {
-	ZDD Resolved = Resolution(zdd, qcnf2.universal_vars, index_map);
-	Resolved = Resolution(zdd, qcnf2.existential_vars, index_map);
-	Cudd mgr2;
-	ZDD zeroTerminal = mgr2.zddZero();
+bool CNFtoZDDconverter::fullRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2 ) {
+	ZDD Resolved = Resolution(mgr, zdd, qcnf2.existential_vars);
+	
+	ZDD zeroTerminal = mgr.zddZero();
 	if (Resolved == zeroTerminal) {
+		// not fully realizable
+		std::cout << "Full Realizability: NO" << std::endl;
 		return 0;
 	}
+	// fully realizable
+	std::cout << "Full Realizability: Yes" << std::endl;
 	return 1;
 	
 }
@@ -175,6 +222,7 @@ ZDD CNFtoZDDconverter::CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_ma
 			// CASE 1: pos y occurs
 			// cnf[i].
 			ZDD Z_cl = ClausetoZDD(cnf[i], mgr, maxVar);//clause ZDD
+
 			int posY = index_map[y];
 			int negY = index_map[(-1)*y];
 			//ZDD f_y_minus = Z_cl.Subset1(negY).Change(negY);//witness we select (assume g0)
@@ -218,104 +266,110 @@ ZDD CNFtoZDDconverter::CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_ma
 void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
 	// from instream get CNF and lists of x's and y's variables
+
+	std::cout << "\n\nQReader reading from file: " << path << std::endl;
+	// get variables
 	QDimacsReader qreader;
 	QCnfFormula qcnf = qreader.Read(path);
-	CnfFormula cnf = qcnf.formula;
-
-	// get the largest absolute value in given variable indices
-	QCnfFormula qcnf2 = qcnf;
-	int maxVar = maxVarRange(qcnf2);
 	
+	std::cout << "Got QCnfFormula, \nUniversal variables are: ";
+	for (int i : qcnf.universal_vars) {
+		std::cout << " " << i;
+	}
+	std::cout << "\nExistential variables are:";
+	for (int i : qcnf.existential_vars) {
+		std::cout << " " << i;
+	}
+	std::cout << std::endl;
 
+	// get formula
+	CnfFormula cnf = qcnf.formula;
+	const int nClauses = cnf.size();
+
+	std::cout << "There are " << nClauses << "clauses in the CNF." << std::endl;
+	std::cout << "CNF (by File Index) is: " << std::endl;
+
+	// build another CNF with Node Indices
+	CnfFormula cnf2;
+	for (CnfClause c : cnf) {
+		CnfClause cl;
+		for (int i : c) {
+			std::cout << i << ", ";
+			cl |= indexConverter(i);
+		}
+		std::cout << std::endl;
+		cnf2 &= cl;
+	}
+	std::cout << "End of CNF (by File Index)." << std::endl;
+	std::cout << "CNF (by Node Index) is: " << std::endl;	
+	for (CnfClause c : cnf2) {
+		for (int i : c) {
+			std::cout << i << ", ";
+		}
+		std::cout << std::endl;
+	}
+	std::cout << "End of CNF (by Node Index)." << std::endl;
+
+	
+	
+	// get the largest absolute value in given variable indices
+	
+	int maxVar = maxVarRange(qcnf);
+	std::cout << "Noticed largest range " << maxVar << std::endl;
+	
+	
 	// produce map of given indices and node indices
 	std::unordered_map <int, int> indexToNodesMap = produceIndicesMap(maxVar);
-	
+
 	// draw ZDDs of the i-th clause
 	Cudd mgr;
-	//Cudd& mgr1 = mgr;
-
+	
 	// initiate a vector of clause-ZDDs
-	std::vector<ZDD> Clause_ZDDs;
+	std::vector<ZDD> clauseZDDs;
 	
+	int j = 1;
+	std::vector<ZDD> tmpZDDvec;
+	ZDD Z_cl;
 	// iterate over clauses, build ZDDs and add them to Clause_ZDDs
-	const int n_clauses = cnf.size();
-	/*for (int i = 0; i < n_clauses; i++) {
-		if (cnf[i].size() <= 0) {
-			continue;
-			std::cout << "clause empty" << std::endl;
-		}
-		//CnfClause& cl;
-		//cl = cnf[i];
-		ZDD Z_cl = ClausetoZDD(cnf[i], mgr, maxVar);
-
+	for (const CnfClause& clause : cnf2) {
+		Z_cl = ClausetoZDD(clause, mgr, maxVar);
 		// add the ZDD of this clause to the vector of ZDDs
-		Clause_ZDDs.push_back(Z_cl);	
-	}*/
-
-	for (const CnfClause& clause : cnf) {
-		if (clause.size() <= 0) {
-			continue;
-			std::cout << "clause empty" << std::endl;
-		}
-		//CnfClause& cl;
-		//cl = cnf[i];
-		ZDD Z_cl = ClausetoZDD(clause, mgr, maxVar);
-
-		// add the ZDD of this clause to the vector of ZDDs
-		Clause_ZDDs.push_back(Z_cl);	
+		tmpZDDvec = {Z_cl};
+		ZDDtoDot(mgr, tmpZDDvec, "ZDD"+std::to_string(j)+".dot", NULL,NULL);
+		j++;
+		clauseZDDs.emplace_back(Z_cl);
 	}
-	
+
 	// union the clause-zdds into ZDD of the CNF
-	if (Clause_ZDDs.size() <= 0) {
+	if (clauseZDDs.size() <= 0) {
 		std::cout << "formula is empty, 0 clause-ZDDs" << std::endl;
 		throw EmptyFormulaException(path); 
-		
 	}
-	ZDD unionedZDDs = Clause_ZDDs[0];
-	for (const ZDD& zdd : Clause_ZDDs) {
+	std::cout << "Unioning ZDDs of clauses above." << std::endl;
+	ZDD unionedZDDs = clauseZDDs[0];
+	for (const ZDD& zdd : clauseZDDs) {
 		unionedZDDs = unionedZDDs.Union(zdd);
 	}
-
 	std::vector<ZDD> zdds = {unionedZDDs};
-
-	//check realizability
-	partialRealizability(unionedZDDs);
-	fullRealizability(unionedZDDs, indexToNodesMap, qcnf2);
-
-
-
-	// draw the entire CNF's ZDD
-	/*std::vector<char*> inames;
- 	const std::vector<std::string> variable_labels;
-	
-	for (auto& nodepair : indexToNodesMap) {
-
-		std::cout << nodepair.first;
-		std::cout << " " << nodepair.second << std::endl;
-		char* label = (char*)nodepair.first;
-		variable_labels.push_back(label);
-	}
-	for (int i = 0; i < 2*maxVar; ++i) {
-		std::string label = variable_labels[i];
-
-		// Return value of label.c_str() is temporary, so need to make a copy
-		inames[i] = new char[label.length() + 1]; // need space for '\0' terminator
-		strcpy(inames[i], label.c_str());
-	}
-	for (auto& c : inames) {
-		std::cout << c;
-	}
-
-	std::cout << "maxVar = " << maxVar << std::endl;
-	*/
 	ZDDtoDot(mgr, zdds, "ZDD.dot", NULL,NULL);
 	
+
+	
+
+	//check realizability
+	
+	partialRealizability(mgr, unionedZDDs, qcnf);
+	fullRealizability(mgr, unionedZDDs,qcnf);
+
 	// resolve on y variables and output the ZDD as .dot and .png
-	//ZDD ResolvedZDD = Resolution(unionedZDDs, qcnf2.existential_vars, "resolved.dot", indexToNodesMap);
-	ZDD ResolvedZDD = Resolution(unionedZDDs, qcnf2.existential_vars, indexToNodesMap);
+	
+	ZDD ResolvedZDD = Resolution(mgr, unionedZDDs, qcnf.existential_vars);
 	// core dumped before this line
+	
 	std::vector<ZDD> resolvedZdds = {ResolvedZDD};
 	ZDDtoDot(mgr, resolvedZdds, "ResolvedZDD.dot", NULL,NULL);
+	std::cout << "\n\n";
+	
 
 
 

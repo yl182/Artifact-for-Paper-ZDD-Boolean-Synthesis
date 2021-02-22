@@ -32,11 +32,145 @@ int main (int argc, char *argv[])
 {
  
 	const std::string str1 = "test.txt";
-	//const std::string& str = str1;
 	CNFtoZDDconverter c;
-	// ZDD.dot, realizability (full, partial), resolution
 	c.convertCNFtoZDD(str1);
+	/*
+	Cudd mgr;
+	ZDD z1 = mgr.zddZero();
+	std::vector<ZDD> zdd = {z1};
+	mgr.DumpDot(zdd, NULL, NULL, fopen("try1ZDD.dot", "w"));
+	*/
+	//try block
+	/*Cudd mgr;
+	ZDD z1 = mgr.zddVar(1).Subset0(0).Subset0(2).Subset0(3).Subset0(4).Subset0(5).Subset0(6).Subset0(7).Change(3).Change(5);
+	ZDD z3 = mgr.zddVar(0).Subset0(4).Subset0(1).Subset0(2).Subset0(3).Subset0(5).Subset0(6).Subset0(7);
+	//ZDD z111 = mgr.zddVar(1).Subset0(0).Subset0(2);
+	std::vector<ZDD> zdd13;
+	ZDD z1_3 = z3.Union(z1);
+	
+	zdd13 = {z1_3};
+	//zdd13 = {z111};
+	mgr.DumpDot(zdd13, NULL, NULL, fopen("try1ZDD.dot", "w"));
+
+	//ZDD z57 = mgr.zddVar(5).Subset0(0).Subset0(1).Subset0(2).Subset0(3).Subset0(4).Subset0(6).Subset0(7).Change(7);
+	std::vector<ZDD> zdd57;
+	//zdd57 = {z57};
+	ZDD z222 = mgr.zddVar(1).Subset0(5).Subset0(0).Subset0(3).Subset0(4).Subset0(6).Subset0(7).Subset0(2).Change(3);
+	zdd57 = {z222};
+	mgr.DumpDot(zdd57, NULL, NULL, fopen("try2ZDD.dot", "w"));
+
+	
+	//ZDD z = z57.ClauseDistribution(z1_3);
+	ZDD z = z1_3.ClauseDistribution(z222);
+	std::vector<ZDD> zddor;
+	zddor = {z};
+	mgr.DumpDot(zddor, NULL, NULL, fopen("try3ZDD.dot", "w"));
+
+	
+	ZDD z_ = z1_3.SubSumptionFreeUnion(z222);
+	std::vector<ZDD> zddunion;
+	zddunion = {z_};
+	mgr.DumpDot(zddunion, NULL, NULL, fopen("try4ZDD.dot", "w"));
+*/
+	/*Cudd mgr;
+	ZDD z = mgr.zddVar(0);
+	std::vector<ZDD> zdds;
+	zdds = {z};
+	mgr.DumpDot(zdds, NULL, NULL, fopen("try1ZDD.dot", "w"));
+	std::cout << z.Count() << std::endl;
+
+	
+	ZDD z1 = mgr.zddVar(1);
+	zdds = {z1};
+	mgr.DumpDot(zdds, NULL, NULL, fopen("try2ZDD.dot", "w"));
+	std::cout << z1.Count() << std::endl;
+
+	
+	ZDD z2 = mgr.zddVar(1).Subset0(0).Change(3).Change(3).Subset0(1);
+	zdds = {z2};
+	mgr.DumpDot(zdds, NULL, NULL, fopen("try3ZDD.dot", "w"));
+	std::cout << z2.Count() << std::endl;
+	*/
+/*
+	Cudd mgr;
+	ZDD z = mgr.zddVar(1);
+	// z: (1,2,3)
+	z = z.Subset1(0).Change(2).Change(3);
+	std::vector<ZDD> zdds = {z};
+	mgr.DumpDot(zdds, NULL, NULL, fopen("try1ZDD.dot", "w"));
+
+	ZDD z1 = mgr.zddVar(2).Subset0(0).Subset0(1).Subset0(3).Change(3);
+	// z1: (2, 3)
+	std::vector<ZDD> zdds2 = {z1};
+	mgr.DumpDot(zdds2, NULL, NULL, fopen("try2ZDD.dot", "w"));
+
+	ZDD z2 = mgr.zddVar(1);
+	// z2: (1,4)
+	z2 = z2.Subset0(0).Subset0(2).Subset0(3).Subset0(4).Change(4);
+	std::vector<ZDD> zdds3 = {z2};
+	mgr.DumpDot(zdds3, NULL, NULL, fopen("try3ZDD.dot", "w"));
+
+	ZDD unioned = z.Union(z1).Union(z2);
+	std::vector<ZDD> zdds_all = {unioned};
+	// unioned: (1,2,3), (2,3), (1,4)
+	mgr.DumpDot(zdds_all, NULL, NULL, fopen("try4ZDD.dot", "w"));
+
+	std::vector<ZDD> tmp;
+	ZDD z_1_plus = unioned.Subset1(1);
+	tmp = {z_1_plus};
+	mgr.DumpDot(tmp, NULL, NULL, fopen("try5ZDD.dot", "w"));
+
+	ZDD z_1_minus = unioned.Subset1(2);
+	tmp = {z_1_minus};
+	mgr.DumpDot(tmp, NULL, NULL, fopen("try6ZDD.dot", "w"));
+
+	ZDD z_1_prime = unioned.Subset0(1).Subset0(4);
+	tmp = {z_1_prime};
+	mgr.DumpDot(tmp, NULL, NULL, fopen("try7ZDD.dot", "w"));
+
+*/
+	//Change(3).Change(5);
+	/*
+	Cudd mgr;
+	std::vector<int> subset0list= {0,1,2,3,4,5,6};
+	std::vector<int> changelist = {3,5};
+
+	ZDD newZDDofClause = mgr.zddVar(1);
+	//return newZDDofClause;
+	std::cout << "Start with Node " << 1 << std::endl;
+	
+	std::vector<ZDD> zdds = {newZDDofClause};
+	std::cout << "Output ZDD for the CNF above to file " << "tryZDD1.dot" << std::endl;
+	mgr.DumpDot(zdds, NULL, NULL, fopen("try1ZDD.dot", "w"));
+
+	// subset0
+	
 	
 
+
+	for (int i : subset0list) {
+		if (i != 1) {
+			newZDDofClause =newZDDofClause.Subset0(i);	
+			std::cout << "Subset0 with Node " << i << std::endl;
+		}
+
+	}
+	zdds = {newZDDofClause};
+	std::cout << "Output ZDD for the CNF above to file " << "tryZDD2.dot" << std::endl;
+	mgr.DumpDot(zdds, NULL, NULL, fopen("try2ZDD.dot", "w"));
+
+	// change
+	for (int i : changelist) {					
+		if (i != 1) {
+			newZDDofClause =newZDDofClause.Change(i);
+			std::cout << "Change with Node " << i << std::endl;
+		}
+	}
+	// return the ZDD of the clause
+	zdds = {newZDDofClause};
+	std::cout << "Output ZDD for the CNF above to file " << "tryZDD3.dot" << std::endl;
+	mgr.DumpDot(zdds, NULL, NULL, fopen("try3ZDD.dot", "w"));
+	
+	*/
 	return 0;
 }

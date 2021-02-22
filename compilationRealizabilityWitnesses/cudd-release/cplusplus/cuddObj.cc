@@ -6093,21 +6093,30 @@ ZDD::Subset0(
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // new functions for resolution here
-ZDD ZDD::SubSumptionFreeUnion(ZDD& other) {
+ZDD ZDD::SubSumptionFreeUnion(const ZDD& other) const {
 	DdManager *mgr = p->manager;
+    mgr = checkSameManager(other);
 	DdNode* otherNode = other.getNode();
 	DdNode *result = zdd_myunion(mgr, node, otherNode);
+    checkReturnValue(result);
 	return ZDD(p, result);
 }
 
-ZDD ZDD::ClauseDistribution(ZDD& other) {
+ZDD ZDD::ClauseDistribution(const ZDD& other) const{
+
+    std::cout << "start of clauseDistribution function in cuddObj.c" << std::endl;
     std::cout << "no errors until this line0" << std::endl;
-	DdManager *mgr = p->manager;
+    //
+	// DdManager *mgr = p->manager;  note: redundant checkSameManager already has p->manager
+    DdManager *mgr = checkSameManager(other);
+    
     std::cout << "no errors until this line1" << std::endl;
 	DdNode* otherNode = other.getNode();
     std::cout << "no errors until this line2" << std::endl;
 	DdNode *result = zdd_myproduct(mgr, node, otherNode);
     std::cout << "no errors until this line3" << std::endl;
+    //
+    checkReturnValue(result);
 	return ZDD(p, result);
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

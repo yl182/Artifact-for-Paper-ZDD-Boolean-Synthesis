@@ -10,7 +10,28 @@ main:
 
 	
 	./cudd0
-	dot ZDD.dot -Tpng -o ZDD.png
+    
+	
+	
+	#dot try1ZDD.dot -Tpng -o try1ZDD.png
+	#dot try2ZDD.dot -Tpng -o try2ZDD.png
+	#dot try3ZDD.dot -Tpng -o try3ZDD.png
+	#dot try4ZDD.dot -Tpng -o try4ZDD.png
+	#dot try5ZDD.dot -Tpng -o try5ZDD.png
+	#dot try6ZDD.dot -Tpng -o try6ZDD.png
+	#dot try7ZDD.dot -Tpng -o try7ZDD.png
+	dot ZDD.dot -Tpng -o ZDD.png	
+	dot ZDD1.dot -Tpng -o ZDD1.png
+	dot ZDD2.dot -Tpng -o ZDD2.png
+	dot ZDD3.dot -Tpng -o ZDD3.png
+
+	dot plusZDD_3.dot -Tpng -o plusZDD_3.png
+	dot minusZDD_3.dot -Tpng -o minusZDD_3.png
+	dot primeZDD_3.dot -Tpng -o primeZDD_3.png
+	dot or_ZDD_3.dot -Tpng -o or_ZDD_3.png
+	dot resolvedZDD_3.dot -Tpng -o resolvedZDD_3.png
+
+	dot ResolvedZDD.dot -Tpng -o ResolvedZDD.png
 
 clean:
 	rm -f *.dot
@@ -25,5 +46,9 @@ saved:
 	gcc -g -c QMRes/manip.c -I cudd-release/cudd -I cudd-release/epd -I QMRes -I cudd-release/util -I cudd-release -I cudd-release/st -I cudd-release/mtr 
 	./cudd0
 	dot ZDD.dot -Tpng -o ZDD.png
+
+	#dot try1ZDD.dot -Tpng -o try1ZDD.png
+	#dot try2ZDD.dot -Tpng -o try2ZDD.png
+	#dot try3ZDD.dot -Tpng -o try3ZDD.png
 
 	

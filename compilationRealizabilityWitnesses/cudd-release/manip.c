@@ -23,7 +23,7 @@ int premier_cas_x_D = 0;
 #endif
 #define REF(i) (Cudd_Ref(i))
 
- DdManager * manager;
+ DdManager * mgr;
 
 DdNode *
 cuddCacheLookup1IntZdd(
@@ -878,8 +878,8 @@ zdd_myUnion_aux(
     int		p_top, q_top;
     DdNode	*empty = DD_ZERO(zdd), *t, *e, *s, *res;
     DdManager	*table = zdd;
-
-
+//
+  DdManager* dd = zdd;
 
     if (P == empty)
 	return(Q);

@@ -3,7 +3,7 @@
 #define MANIP_H
 
 #define REF(i) (Cudd_Ref(i))
-#define DEREF(i) (Cudd_RecursiveDerefZdd(manager,i))
+#define DEREF(i) (Cudd_RecursiveDerefZdd(dd,i))
  unsigned short nesting[32768];
  int use_earlyquantification;
 

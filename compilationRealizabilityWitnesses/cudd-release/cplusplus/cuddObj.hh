@@ -428,8 +428,8 @@ public:
     ZDD Subset1(int var) const;
     ZDD Subset0(int var) const;
     // new functions
-    ZDD SubSumptionFreeUnion(ZDD& other);
-    ZDD ClauseDistribution(ZDD& other);
+    ZDD SubSumptionFreeUnion(const ZDD& other) const;
+    ZDD ClauseDistribution(const ZDD& other) const;
 
     ZDD Change(int var) const;
     void PrintMinterm() const;
