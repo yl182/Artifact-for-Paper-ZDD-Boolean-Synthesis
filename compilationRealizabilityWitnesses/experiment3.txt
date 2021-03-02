@@ -1,0 +1,9 @@
+c This QDIMACS file encodes the formula     
+c x1  -x2 -y1 y3       x1 x2 y2    -x1
+c 1   -2  -3  5         1 2 4      -1
+p cnf 5 3
+a 1 2 0
+e 3 4 5 0
+1 -2 -3 5 0
+1 2 4 0
+-1 0

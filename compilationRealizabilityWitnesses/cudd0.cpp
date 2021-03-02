@@ -30,10 +30,47 @@ void printZDD (ZDD z)
 // ZDD with more vars---define zdd at the last step
 int main (int argc, char *argv[])
 {
- 
-	const std::string str1 = "test.txt";
-	CNFtoZDDconverter c;
+	if (argc < 2) {
+		std::cout << "Usage: " << std::string(argv[0]) << " <filename>" << std::endl;
+		return 0;
+	}
+	const std::string str1(argv[1]);
+	//"2QBF2016/2QBF/tree-exa10-30.qdimacs";
+	CNFtoZDDconverter c(0,0);
 	c.convertCNFtoZDD(str1);
+	/*
+	std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
+	std::cout << "starting counting time..." << std::endl;
+	int k = 0;
+	for (int i = 0; i < 1000; i++) {
+		for (int j = 0; j < 1000; j++) {
+			std::cout << "*";
+		}
+	}
+	std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+	std::cout << "stop counting time..." << std::endl;
+	std::chrono::steady_clock::duration timespan = t1-t0;
+	std::cout << "duration.count " << timespan.count() << std::endl;
+	std::cout << "duration.count (cast to milliseconds) " << (double)timespan.count() << std::endl;
+	std::cout << "duration times num divided by den: " << (double)timespan.count() *std::chrono::steady_clock::period::num / std::chrono::steady_clock::period::den << " seconds" << std::endl;
+	std::cout << "num " << std::chrono::steady_clock::period::num << std::endl;
+	std::cout << "den " << std::chrono::steady_clock::period::den << std::endl;
+	*/
+	/*Cudd mgr;
+	ZDD z =mgr.zddOne(5).Change(1).Change(0);
+	//.Change(0).Change(5);
+	std::vector<ZDD> zdd = {z};
+	mgr.DumpDot(zdd, NULL, NULL, fopen("try1ZDD.dot", "w"));
+	*/
+	/*Cudd mgr;
+	
+	ZDD z = mgr.zddVar(0).Subset0(1).Subset0(2).Change(1);
+	std::vector<ZDD> zdd = {z};
+	mgr.DumpDot(zdd, NULL, NULL, fopen("try1ZDD.dot", "w"));
+	std::vector<int> v = {2};
+	ZDD resolved = (mgr, z, v);
+	zdd = {resolved};
+	mgr.DumpDot(zdd, NULL, NULL, fopen("try2ZDD.dot", "w"));*/
 	/*
 	Cudd mgr;
 	ZDD z1 = mgr.zddZero();

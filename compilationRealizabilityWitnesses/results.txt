@@ -1,0 +1,154 @@
+filename	Full	Partial: 
+2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/tree-exa10-15.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/tree-exa10-20.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/tree-exa10-25.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/tree-exa10-30.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-2-s.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-4-s.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-8-s.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-16-s.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-32-s.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-64-s.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-128-s.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/qshifter_3.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/qshifter_4.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/qshifter_5.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/qshifter_6.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/qshifter_7.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/qshifter_8.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/qshifter_8.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/qshifter_8.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/stmt24_7_8.qdimacs	YES	YES
+filename	Full	Partial: 
+experiment1.txt	NO	NO
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment2.txt	YES	YES
+filename	Full	Partial: 
+experiment2.txt	YES	YES
+filename	Full	Partial: 
+experiment2.txt	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/tree-exa10-30.qdimacs	YES	YES
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-2-s.qdimacs	YES	YES
+filename	Full	Partial: 
+experiment1.txt	NO	NO
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES
+filename	Full	Partial: 
+experiment3.txt	NO	YES	0.016827	0.0049846	0.0089684
+filename	Full	Partial: 
+experiment3.txt	NO	YES	0.0166886 sec	0.0052688 sec	0.0078755 sec
+filename	Full	Partial: 
+experiment3.txt	NO	YES	0.0164098 sec	0.0051001 sec	0.0079827 sec
+filename	Full	Partial: 
+experiment3.txt	NO	YES	0.0168918 sec	0.0022822 sec	0.0077176 sec
+filename	Full	Partial: 
+experiment1.txt	NO	NO	0.0167807 sec	0.001533 sec	0.005741 sec
+filename	Full	Partial: 
+experiment2.txt	YES	YES	0.0223612 sec	0.0010218 sec	0.0014011 sec
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-2-s.qdimacs	YES	YES	0.092986 sec	0.109913 sec	0.120194 sec
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-4-s.qdimacs	YES	YES	0.252695 sec	0.292055 sec	0.31015 sec
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-8-s.qdimacs	YES	YES	0.503358 sec	0.738004 sec	0.769776 sec
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-16-s.qdimacs	YES	YES	1.04687 sec	1.76134 sec	1.82096 sec
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-32-s.qdimacs	YES	YES	2.17541 sec	4.88249 sec	5.00259 sec
+filename	Full	Partial: 
+2QBF2016/2QBF/mutex-64-s.qdimacs	YES	YES	4.32302 sec	19.4167 sec	19.7534 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+experiment1.txt	NO	NO	0.0156929 sec	0.0017955 sec	0.0057947 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+experiment2.txt	YES	YES	0.0152097 sec	0.0009322 sec	0.0012933 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+experiment3.txt	NO	YES	0.0168796 sec	0.0052577 sec	0.0085134 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/mutex-2-s.qdimacs	YES	YES	0.0840394 sec	0.114492 sec	0.124743 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/mutex-4-s.qdimacs	YES	YES	0.233848 sec	0.346244 sec	0.368059 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/mutex-8-s.qdimacs	YES	YES	0.500255 sec	0.730152 sec	0.76363 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/mutex-16-s.qdimacs	YES	YES	1.19098 sec	2.90798 sec	3.03905 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/mutex-32-s.qdimacs	YES	YES	2.31374 sec	4.8967 sec	5.03417 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/mutex-64-s.qdimacs	YES	YES	5.81902 sec	20.2282 sec	20.4947 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/mutex-128-s.qdimacs	YES	YES	10.7921 sec	109.528 sec	110.06 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/qshifter_3.qdimacs	YES	YES	0.126946 sec	0.0093245 sec	0.0215342 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/qshifter_4.qdimacs	YES	YES	0.464646 sec	0.0220359 sec	0.0447611 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/qshifter_5.qdimacs	YES	YES	1.89999 sec	0.0536267 sec	0.088952 sec
+filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/qshifter_6.qdimacs	YES	YES	8.01215 sec	0.247896 sec	0.316626 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/qshifter_7.qdimacs	YES	YES	1.36356 sec	1.41933 sec	1.43598 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/qshifter_8.qdimacs	YES	YES	13.6896 sec	12.8723 sec	12.9014 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/qshifter_8.qdimacs	YES	YES	12.3007 sec	12.2739 sec	12.3003 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES	0.0178937 sec	0.0014941 sec	0.0023557 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/tree-exa10-15.qdimacs	YES	YES	0.0210439 sec	0.0018277 sec	0.0030456 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/tree-exa10-20.qdimacs	YES	YES	0.0210648 sec	0.0025911 sec	0.0047521 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/tree-exa10-25.qdimacs	YES	YES	0.0226732 sec	0.0026169 sec	0.0044975 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
+2QBF2016/2QBF/tree-exa10-30.qdimacs	YES	YES	0.0210301 sec	0.0035034 sec	0.0059936 sec

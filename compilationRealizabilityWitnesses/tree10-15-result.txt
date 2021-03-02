@@ -1,0 +1,3178 @@
+g++ -g -c CNFtoZDDconverter.cpp -I qdimacs-reader -I cudd-release/cudd -I cudd-release/cplusplus
+g++ -g -c cudd0.cpp -I cudd-release/cudd -I cudd-release/cplusplus -I qdimacs-reader
+g++ -g cudd0.o CNFtoZDDconverter.o qdimacs-reader/CnfFormula.o qdimacs-reader/QCnfFormula.o qdimacs-reader/QDimacsReader.o -I cudd-release -I cudd-release/cplusplus -I cudd-release/cudd -I cudd-release/util -I cudd-release/st -I cudd-release/mtr -I cudd-release/epd -I qdimacs-reader -I QMRes -I cudd-release/cplusplus -lobj -lcudd -L cudd-release/cplusplus/.libs -L cudd-release/cudd -o cudd0
+./cudd0
+
+
+QReader reading from file: 2QBF2016/2QBF/tree-exa10-15.qdimacs
+Got QCnfFormula, 
+Universal variables are:  1 3 5 7 9 11 13 15 17 19 21 23 25 27 29
+Existential variables are: 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30
+There are 28clauses in the CNF.
+CNF (by File Index) is: 
+1, 3, 4, 
+-1, -3, -4, 
+3, 5, 6, 
+-3, -5, -6, 
+5, 7, 8, 
+-5, -7, -8, 
+7, 9, 10, 
+-7, -9, -10, 
+9, 11, 12, 
+-9, -11, -12, 
+11, 13, 14, 
+-11, -13, -14, 
+13, 15, 16, 
+-13, -15, -16, 
+15, 17, 18, 
+-15, -17, -18, 
+17, 19, 20, 
+-17, -19, -20, 
+19, 21, 22, 
+-19, -21, -22, 
+21, 23, 24, 
+-21, -23, -24, 
+23, 25, 26, 
+-23, -25, -26, 
+25, 27, 28, 
+-25, -27, -28, 
+27, 29, 30, 
+-27, -29, -30, 
+End of CNF (by File Index).
+CNF (by Node Index) is: 
+0, 4, 6, 
+1, 5, 7, 
+4, 8, 10, 
+5, 9, 11, 
+8, 12, 14, 
+9, 13, 15, 
+12, 16, 18, 
+13, 17, 19, 
+16, 20, 22, 
+17, 21, 23, 
+20, 24, 26, 
+21, 25, 27, 
+24, 28, 30, 
+25, 29, 31, 
+28, 32, 34, 
+29, 33, 35, 
+32, 36, 38, 
+33, 37, 39, 
+36, 40, 42, 
+37, 41, 43, 
+40, 44, 46, 
+41, 45, 47, 
+44, 48, 50, 
+45, 49, 51, 
+48, 52, 54, 
+49, 53, 55, 
+52, 56, 58, 
+53, 57, 59, 
+End of CNF (by Node Index).
+Noticed largest range 30
+File Index	Node Index
+-30	59
+-12	23
+12	22
+13	24
+-11	21
+-13	25
+11	20
+14	26
+-10	19
+-14	27
+10	18
+15	28
+-9	17
+9	16
+-8	15
+8	14
+-7	13
+-4	7
+-2	3
+3	4
+1	0
+-1	1
+4	6
+2	2
+-3	5
+5	8
+-5	9
+6	10
+-6	11
+7	12
+-15	29
+16	30
+-16	31
+17	32
+-17	33
+18	34
+-18	35
+19	36
+-19	37
+20	38
+-20	39
+21	40
+-21	41
+22	42
+-22	43
+23	44
+-23	45
+24	46
+-24	47
+25	48
+-25	49
+26	50
+-26	51
+27	52
+-27	53
+28	54
+-28	55
+29	56
+-29	57
+30	58
+Start with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 4
+Change with Node 6
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD1.dot
+Start with Node 1
+Subset0 with Node 0
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 5
+Change with Node 7
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD2.dot
+Start with Node 4
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 8
+Change with Node 10
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD3.dot
+Start with Node 5
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 9
+Change with Node 11
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD4.dot
+Start with Node 8
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 12
+Change with Node 14
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD5.dot
+Start with Node 9
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 13
+Change with Node 15
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD6.dot
+Start with Node 12
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 16
+Change with Node 18
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD7.dot
+Start with Node 13
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 17
+Change with Node 19
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD8.dot
+Start with Node 16
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 20
+Change with Node 22
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD9.dot
+Start with Node 17
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 21
+Change with Node 23
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD10.dot
+Start with Node 20
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 24
+Change with Node 26
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD11.dot
+Start with Node 21
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 25
+Change with Node 27
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD12.dot
+Start with Node 24
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 28
+Change with Node 30
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD13.dot
+Start with Node 25
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 29
+Change with Node 31
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD14.dot
+Start with Node 28
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 32
+Change with Node 34
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD15.dot
+Start with Node 29
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 33
+Change with Node 35
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD16.dot
+Start with Node 32
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 36
+Change with Node 38
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD17.dot
+Start with Node 33
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 37
+Change with Node 39
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD18.dot
+Start with Node 36
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 40
+Change with Node 42
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD19.dot
+Start with Node 37
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 41
+Change with Node 43
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD20.dot
+Start with Node 40
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 44
+Change with Node 46
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD21.dot
+Start with Node 41
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 45
+Change with Node 47
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD22.dot
+Start with Node 44
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 48
+Change with Node 50
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD23.dot
+Start with Node 45
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 49
+Change with Node 51
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD24.dot
+Start with Node 48
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 52
+Change with Node 54
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD25.dot
+Start with Node 49
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 53
+Change with Node 55
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD26.dot
+Start with Node 52
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 53
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 56
+Change with Node 58
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD27.dot
+Start with Node 53
+Subset0 with Node 0
+Subset0 with Node 1
+Subset0 with Node 2
+Subset0 with Node 3
+Subset0 with Node 4
+Subset0 with Node 5
+Subset0 with Node 6
+Subset0 with Node 7
+Subset0 with Node 8
+Subset0 with Node 9
+Subset0 with Node 10
+Subset0 with Node 11
+Subset0 with Node 12
+Subset0 with Node 13
+Subset0 with Node 14
+Subset0 with Node 15
+Subset0 with Node 16
+Subset0 with Node 17
+Subset0 with Node 18
+Subset0 with Node 19
+Subset0 with Node 20
+Subset0 with Node 21
+Subset0 with Node 22
+Subset0 with Node 23
+Subset0 with Node 24
+Subset0 with Node 25
+Subset0 with Node 26
+Subset0 with Node 27
+Subset0 with Node 28
+Subset0 with Node 29
+Subset0 with Node 30
+Subset0 with Node 31
+Subset0 with Node 32
+Subset0 with Node 33
+Subset0 with Node 34
+Subset0 with Node 35
+Subset0 with Node 36
+Subset0 with Node 37
+Subset0 with Node 38
+Subset0 with Node 39
+Subset0 with Node 40
+Subset0 with Node 41
+Subset0 with Node 42
+Subset0 with Node 43
+Subset0 with Node 44
+Subset0 with Node 45
+Subset0 with Node 46
+Subset0 with Node 47
+Subset0 with Node 48
+Subset0 with Node 49
+Subset0 with Node 50
+Subset0 with Node 51
+Subset0 with Node 52
+Subset0 with Node 54
+Subset0 with Node 55
+Subset0 with Node 56
+Subset0 with Node 57
+Subset0 with Node 58
+Subset0 with Node 59
+Subset0 with Node 60
+Change with Node 57
+Change with Node 59
+Done Building ZDD for the clause above.
+Output ZDD for the CNF above to file ZDD28.dot
+Unioning ZDDs of clauses above.
+Output ZDD for the CNF above to file ZDD.dot
+Checking Partial Realizability: 
+Resolving for
+y posY negY 
+2 2 3
+To get f_y^+ for y = 2, subset1(2).
+Output ZDD for the CNF above to file plusZDD_2.dot
+To get f_y^- for y = 2, subset1(3).
+Output ZDD for the CNF above to file minusZDD_2.dot
+To get f_y' for y = 2, subset0(2), subset0(3).
+Output ZDD for the CNF above to file primeZDD_2.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_2.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_2.dot
+Done resolving.
+Resolving for
+y posY negY 
+4 6 7
+To get f_y^+ for y = 4, subset1(6).
+Output ZDD for the CNF above to file plusZDD_4.dot
+To get f_y^- for y = 4, subset1(7).
+Output ZDD for the CNF above to file minusZDD_4.dot
+To get f_y' for y = 4, subset0(6), subset0(7).
+Output ZDD for the CNF above to file primeZDD_4.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_4.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_4.dot
+Done resolving.
+Resolving for
+y posY negY 
+6 10 11
+To get f_y^+ for y = 6, subset1(10).
+Output ZDD for the CNF above to file plusZDD_6.dot
+To get f_y^- for y = 6, subset1(11).
+Output ZDD for the CNF above to file minusZDD_6.dot
+To get f_y' for y = 6, subset0(10), subset0(11).
+Output ZDD for the CNF above to file primeZDD_6.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_6.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_6.dot
+Done resolving.
+Resolving for
+y posY negY 
+8 14 15
+To get f_y^+ for y = 8, subset1(14).
+Output ZDD for the CNF above to file plusZDD_8.dot
+To get f_y^- for y = 8, subset1(15).
+Output ZDD for the CNF above to file minusZDD_8.dot
+To get f_y' for y = 8, subset0(14), subset0(15).
+Output ZDD for the CNF above to file primeZDD_8.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_8.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_8.dot
+Done resolving.
+Resolving for
+y posY negY 
+10 18 19
+To get f_y^+ for y = 10, subset1(18).
+Output ZDD for the CNF above to file plusZDD_10.dot
+To get f_y^- for y = 10, subset1(19).
+Output ZDD for the CNF above to file minusZDD_10.dot
+To get f_y' for y = 10, subset0(18), subset0(19).
+Output ZDD for the CNF above to file primeZDD_10.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_10.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_10.dot
+Done resolving.
+Resolving for
+y posY negY 
+12 22 23
+To get f_y^+ for y = 12, subset1(22).
+Output ZDD for the CNF above to file plusZDD_12.dot
+To get f_y^- for y = 12, subset1(23).
+Output ZDD for the CNF above to file minusZDD_12.dot
+To get f_y' for y = 12, subset0(22), subset0(23).
+Output ZDD for the CNF above to file primeZDD_12.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_12.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_12.dot
+Done resolving.
+Resolving for
+y posY negY 
+14 26 27
+To get f_y^+ for y = 14, subset1(26).
+Output ZDD for the CNF above to file plusZDD_14.dot
+To get f_y^- for y = 14, subset1(27).
+Output ZDD for the CNF above to file minusZDD_14.dot
+To get f_y' for y = 14, subset0(26), subset0(27).
+Output ZDD for the CNF above to file primeZDD_14.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_14.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_14.dot
+Done resolving.
+Resolving for
+y posY negY 
+16 30 31
+To get f_y^+ for y = 16, subset1(30).
+Output ZDD for the CNF above to file plusZDD_16.dot
+To get f_y^- for y = 16, subset1(31).
+Output ZDD for the CNF above to file minusZDD_16.dot
+To get f_y' for y = 16, subset0(30), subset0(31).
+Output ZDD for the CNF above to file primeZDD_16.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_16.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_16.dot
+Done resolving.
+Resolving for
+y posY negY 
+18 34 35
+To get f_y^+ for y = 18, subset1(34).
+Output ZDD for the CNF above to file plusZDD_18.dot
+To get f_y^- for y = 18, subset1(35).
+Output ZDD for the CNF above to file minusZDD_18.dot
+To get f_y' for y = 18, subset0(34), subset0(35).
+Output ZDD for the CNF above to file primeZDD_18.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_18.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_18.dot
+Done resolving.
+Resolving for
+y posY negY 
+20 38 39
+To get f_y^+ for y = 20, subset1(38).
+Output ZDD for the CNF above to file plusZDD_20.dot
+To get f_y^- for y = 20, subset1(39).
+Output ZDD for the CNF above to file minusZDD_20.dot
+To get f_y' for y = 20, subset0(38), subset0(39).
+Output ZDD for the CNF above to file primeZDD_20.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_20.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_20.dot
+Done resolving.
+Resolving for
+y posY negY 
+22 42 43
+To get f_y^+ for y = 22, subset1(42).
+Output ZDD for the CNF above to file plusZDD_22.dot
+To get f_y^- for y = 22, subset1(43).
+Output ZDD for the CNF above to file minusZDD_22.dot
+To get f_y' for y = 22, subset0(42), subset0(43).
+Output ZDD for the CNF above to file primeZDD_22.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_22.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_22.dot
+Done resolving.
+Resolving for
+y posY negY 
+24 46 47
+To get f_y^+ for y = 24, subset1(46).
+Output ZDD for the CNF above to file plusZDD_24.dot
+To get f_y^- for y = 24, subset1(47).
+Output ZDD for the CNF above to file minusZDD_24.dot
+To get f_y' for y = 24, subset0(46), subset0(47).
+Output ZDD for the CNF above to file primeZDD_24.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_24.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_24.dot
+Done resolving.
+Resolving for
+y posY negY 
+26 50 51
+To get f_y^+ for y = 26, subset1(50).
+Output ZDD for the CNF above to file plusZDD_26.dot
+To get f_y^- for y = 26, subset1(51).
+Output ZDD for the CNF above to file minusZDD_26.dot
+To get f_y' for y = 26, subset0(50), subset0(51).
+Output ZDD for the CNF above to file primeZDD_26.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_26.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_26.dot
+Done resolving.
+Resolving for
+y posY negY 
+28 54 55
+To get f_y^+ for y = 28, subset1(54).
+Output ZDD for the CNF above to file plusZDD_28.dot
+To get f_y^- for y = 28, subset1(55).
+Output ZDD for the CNF above to file minusZDD_28.dot
+To get f_y' for y = 28, subset0(54), subset0(55).
+Output ZDD for the CNF above to file primeZDD_28.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_28.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_28.dot
+Done resolving.
+Resolving for
+y posY negY 
+30 58 59
+To get f_y^+ for y = 30, subset1(58).
+Output ZDD for the CNF above to file plusZDD_30.dot
+To get f_y^- for y = 30, subset1(59).
+Output ZDD for the CNF above to file minusZDD_30.dot
+To get f_y' for y = 30, subset0(58), subset0(59).
+Output ZDD for the CNF above to file primeZDD_30.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_30.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_30.dot
+Done resolving.
+Resolving for
+y posY negY 
+1 0 1
+To get f_y^+ for y = 1, subset1(0).
+Output ZDD for the CNF above to file plusZDD_1.dot
+To get f_y^- for y = 1, subset1(1).
+Output ZDD for the CNF above to file minusZDD_1.dot
+To get f_y' for y = 1, subset0(0), subset0(1).
+Output ZDD for the CNF above to file primeZDD_1.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_1.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_1.dot
+Done resolving.
+Resolving for
+y posY negY 
+3 4 5
+To get f_y^+ for y = 3, subset1(4).
+Output ZDD for the CNF above to file plusZDD_3.dot
+To get f_y^- for y = 3, subset1(5).
+Output ZDD for the CNF above to file minusZDD_3.dot
+To get f_y' for y = 3, subset0(4), subset0(5).
+Output ZDD for the CNF above to file primeZDD_3.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_3.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_3.dot
+Done resolving.
+Resolving for
+y posY negY 
+5 8 9
+To get f_y^+ for y = 5, subset1(8).
+Output ZDD for the CNF above to file plusZDD_5.dot
+To get f_y^- for y = 5, subset1(9).
+Output ZDD for the CNF above to file minusZDD_5.dot
+To get f_y' for y = 5, subset0(8), subset0(9).
+Output ZDD for the CNF above to file primeZDD_5.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_5.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_5.dot
+Done resolving.
+Resolving for
+y posY negY 
+7 12 13
+To get f_y^+ for y = 7, subset1(12).
+Output ZDD for the CNF above to file plusZDD_7.dot
+To get f_y^- for y = 7, subset1(13).
+Output ZDD for the CNF above to file minusZDD_7.dot
+To get f_y' for y = 7, subset0(12), subset0(13).
+Output ZDD for the CNF above to file primeZDD_7.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_7.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_7.dot
+Done resolving.
+Resolving for
+y posY negY 
+9 16 17
+To get f_y^+ for y = 9, subset1(16).
+Output ZDD for the CNF above to file plusZDD_9.dot
+To get f_y^- for y = 9, subset1(17).
+Output ZDD for the CNF above to file minusZDD_9.dot
+To get f_y' for y = 9, subset0(16), subset0(17).
+Output ZDD for the CNF above to file primeZDD_9.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_9.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_9.dot
+Done resolving.
+Resolving for
+y posY negY 
+11 20 21
+To get f_y^+ for y = 11, subset1(20).
+Output ZDD for the CNF above to file plusZDD_11.dot
+To get f_y^- for y = 11, subset1(21).
+Output ZDD for the CNF above to file minusZDD_11.dot
+To get f_y' for y = 11, subset0(20), subset0(21).
+Output ZDD for the CNF above to file primeZDD_11.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_11.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_11.dot
+Done resolving.
+Resolving for
+y posY negY 
+13 24 25
+To get f_y^+ for y = 13, subset1(24).
+Output ZDD for the CNF above to file plusZDD_13.dot
+To get f_y^- for y = 13, subset1(25).
+Output ZDD for the CNF above to file minusZDD_13.dot
+To get f_y' for y = 13, subset0(24), subset0(25).
+Output ZDD for the CNF above to file primeZDD_13.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_13.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_13.dot
+Done resolving.
+Resolving for
+y posY negY 
+15 28 29
+To get f_y^+ for y = 15, subset1(28).
+Output ZDD for the CNF above to file plusZDD_15.dot
+To get f_y^- for y = 15, subset1(29).
+Output ZDD for the CNF above to file minusZDD_15.dot
+To get f_y' for y = 15, subset0(28), subset0(29).
+Output ZDD for the CNF above to file primeZDD_15.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_15.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_15.dot
+Done resolving.
+Resolving for
+y posY negY 
+17 32 33
+To get f_y^+ for y = 17, subset1(32).
+Output ZDD for the CNF above to file plusZDD_17.dot
+To get f_y^- for y = 17, subset1(33).
+Output ZDD for the CNF above to file minusZDD_17.dot
+To get f_y' for y = 17, subset0(32), subset0(33).
+Output ZDD for the CNF above to file primeZDD_17.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_17.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_17.dot
+Done resolving.
+Resolving for
+y posY negY 
+19 36 37
+To get f_y^+ for y = 19, subset1(36).
+Output ZDD for the CNF above to file plusZDD_19.dot
+To get f_y^- for y = 19, subset1(37).
+Output ZDD for the CNF above to file minusZDD_19.dot
+To get f_y' for y = 19, subset0(36), subset0(37).
+Output ZDD for the CNF above to file primeZDD_19.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_19.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_19.dot
+Done resolving.
+Resolving for
+y posY negY 
+21 40 41
+To get f_y^+ for y = 21, subset1(40).
+Output ZDD for the CNF above to file plusZDD_21.dot
+To get f_y^- for y = 21, subset1(41).
+Output ZDD for the CNF above to file minusZDD_21.dot
+To get f_y' for y = 21, subset0(40), subset0(41).
+Output ZDD for the CNF above to file primeZDD_21.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_21.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_21.dot
+Done resolving.
+Resolving for
+y posY negY 
+23 44 45
+To get f_y^+ for y = 23, subset1(44).
+Output ZDD for the CNF above to file plusZDD_23.dot
+To get f_y^- for y = 23, subset1(45).
+Output ZDD for the CNF above to file minusZDD_23.dot
+To get f_y' for y = 23, subset0(44), subset0(45).
+Output ZDD for the CNF above to file primeZDD_23.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_23.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_23.dot
+Done resolving.
+Resolving for
+y posY negY 
+25 48 49
+To get f_y^+ for y = 25, subset1(48).
+Output ZDD for the CNF above to file plusZDD_25.dot
+To get f_y^- for y = 25, subset1(49).
+Output ZDD for the CNF above to file minusZDD_25.dot
+To get f_y' for y = 25, subset0(48), subset0(49).
+Output ZDD for the CNF above to file primeZDD_25.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_25.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_25.dot
+Done resolving.
+Resolving for
+y posY negY 
+27 52 53
+To get f_y^+ for y = 27, subset1(52).
+Output ZDD for the CNF above to file plusZDD_27.dot
+To get f_y^- for y = 27, subset1(53).
+Output ZDD for the CNF above to file minusZDD_27.dot
+To get f_y' for y = 27, subset0(52), subset0(53).
+Output ZDD for the CNF above to file primeZDD_27.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_27.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_27.dot
+Done resolving.
+Resolving for
+y posY negY 
+29 56 57
+To get f_y^+ for y = 29, subset1(56).
+Output ZDD for the CNF above to file plusZDD_29.dot
+To get f_y^- for y = 29, subset1(57).
+Output ZDD for the CNF above to file minusZDD_29.dot
+To get f_y' for y = 29, subset0(56), subset0(57).
+Output ZDD for the CNF above to file primeZDD_29.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_29.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_29.dot
+Done resolving.
+Partial Realizability: NO
+Resolving for
+y posY negY 
+2 2 3
+To get f_y^+ for y = 2, subset1(2).
+Output ZDD for the CNF above to file plusZDD_2.dot
+To get f_y^- for y = 2, subset1(3).
+Output ZDD for the CNF above to file minusZDD_2.dot
+To get f_y' for y = 2, subset0(2), subset0(3).
+Output ZDD for the CNF above to file primeZDD_2.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_2.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_2.dot
+Done resolving.
+Resolving for
+y posY negY 
+4 6 7
+To get f_y^+ for y = 4, subset1(6).
+Output ZDD for the CNF above to file plusZDD_4.dot
+To get f_y^- for y = 4, subset1(7).
+Output ZDD for the CNF above to file minusZDD_4.dot
+To get f_y' for y = 4, subset0(6), subset0(7).
+Output ZDD for the CNF above to file primeZDD_4.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_4.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_4.dot
+Done resolving.
+Resolving for
+y posY negY 
+6 10 11
+To get f_y^+ for y = 6, subset1(10).
+Output ZDD for the CNF above to file plusZDD_6.dot
+To get f_y^- for y = 6, subset1(11).
+Output ZDD for the CNF above to file minusZDD_6.dot
+To get f_y' for y = 6, subset0(10), subset0(11).
+Output ZDD for the CNF above to file primeZDD_6.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_6.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_6.dot
+Done resolving.
+Resolving for
+y posY negY 
+8 14 15
+To get f_y^+ for y = 8, subset1(14).
+Output ZDD for the CNF above to file plusZDD_8.dot
+To get f_y^- for y = 8, subset1(15).
+Output ZDD for the CNF above to file minusZDD_8.dot
+To get f_y' for y = 8, subset0(14), subset0(15).
+Output ZDD for the CNF above to file primeZDD_8.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_8.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_8.dot
+Done resolving.
+Resolving for
+y posY negY 
+10 18 19
+To get f_y^+ for y = 10, subset1(18).
+Output ZDD for the CNF above to file plusZDD_10.dot
+To get f_y^- for y = 10, subset1(19).
+Output ZDD for the CNF above to file minusZDD_10.dot
+To get f_y' for y = 10, subset0(18), subset0(19).
+Output ZDD for the CNF above to file primeZDD_10.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_10.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_10.dot
+Done resolving.
+Resolving for
+y posY negY 
+12 22 23
+To get f_y^+ for y = 12, subset1(22).
+Output ZDD for the CNF above to file plusZDD_12.dot
+To get f_y^- for y = 12, subset1(23).
+Output ZDD for the CNF above to file minusZDD_12.dot
+To get f_y' for y = 12, subset0(22), subset0(23).
+Output ZDD for the CNF above to file primeZDD_12.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_12.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_12.dot
+Done resolving.
+Resolving for
+y posY negY 
+14 26 27
+To get f_y^+ for y = 14, subset1(26).
+Output ZDD for the CNF above to file plusZDD_14.dot
+To get f_y^- for y = 14, subset1(27).
+Output ZDD for the CNF above to file minusZDD_14.dot
+To get f_y' for y = 14, subset0(26), subset0(27).
+Output ZDD for the CNF above to file primeZDD_14.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_14.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_14.dot
+Done resolving.
+Resolving for
+y posY negY 
+16 30 31
+To get f_y^+ for y = 16, subset1(30).
+Output ZDD for the CNF above to file plusZDD_16.dot
+To get f_y^- for y = 16, subset1(31).
+Output ZDD for the CNF above to file minusZDD_16.dot
+To get f_y' for y = 16, subset0(30), subset0(31).
+Output ZDD for the CNF above to file primeZDD_16.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_16.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_16.dot
+Done resolving.
+Resolving for
+y posY negY 
+18 34 35
+To get f_y^+ for y = 18, subset1(34).
+Output ZDD for the CNF above to file plusZDD_18.dot
+To get f_y^- for y = 18, subset1(35).
+Output ZDD for the CNF above to file minusZDD_18.dot
+To get f_y' for y = 18, subset0(34), subset0(35).
+Output ZDD for the CNF above to file primeZDD_18.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_18.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_18.dot
+Done resolving.
+Resolving for
+y posY negY 
+20 38 39
+To get f_y^+ for y = 20, subset1(38).
+Output ZDD for the CNF above to file plusZDD_20.dot
+To get f_y^- for y = 20, subset1(39).
+Output ZDD for the CNF above to file minusZDD_20.dot
+To get f_y' for y = 20, subset0(38), subset0(39).
+Output ZDD for the CNF above to file primeZDD_20.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_20.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_20.dot
+Done resolving.
+Resolving for
+y posY negY 
+22 42 43
+To get f_y^+ for y = 22, subset1(42).
+Output ZDD for the CNF above to file plusZDD_22.dot
+To get f_y^- for y = 22, subset1(43).
+Output ZDD for the CNF above to file minusZDD_22.dot
+To get f_y' for y = 22, subset0(42), subset0(43).
+Output ZDD for the CNF above to file primeZDD_22.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_22.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_22.dot
+Done resolving.
+Resolving for
+y posY negY 
+24 46 47
+To get f_y^+ for y = 24, subset1(46).
+Output ZDD for the CNF above to file plusZDD_24.dot
+To get f_y^- for y = 24, subset1(47).
+Output ZDD for the CNF above to file minusZDD_24.dot
+To get f_y' for y = 24, subset0(46), subset0(47).
+Output ZDD for the CNF above to file primeZDD_24.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_24.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_24.dot
+Done resolving.
+Resolving for
+y posY negY 
+26 50 51
+To get f_y^+ for y = 26, subset1(50).
+Output ZDD for the CNF above to file plusZDD_26.dot
+To get f_y^- for y = 26, subset1(51).
+Output ZDD for the CNF above to file minusZDD_26.dot
+To get f_y' for y = 26, subset0(50), subset0(51).
+Output ZDD for the CNF above to file primeZDD_26.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_26.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_26.dot
+Done resolving.
+Resolving for
+y posY negY 
+28 54 55
+To get f_y^+ for y = 28, subset1(54).
+Output ZDD for the CNF above to file plusZDD_28.dot
+To get f_y^- for y = 28, subset1(55).
+Output ZDD for the CNF above to file minusZDD_28.dot
+To get f_y' for y = 28, subset0(54), subset0(55).
+Output ZDD for the CNF above to file primeZDD_28.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_28.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_28.dot
+Done resolving.
+Resolving for
+y posY negY 
+30 58 59
+To get f_y^+ for y = 30, subset1(58).
+Output ZDD for the CNF above to file plusZDD_30.dot
+To get f_y^- for y = 30, subset1(59).
+Output ZDD for the CNF above to file minusZDD_30.dot
+To get f_y' for y = 30, subset0(58), subset0(59).
+Output ZDD for the CNF above to file primeZDD_30.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_30.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_30.dot
+Done resolving.
+Full Realizability: NO
+Resolving for
+y posY negY 
+2 2 3
+To get f_y^+ for y = 2, subset1(2).
+Output ZDD for the CNF above to file plusZDD_2.dot
+To get f_y^- for y = 2, subset1(3).
+Output ZDD for the CNF above to file minusZDD_2.dot
+To get f_y' for y = 2, subset0(2), subset0(3).
+Output ZDD for the CNF above to file primeZDD_2.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_2.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_2.dot
+Done resolving.
+Resolving for
+y posY negY 
+4 6 7
+To get f_y^+ for y = 4, subset1(6).
+Output ZDD for the CNF above to file plusZDD_4.dot
+To get f_y^- for y = 4, subset1(7).
+Output ZDD for the CNF above to file minusZDD_4.dot
+To get f_y' for y = 4, subset0(6), subset0(7).
+Output ZDD for the CNF above to file primeZDD_4.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_4.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_4.dot
+Done resolving.
+Resolving for
+y posY negY 
+6 10 11
+To get f_y^+ for y = 6, subset1(10).
+Output ZDD for the CNF above to file plusZDD_6.dot
+To get f_y^- for y = 6, subset1(11).
+Output ZDD for the CNF above to file minusZDD_6.dot
+To get f_y' for y = 6, subset0(10), subset0(11).
+Output ZDD for the CNF above to file primeZDD_6.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_6.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_6.dot
+Done resolving.
+Resolving for
+y posY negY 
+8 14 15
+To get f_y^+ for y = 8, subset1(14).
+Output ZDD for the CNF above to file plusZDD_8.dot
+To get f_y^- for y = 8, subset1(15).
+Output ZDD for the CNF above to file minusZDD_8.dot
+To get f_y' for y = 8, subset0(14), subset0(15).
+Output ZDD for the CNF above to file primeZDD_8.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_8.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_8.dot
+Done resolving.
+Resolving for
+y posY negY 
+10 18 19
+To get f_y^+ for y = 10, subset1(18).
+Output ZDD for the CNF above to file plusZDD_10.dot
+To get f_y^- for y = 10, subset1(19).
+Output ZDD for the CNF above to file minusZDD_10.dot
+To get f_y' for y = 10, subset0(18), subset0(19).
+Output ZDD for the CNF above to file primeZDD_10.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_10.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_10.dot
+Done resolving.
+Resolving for
+y posY negY 
+12 22 23
+To get f_y^+ for y = 12, subset1(22).
+Output ZDD for the CNF above to file plusZDD_12.dot
+To get f_y^- for y = 12, subset1(23).
+Output ZDD for the CNF above to file minusZDD_12.dot
+To get f_y' for y = 12, subset0(22), subset0(23).
+Output ZDD for the CNF above to file primeZDD_12.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_12.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_12.dot
+Done resolving.
+Resolving for
+y posY negY 
+14 26 27
+To get f_y^+ for y = 14, subset1(26).
+Output ZDD for the CNF above to file plusZDD_14.dot
+To get f_y^- for y = 14, subset1(27).
+Output ZDD for the CNF above to file minusZDD_14.dot
+To get f_y' for y = 14, subset0(26), subset0(27).
+Output ZDD for the CNF above to file primeZDD_14.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_14.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_14.dot
+Done resolving.
+Resolving for
+y posY negY 
+16 30 31
+To get f_y^+ for y = 16, subset1(30).
+Output ZDD for the CNF above to file plusZDD_16.dot
+To get f_y^- for y = 16, subset1(31).
+Output ZDD for the CNF above to file minusZDD_16.dot
+To get f_y' for y = 16, subset0(30), subset0(31).
+Output ZDD for the CNF above to file primeZDD_16.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_16.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_16.dot
+Done resolving.
+Resolving for
+y posY negY 
+18 34 35
+To get f_y^+ for y = 18, subset1(34).
+Output ZDD for the CNF above to file plusZDD_18.dot
+To get f_y^- for y = 18, subset1(35).
+Output ZDD for the CNF above to file minusZDD_18.dot
+To get f_y' for y = 18, subset0(34), subset0(35).
+Output ZDD for the CNF above to file primeZDD_18.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_18.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_18.dot
+Done resolving.
+Resolving for
+y posY negY 
+20 38 39
+To get f_y^+ for y = 20, subset1(38).
+Output ZDD for the CNF above to file plusZDD_20.dot
+To get f_y^- for y = 20, subset1(39).
+Output ZDD for the CNF above to file minusZDD_20.dot
+To get f_y' for y = 20, subset0(38), subset0(39).
+Output ZDD for the CNF above to file primeZDD_20.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_20.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_20.dot
+Done resolving.
+Resolving for
+y posY negY 
+22 42 43
+To get f_y^+ for y = 22, subset1(42).
+Output ZDD for the CNF above to file plusZDD_22.dot
+To get f_y^- for y = 22, subset1(43).
+Output ZDD for the CNF above to file minusZDD_22.dot
+To get f_y' for y = 22, subset0(42), subset0(43).
+Output ZDD for the CNF above to file primeZDD_22.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_22.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_22.dot
+Done resolving.
+Resolving for
+y posY negY 
+24 46 47
+To get f_y^+ for y = 24, subset1(46).
+Output ZDD for the CNF above to file plusZDD_24.dot
+To get f_y^- for y = 24, subset1(47).
+Output ZDD for the CNF above to file minusZDD_24.dot
+To get f_y' for y = 24, subset0(46), subset0(47).
+Output ZDD for the CNF above to file primeZDD_24.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_24.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_24.dot
+Done resolving.
+Resolving for
+y posY negY 
+26 50 51
+To get f_y^+ for y = 26, subset1(50).
+Output ZDD for the CNF above to file plusZDD_26.dot
+To get f_y^- for y = 26, subset1(51).
+Output ZDD for the CNF above to file minusZDD_26.dot
+To get f_y' for y = 26, subset0(50), subset0(51).
+Output ZDD for the CNF above to file primeZDD_26.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_26.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_26.dot
+Done resolving.
+Resolving for
+y posY negY 
+28 54 55
+To get f_y^+ for y = 28, subset1(54).
+Output ZDD for the CNF above to file plusZDD_28.dot
+To get f_y^- for y = 28, subset1(55).
+Output ZDD for the CNF above to file minusZDD_28.dot
+To get f_y' for y = 28, subset0(54), subset0(55).
+Output ZDD for the CNF above to file primeZDD_28.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_28.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_28.dot
+Done resolving.
+Resolving for
+y posY negY 
+30 58 59
+To get f_y^+ for y = 30, subset1(58).
+Output ZDD for the CNF above to file plusZDD_30.dot
+To get f_y^- for y = 30, subset1(59).
+Output ZDD for the CNF above to file minusZDD_30.dot
+To get f_y' for y = 30, subset0(58), subset0(59).
+Output ZDD for the CNF above to file primeZDD_30.dot
+Done producing f_y_plus, f_y_minus, f_y_prime for y value above.
+start of clauseDistribution function in cuddObj.c
+no errors until this line0
+no errors until this line1
+no errors until this line2
+no errors until this line3
+To get ZDD of (f_y^- or f_y^+):
+Output ZDD for the CNF above to file or_ZDD_30.dot
+To get ZDD of (f_y^- or f_y^+) and f_y'
+Output ZDD for the CNF above to file resolvedZDD_30.dot
+Done resolving.
+Output ZDD for the CNF above to file ResolvedZDD.dot
+
+
+#dot try1ZDD.dot -Tpng -o try1ZDD.png
+#dot try2ZDD.dot -Tpng -o try2ZDD.png
+#dot try3ZDD.dot -Tpng -o try3ZDD.png
+#dot try4ZDD.dot -Tpng -o try4ZDD.png
+#dot try5ZDD.dot -Tpng -o try5ZDD.png
+#dot try6ZDD.dot -Tpng -o try6ZDD.png
+#dot try7ZDD.dot -Tpng -o try7ZDD.png
+dot ZDD.dot -Tpng -o ZDD.png	
+dot ZDD1.dot -Tpng -o ZDD1.png
+dot ZDD2.dot -Tpng -o ZDD2.png
+dot ZDD3.dot -Tpng -o ZDD3.png
+dot plusZDD_3.dot -Tpng -o plusZDD_3.png
+dot minusZDD_3.dot -Tpng -o minusZDD_3.png
+dot primeZDD_3.dot -Tpng -o primeZDD_3.png
+dot or_ZDD_3.dot -Tpng -o or_ZDD_3.png
+dot resolvedZDD_3.dot -Tpng -o resolvedZDD_3.png
+dot ResolvedZDD.dot -Tpng -o ResolvedZDD.png

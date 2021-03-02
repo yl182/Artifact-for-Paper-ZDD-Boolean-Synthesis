@@ -5,6 +5,7 @@
 #include <time.h>
 #include <math.h>
 #include <stdlib.h>
+#include <chrono>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -21,10 +22,73 @@
 
 
 
+
 //constructors
-CNFtoZDDconverter::CNFtoZDDconverter() {}
+CNFtoZDDconverter::CNFtoZDDconverter(bool writeDotFiles, bool printDetails) {
+	writeDotFiles_ = writeDotFiles;
+	printDetails_ = printDetails;
+}
 
 
+//timer
+double CNFtoZDDconverter::timer(const std::chrono::steady_clock::time_point t1, const std::chrono::steady_clock::time_point t2) const {
+	std::chrono::steady_clock::duration timespan = t2-t1;
+	std::cout << "timespan.count = " << timespan.count() << std::endl;
+	std::cout << "std::chrono::steady_clock::period::num" << std::chrono::steady_clock::period::num << std::endl;
+	std::cout << "std::chrono::steady_clock::period::den" << std::chrono::steady_clock::period::den << std::endl;
+	double timeInSeconds = (double)timespan.count()  *  std::chrono::steady_clock::period::num / std::chrono::steady_clock::period::den;
+
+	return timeInSeconds;
+}
+
+
+
+
+//template <typename T>
+// notes: overloaded/multiple-signature functions must have equal number of parameters
+// if use template: then printToCout(T a, bool newline) const, and
+// in calling it must specify printToCout<int>(...) or printToCout<std::string>(...) everytime
+void CNFtoZDDconverter::printToCout(std::string a, bool newline) const {
+	if (printDetails_) {
+		std::cout << a;
+		if (newline) {
+			std::cout << std::endl;
+		}
+	}
+	return;
+}
+
+void CNFtoZDDconverter::printToCout(int a, bool newline) const {
+	if (printDetails_) {
+		std::cout << a;
+		if (newline) {
+			std::cout << std::endl;
+		}
+	}
+	return;
+}
+
+void CNFtoZDDconverter::printToCout(double a, bool newline) const {
+	if (printDetails_) {
+		std::cout << a;
+		if (newline) {
+			std::cout << std::endl;
+		}
+	}
+	return;
+}
+/*void CNFtoZDDconverter::printToCout(std::string a) const {
+	if (printDetails_) {
+		std::cout << a;
+	}
+	return;
+}
+void CNFtoZDDconverter::printToCout(int a) const {
+	if (printDetails_) {
+		std::cout << a;
+	}
+	return;
+}*/
 std::runtime_error CNFtoZDDconverter::EmptyFormulaException(const std::string& filepath) const {
 	return std::runtime_error(filepath + ", formula is empty, 0 clause-ZDDs");
 }		
@@ -32,38 +96,44 @@ std::runtime_error CNFtoZDDconverter::EmptyFormulaException(const std::string& f
 //helper functions: given a reference of a clause, return the ZDD representing the clause
 ZDD CNFtoZDDconverter::ClausetoZDD(const CnfClause& cl, Cudd& mgr, int maxRange) const {
 
-	
-
+	ZDD newZDDofClause = mgr.zddOne(2*maxRange);
+	for (int i : cl) {
+		newZDDofClause =newZDDofClause.Change(i);				
+		printToCout("Change with Node ");
+		printToCout(i, 1);
+		
+	}
+// saved version
+/*
 	// draw ZDD for the clause
 	ZDD newZDDofClause = mgr.zddVar(cl[0]);
 	//return newZDDofClause;
-	std::cout << "Start with Node " << cl[0] << std::endl;
+	printToCout("Start with Node ", 0);
+	printToCout(cl[0], 1);
 	
 	//std::vector<int> subset0list;
 	//std::vector<int> changelist;
 	
 	// eliminate other variables
-	for (int i = 0; i <= 2*maxRange; i++) {					
+	for (int i = 0; i <= 2*maxRange-1; i++) {					
 		if (i != cl[0]) {
-			newZDDofClause = newZDDofClause.Subset0(i);
-			std::cout << "Subset0 with Node " << i << std::endl;
-			
+			newZDDofClause = newZDDofClause.Subset0(i);			
+			printToCout("Subset0 with Node ", 0);
+			printToCout(i, 1);		
 		}
 	}
-	
-	
-
 	// append other variables to the clause
 	
 	for (int i : cl) {
 		if (i != cl[0]) {
-			newZDDofClause =newZDDofClause.Change(i);	
-			std::cout << "Change with Node " << i << std::endl;
+			newZDDofClause =newZDDofClause.Change(i);				
+			printToCout("Change with Node ");
+			printToCout(i, 1);
 		}
 	}
-
+*/
 	// return the ZDD of the clause
-	std::cout << "Done Building ZDD for the clause above." << std::endl;
+	printToCout("Done Building ZDD for the clause above.", 1);
 	
 	return newZDDofClause;
 }
@@ -82,8 +152,16 @@ int CNFtoZDDconverter::indexConverter(int g) {
 
 // helper function: retrieve max given index of QCnf
 int CNFtoZDDconverter::maxVarRange(const QCnfFormula& qcnf) {
-	int a = *std::max_element(qcnf.universal_vars.begin(), qcnf.universal_vars.end());
-	int b = *std::max_element(qcnf.existential_vars.begin(), qcnf.existential_vars.end());
+	int a=0;
+	int b=0;
+	if (qcnf.universal_vars.size() > 0) {
+		printToCout("universal vars not empty.", 1);
+		a = *std::max_element(qcnf.universal_vars.begin(), qcnf.universal_vars.end());
+	}
+	if (qcnf.existential_vars.size() > 0) {
+		printToCout("existential vars not empty.", 1);
+		b = *std::max_element(qcnf.existential_vars.begin(), qcnf.existential_vars.end());
+	}
 	return std::max(a,b);
 
 }
@@ -97,62 +175,96 @@ std::unordered_map<int,int> CNFtoZDDconverter::produceIndicesMap(int maxvar) {
 		index_map.insert(std::pair<int, int>(k, indexConverter(k)) );
 		index_map.insert(std::pair<int, int>(-k, indexConverter((-1)*k)) );
 	}
-	std::cout << "File Index\tNode Index" << std::endl;
+	printToCout("File Index\tNode Index", 1);
 	for (auto& n : index_map) {
-		std::cout << n.first << "\t" << n.second << std::endl;
+		printToCout(n.first);
+		printToCout("\t");
+		printToCout(n.second, 1);
 	}
 	return index_map;
 }
 
 //draw ZDD
 void CNFtoZDDconverter::ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames) {
-	std::cout << "Output ZDD for the CNF above to file " << dotfile << std::endl;
-	mgr.DumpDot(z, inames, onames, fopen(dotfile.c_str(), "w"));
+	
+	
+	if (writeDotFiles_) {
+		printToCout("Output ZDD for the CNF above to file "+dotfile, 1);
+		
+		FILE * filepointer;
+		filepointer = fopen(dotfile.c_str(), "w");
+		if (filepointer != NULL) {
+			mgr.DumpDot(z, inames, onames, filepointer);
+			fclose(filepointer);
+		} else {
+			printf("File opening error: %s\n", strerror(errno));
+		}
+	}
+	
+	return;
+	
+	
 }
 
 //resolve a variable
 ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int> y_vars) {
-	ZDD resolvedZDD;
+	ZDD resolvedZDD = zdd;
+	std::vector<ZDD> tmpZDDs;
 	for (int y : y_vars) {
-		std::cout << "Resolving for" << std::endl;
-		std::cout << "y posY negY " << std::endl;
+		printToCout("Resolving for", 1);
+		printToCout("y posY negY ", 1);
 		int posY = indexConverter(y);
 		int negY = indexConverter((-1)*y);
-		std::cout << y << " " << posY << " " << negY << std::endl;
+		printToCout(y);
+		printToCout("\t");
+		printToCout(posY);
+		printToCout("\t");
+		printToCout(negY, 1);
 		
 		// build ZDDs for f_y^+, f_y^-, f_y'
-		std::vector<ZDD> tmpZDDs;
-		ZDD f_y_plus = zdd.Subset1(posY);
 		
-		std::cout << "To get f_y^+ for y = " << y << ", subset1(" << posY << ")." << std::endl; 
+		ZDD f_y_plus = resolvedZDD.Subset1(posY);
+		
+		printToCout("To get f_y^+ for y = ");
+		printToCout(y);
+		printToCout(", subset1(");
+		printToCout(posY);
+		printToCout(").", 1);
 		tmpZDDs = {f_y_plus};
 		ZDDtoDot(mgr, tmpZDDs, "plusZDD_" + std::to_string(y) + ".dot", NULL, NULL);
 
-		ZDD f_y_minus = zdd.Subset1(negY);
-		std::cout << "To get f_y^- for y = " << y << ", subset1(" << negY << ")." << std::endl; 
+		ZDD f_y_minus = resolvedZDD.Subset1(negY);
+		printToCout("To get f_y^- for y = ");
+		printToCout(y);
+		printToCout(", subset1(");
+		printToCout(negY);
+		printToCout(").", 1); 
 		tmpZDDs = {f_y_minus};
 		ZDDtoDot(mgr, tmpZDDs, "minusZDD_" + std::to_string(y) + ".dot", NULL, NULL);
 
-		ZDD f_y_prime = zdd.Subset0(posY).Subset0(negY);
-		std::cout << "To get f_y\' for y = " << y << ", subset0(" << posY << "), subset0(" << negY << ")." << std::endl; 
+		ZDD f_y_prime = resolvedZDD.Subset0(posY).Subset0(negY);
+		printToCout("To get f_y\' for y = ");
+		printToCout(y);
+		printToCout(", subset0(");
+		printToCout(posY);
+		printToCout("), subset0(");
+		printToCout(negY);
+		printToCout(").", 1); 
 		tmpZDDs = {f_y_prime};
 		ZDDtoDot(mgr, tmpZDDs, "primeZDD_" + std::to_string(y) + ".dot", NULL, NULL);
 
-		std::cout << "Done producing f_y_plus, f_y_minus, f_y_prime for y value above." << std::endl;
-		//std::cout << "before going into clauseDistribution function in cuddObj.c" << std::endl;
-		// core dumped after this line in first iteration
+		printToCout("Done producing f_y_plus, f_y_minus, f_y_prime for y value above.", 1);
 		
-		//std::cout << "after first step of clauseDistribution function in cuddObj.c\nnow manager is: " << (mgr == NULL) << std::endl;
 		ZDD f_y_plus_OR_f_y_minus = f_y_plus.ClauseDistribution(f_y_minus);
-		std::cout << "To get ZDD of (f_y^- or f_y^+):" << std::endl;
+		printToCout("To get ZDD of (f_y^- or f_y^+):", 1);
 		tmpZDDs = {f_y_plus_OR_f_y_minus};
 		ZDDtoDot(mgr, tmpZDDs, "or_ZDD_" + std::to_string(y) + ".dot", NULL, NULL);
 
-		std::cout << "To get ZDD of (f_y^- or f_y^+) and f_y\'" << std::endl;
+		printToCout("To get ZDD of (f_y^- or f_y^+) and f_y\'", 1);
 		resolvedZDD = f_y_plus_OR_f_y_minus.SubSumptionFreeUnion(f_y_prime);
 		tmpZDDs = {resolvedZDD};
 		ZDDtoDot(mgr, tmpZDDs, "resolvedZDD_" + std::to_string(y) + ".dot", NULL, NULL);
-		std::cout << "Done resolving." << std::endl;
+		printToCout("Done resolving.", 1);
 		
 	}
 	// core dumped before this line
@@ -160,46 +272,77 @@ ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<i
 }
 
 // check partial realizability
-bool CNFtoZDDconverter::partialRealizability(Cudd& mgr, const ZDD& zdd,QCnfFormula& qcnf2) {
-	std::cout << "Checking Partial Realizability: " << std::endl;
-	ZDD resolved = Resolution(mgr, zdd, qcnf2.existential_vars);
-	std::cout << "Count = " << resolved.Count() << std::endl;
-	// it is confirmed that when empty clause satisfies CNF, Count = 1, when no clauses satisfies CNF, Count = 0
-	// so Count() can be used to count the number of path to terminal-1
-	// i.e., partial realizability
-	if (resolved.Count() > 0) {
-		std::cout << "Partial Realizability: YES" << std::endl;
-		return 1;
-	} else {
-		std::cout << "Partial Realizability: NO" << std::endl;
-		return 0;
-	}
-}
-// check full realizability
-bool CNFtoZDDconverter::fullRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2 ) {
-	ZDD Resolved = Resolution(mgr, zdd, qcnf2.existential_vars);
-	
+std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter) {
+	std::vector<std::string> fullPartial;
+
+	// timer set up
+	std::chrono::steady_clock::time_point tBeforeRealizability = std::chrono::steady_clock::now();
+	printToCout("got tBeforeRealizability time", 1);
+
+	// check full realizability
+	printToCout("Checking Partial Realizability: ", 1);
+	ZDD resolvedYs = Resolution(mgr, zdd, qcnf2.existential_vars);
+	std::vector<ZDD> resolvedYsZdds = {resolvedYs};
+	ZDDtoDot(mgr, resolvedYsZdds, "ResolvedYsZDD.dot", NULL,NULL);
+
 	ZDD zeroTerminal = mgr.zddZero();
-	if (Resolved == zeroTerminal) {
+
+	// judge full realizability
+	if (resolvedYs == zeroTerminal) {
 		// not fully realizable
-		std::cout << "Full Realizability: NO" << std::endl;
-		return 0;
+		printToCout("Full Realizability: YES", 1);
+		fullPartial.emplace_back("YES");
+	} else {
+		// fully realizable
+		printToCout("Full Realizability: NO", 1);
+		fullPartial.emplace_back("NO");
 	}
-	// fully realizable
-	std::cout << "Full Realizability: Yes" << std::endl;
-	return 1;
+	// time point after resolving Y's
+	std::chrono::steady_clock::time_point tAfterResolvingYs = std::chrono::steady_clock::now();
+	printToCout("got tAfterResolvingYs time", 1);
+	double tYs = timer(tBeforeRealizability, tAfterResolvingYs);
+	printToCout("Full Realizability time: ", 0);
+	printToCout(tYs, 0);
+	printToCout(" seconds.", 1);
+	timerNoter.emplace_back(tYs);
+
+	// check partial realizability
+	ZDD resolvedYsXs = Resolution(mgr, resolvedYs, qcnf2.universal_vars);
+	std::vector<ZDD> resolvedYsXsZdds = {resolvedYsXs};
+	ZDDtoDot(mgr, resolvedYsXsZdds, "ResolvedYsXsZDD.dot", NULL,NULL);
+	
+	if (resolvedYsXs == zeroTerminal) {
+		// partially realizable
+		printToCout("Partial Realizability: YES", 1);
+		fullPartial.emplace_back("YES");
+	} else {
+		// partially NOT realizable
+		printToCout("Partial Realizability: NO", 1);
+		fullPartial.emplace_back("NO");
+	}
+	// time point after resolving X's
+	std::chrono::steady_clock::time_point tAfterResolvingXs = std::chrono::steady_clock::now();
+	printToCout("got tAfterResolvingXs time", 1);
+	double tYandXs = timer(tBeforeRealizability, tAfterResolvingXs);
+	printToCout("Partial Realizability time: ", 0);
+	printToCout(tYandXs, 0);
+	printToCout(" seconds.", 1);
+	timerNoter.emplace_back(tYandXs);
+
+
+	return fullPartial;
 	
 }
 
 //substitution helper function: cross(z)
 
 ZDD CNFtoZDDconverter::crossZDD(const ZDD& z) const {
-	std::cout << "no errors until this line000111" << std::endl;
+	printToCout("no errors until this line000111", 1);
 	Cudd mgr0;
 
 	//??????????????????????????
 	// only ZDD parameter, or more parameters like literals?
-	std::cout << "no errors until this line000222" << std::endl;
+	printToCout("no errors until this line000222", 1);
 	return mgr0.zddZero();
 	
 }
@@ -230,7 +373,7 @@ ZDD CNFtoZDDconverter::CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_ma
 
 			// cross
 			ZDD clauseSubstitution = crossZDD(Z_cl);
-			std::cout << "no errors until this line000" << std::endl;
+			printToCout("after calling crossZDD() the first time in substitution function", 1);
 			clauseSubstitution = clauseSubstitution.ClauseDistribution(newClauseZDD);
 			newClausesZDDs.push_back(clauseSubstitution);
 
@@ -267,59 +410,71 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
 	// from instream get CNF and lists of x's and y's variables
 
-	std::cout << "\n\nQReader reading from file: " << path << std::endl;
+	printToCout("\n\nQReader reading from file: "+path, 1);
+	std::vector<double> timerNoter;
+	std::chrono::steady_clock::time_point tStart = std::chrono::steady_clock::now();
+	printToCout("got tStart time", 1);
+
 	// get variables
 	QDimacsReader qreader;
 	QCnfFormula qcnf = qreader.Read(path);
 	
-	std::cout << "Got QCnfFormula, \nUniversal variables are: ";
+	printToCout("Got QCnfFormula, \nUniversal variables are: ");
 	for (int i : qcnf.universal_vars) {
-		std::cout << " " << i;
+		printToCout(" ");
+		printToCout(i);
 	}
-	std::cout << "\nExistential variables are:";
+	printToCout("\nExistential variables are:");
 	for (int i : qcnf.existential_vars) {
-		std::cout << " " << i;
+		printToCout(" ");
+		printToCout(i);
 	}
-	std::cout << std::endl;
+	printToCout("", 1);
 
 	// get formula
 	CnfFormula cnf = qcnf.formula;
 	const int nClauses = cnf.size();
 
-	std::cout << "There are " << nClauses << "clauses in the CNF." << std::endl;
-	std::cout << "CNF (by File Index) is: " << std::endl;
+	printToCout("There are ");
+	printToCout(nClauses);
+	printToCout("clauses in the CNF.", 1);
+	printToCout("CNF (by File Index) is: ", 1);
 
 	// build another CNF with Node Indices
 	CnfFormula cnf2;
 	for (CnfClause c : cnf) {
 		CnfClause cl;
 		for (int i : c) {
-			std::cout << i << ", ";
+			printToCout(i);
+			printToCout(", ");
 			cl |= indexConverter(i);
 		}
-		std::cout << std::endl;
+		printToCout("", 1);
 		cnf2 &= cl;
 	}
-	std::cout << "End of CNF (by File Index)." << std::endl;
-	std::cout << "CNF (by Node Index) is: " << std::endl;	
+	printToCout("End of CNF (by File Index).", 1);
+	printToCout("CNF (by Node Index) is: ", 1);
 	for (CnfClause c : cnf2) {
 		for (int i : c) {
-			std::cout << i << ", ";
+			printToCout(i);
+			printToCout(", ");
 		}
-		std::cout << std::endl;
+		printToCout("", 1);
 	}
-	std::cout << "End of CNF (by Node Index)." << std::endl;
+	printToCout("End of CNF (by Node Index).", 1);
 
 	
 	
 	// get the largest absolute value in given variable indices
 	
 	int maxVar = maxVarRange(qcnf);
-	std::cout << "Noticed largest range " << maxVar << std::endl;
+	printToCout("Noticed largest range ");
+	printToCout(maxVar, 1);
 	
 	
 	// produce map of given indices and node indices
-	std::unordered_map <int, int> indexToNodesMap = produceIndicesMap(maxVar);
+	//
+	//std::unordered_map <int, int> indexToNodesMap = produceIndicesMap(maxVar);
 
 	// draw ZDDs of the i-th clause
 	Cudd mgr;
@@ -342,36 +497,48 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 
 	// union the clause-zdds into ZDD of the CNF
 	if (clauseZDDs.size() <= 0) {
-		std::cout << "formula is empty, 0 clause-ZDDs" << std::endl;
+		printToCout("formula is empty, 0 clause-ZDDs", 1);
 		throw EmptyFormulaException(path); 
 	}
-	std::cout << "Unioning ZDDs of clauses above." << std::endl;
+	printToCout("Unioning ZDDs of clauses above.", 1);
 	ZDD unionedZDDs = clauseZDDs[0];
 	for (const ZDD& zdd : clauseZDDs) {
 		unionedZDDs = unionedZDDs.Union(zdd);
 	}
 	std::vector<ZDD> zdds = {unionedZDDs};
 	ZDDtoDot(mgr, zdds, "ZDD.dot", NULL,NULL);
+
+	// count compilation time
+	std::chrono::steady_clock::time_point tZDDdone = std::chrono::steady_clock::now();
+	double timeCompilation = timer(tStart, tZDDdone);
+	printToCout("got tZDDdone time", 1);
+	printToCout("Compilation time: ", 0);
+	printToCout(timeCompilation, 0);
+	printToCout(" seconds.", 1);
+	timerNoter.emplace_back(timeCompilation);
 	
 
 	
 
 	//check realizability
 	
-	partialRealizability(mgr, unionedZDDs, qcnf);
-	fullRealizability(mgr, unionedZDDs,qcnf);
-
-	// resolve on y variables and output the ZDD as .dot and .png
-	
-	ZDD ResolvedZDD = Resolution(mgr, unionedZDDs, qcnf.existential_vars);
-	// core dumped before this line
-	
-	std::vector<ZDD> resolvedZdds = {ResolvedZDD};
-	ZDDtoDot(mgr, resolvedZdds, "ResolvedZDD.dot", NULL,NULL);
-	std::cout << "\n\n";
-	
+	std::vector<std::string> fullPartial = checkFullPartialRealizability(mgr, unionedZDDs, qcnf, timerNoter);
+	printToCout("Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime: ", 1);
+	printToCout(path+"\t");
+	printToCout(fullPartial[0]+"\t"+fullPartial[1] + "\t", 0);
+	printToCout(timerNoter[0], 0);
+	printToCout(" sec\t", 0);
+	printToCout(timerNoter[1], 0);
+	printToCout(" sec\t", 0);
+	printToCout(timerNoter[2], 0);
+	printToCout(" sec\t", 1);
 
 
+	
+	std::ofstream out("results.txt", std::ios_base::app);
+	out << "Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime: \n";
+	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0] << " sec\t" << timerNoter[1] << " sec\t" << timerNoter[2] << " sec" << std::endl;
+	out.close();
 
 	return;
 	

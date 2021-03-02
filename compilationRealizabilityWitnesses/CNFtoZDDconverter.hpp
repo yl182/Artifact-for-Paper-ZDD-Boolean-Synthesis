@@ -12,6 +12,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <chrono>
 #include <algorithm>
 #include <unordered_map>
 #include <stdexcept>
@@ -23,11 +24,13 @@
 
 //CNFtoZDDconverter class
 
+
 class CNFtoZDDconverter {
-	
+	bool writeDotFiles_;
+	bool printDetails_;
 public:
 	//constructors
-	CNFtoZDDconverter();
+	CNFtoZDDconverter(bool writeDotFiles, bool printDetails);
 
 	//helper functions
 	std::runtime_error EmptyFormulaException(const std::string& filepath) const;
@@ -37,14 +40,20 @@ public:
 	int maxVarRange(const QCnfFormula& qcnf);	
 	std::unordered_map<int, int> produceIndicesMap(int maxvar);
 	
-	//draw ZDD
-	void ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames);
 	
-	// check partial realizability
-	bool partialRealizability(Cudd& mgr, const ZDD& zdd,QCnfFormula& qcnf2) ;
+	// draw ZDD if set on
+	void ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames);
+	// print if set on
+	//template <typename T>
+	void printToCout(std::string a, bool newline=0) const;
+	void printToCout(int a, bool newline=0) const;
+	void printToCout(double a, bool newline=0) const;
+	//void printToCout(T a) const;
+	//void printToCout(int a) const;
 
-	// check full realizability
-	bool fullRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2 ) ;
+
+	// check full and partial realizability
+	std::vector<std::string> checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter);
 
 	//resolution
 	//ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, const std::string& outputpath, std::unordered_map <int, int> index_map) const;
@@ -60,6 +69,9 @@ public:
 
 	//main converter
 	void convertCNFtoZDD(const std::string& path);
+
+	// timer
+	double timer(const std::chrono::steady_clock::time_point t1, const std::chrono::steady_clock::time_point t2) const;
 	
 
 	
