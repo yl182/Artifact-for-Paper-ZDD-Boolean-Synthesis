@@ -275,16 +275,22 @@ ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<i
 std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter) {
 	std::vector<std::string> fullPartial;
 
+	// check full realizability
+	printToCout("Checking Partial Realizability: ", 1);
+
 	// timer set up
 	std::chrono::steady_clock::time_point tBeforeRealizability = std::chrono::steady_clock::now();
 	printToCout("got tBeforeRealizability time", 1);
 
-	// check full realizability
-	printToCout("Checking Partial Realizability: ", 1);
+
 	ZDD resolvedYs = Resolution(mgr, zdd, qcnf2.existential_vars);
+
+	// time point after resolving Y's
+	std::chrono::steady_clock::time_point tAfterResolvingYs = std::chrono::steady_clock::now();
+
+	// compare ZDD-0 with resolvedY
 	std::vector<ZDD> resolvedYsZdds = {resolvedYs};
 	ZDDtoDot(mgr, resolvedYsZdds, "ResolvedYsZDD.dot", NULL,NULL);
-
 	ZDD zeroTerminal = mgr.zddZero();
 
 	// judge full realizability
@@ -297,17 +303,31 @@ std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& 
 		printToCout("Full Realizability: NO", 1);
 		fullPartial.emplace_back("NO");
 	}
-	// time point after resolving Y's
-	std::chrono::steady_clock::time_point tAfterResolvingYs = std::chrono::steady_clock::now();
+	
+	// time point after resolving Y's and comparison (full realizability)
+
+	std::chrono::steady_clock::time_point tFullRealizabilityDone = std::chrono::steady_clock::now();
+	double tFull = timer(tBeforeRealizability, tFullRealizabilityDone);
+	double tResolvingY = timer(tBeforeRealizability, tAfterResolvingYs);
+	timerNoter.emplace_back(tFull);
+
 	printToCout("got tAfterResolvingYs time", 1);
-	double tYs = timer(tBeforeRealizability, tAfterResolvingYs);
 	printToCout("Full Realizability time: ", 0);
-	printToCout(tYs, 0);
+	printToCout(tFull, 0);
 	printToCout(" seconds.", 1);
-	timerNoter.emplace_back(tYs);
+	
+
+	// time point before resolving X's
+	std::chrono::steady_clock::time_point tBeforeResolvingXs = std::chrono::steady_clock::now();
 
 	// check partial realizability
 	ZDD resolvedYsXs = Resolution(mgr, resolvedYs, qcnf2.universal_vars);
+
+	// time point after resolving X's
+	std::chrono::steady_clock::time_point tAfterResolvingXs = std::chrono::steady_clock::now();
+	//double tYandXs = timer(tBeforeRealizability, tAfterResolvingXs);
+	//timerNoter.emplace_back(tYandXs);
+
 	std::vector<ZDD> resolvedYsXsZdds = {resolvedYsXs};
 	ZDDtoDot(mgr, resolvedYsXsZdds, "ResolvedYsXsZDD.dot", NULL,NULL);
 	
@@ -320,14 +340,18 @@ std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& 
 		printToCout("Partial Realizability: NO", 1);
 		fullPartial.emplace_back("NO");
 	}
-	// time point after resolving X's
-	std::chrono::steady_clock::time_point tAfterResolvingXs = std::chrono::steady_clock::now();
+	// time point after resolving X's and comparison with 0-ZDD (partial realizability done)
+	std::chrono::steady_clock::time_point tPartialRealizabilityDone = std::chrono::steady_clock::now();
+
+	// add resolvingXtime + resolvingYtime + comparing = time for checking partial realizability
+	double tPartial = timer(tBeforeResolvingXs, tPartialRealizabilityDone)+timer(tBeforeRealizability,tAfterResolvingYs);
+	timerNoter.emplace_back(tPartial);
+	
 	printToCout("got tAfterResolvingXs time", 1);
-	double tYandXs = timer(tBeforeRealizability, tAfterResolvingXs);
 	printToCout("Partial Realizability time: ", 0);
-	printToCout(tYandXs, 0);
+	printToCout(tPartial, 0);
 	printToCout(" seconds.", 1);
-	timerNoter.emplace_back(tYandXs);
+	
 
 
 	return fullPartial;
