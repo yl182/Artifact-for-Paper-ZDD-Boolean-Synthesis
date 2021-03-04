@@ -33,9 +33,9 @@ CNFtoZDDconverter::CNFtoZDDconverter(bool writeDotFiles, bool printDetails) {
 //timer
 double CNFtoZDDconverter::timer(const std::chrono::steady_clock::time_point t1, const std::chrono::steady_clock::time_point t2) const {
 	std::chrono::steady_clock::duration timespan = t2-t1;
-	std::cout << "timespan.count = " << timespan.count() << std::endl;
-	std::cout << "std::chrono::steady_clock::period::num" << std::chrono::steady_clock::period::num << std::endl;
-	std::cout << "std::chrono::steady_clock::period::den" << std::chrono::steady_clock::period::den << std::endl;
+	//std::cout << "timespan.count = " << timespan.count() << std::endl;
+	//std::cout << "std::chrono::steady_clock::period::num" << std::chrono::steady_clock::period::num << std::endl;
+	//std::cout << "std::chrono::steady_clock::period::den" << std::chrono::steady_clock::period::den << std::endl;
 	double timeInSeconds = (double)timespan.count()  *  std::chrono::steady_clock::period::num / std::chrono::steady_clock::period::den;
 
 	return timeInSeconds;
