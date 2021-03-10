@@ -154,3 +154,5 @@ Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizability
 2QBF2016/2QBF/tree-exa10-30.qdimacs	YES	YES	0.0210301 sec	0.0035034 sec	0.0059936 sec
 Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime: 
 2QBF2016/2QBF/qshifter_8.qdimacs	YES	YES	13.1951 sec	12.0787 sec	12.2868 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+2QBF2016/2QBF/qshifter_8.qdimacs	YES	YES	13.4263 sec	14.4168 sec	14.662 sec28.1026 sec

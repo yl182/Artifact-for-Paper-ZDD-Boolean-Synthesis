@@ -547,21 +547,28 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	//check realizability
 	
 	std::vector<std::string> fullPartial = checkFullPartialRealizability(mgr, unionedZDDs, qcnf, timerNoter);
-	printToCout("Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime: ", 1);
-	printToCout(path+"\t");
-	printToCout(fullPartial[0]+"\t"+fullPartial[1] + "\t", 0);
-	printToCout(timerNoter[0], 0);
-	printToCout(" sec\t", 0);
-	printToCout(timerNoter[1], 0);
-	printToCout(" sec\t", 0);
-	printToCout(timerNoter[2], 0);
-	printToCout(" sec\t", 1);
 
+	// count total time
+	std::chrono::steady_clock::time_point tEnd = std::chrono::steady_clock::now();
+	double timeTotal = timer(tStart, tEnd);
+	timerNoter.emplace_back(timeTotal);
+
+	printToCout("Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime\tTotalTime: ", 1);
+	printToCout(path+":\n");
+	printToCout(fullPartial[0]+"\t"+fullPartial[1] + "\t", 0);
+	printToCout(timerNoter[0], 0);//compilation
+	printToCout(" sec\t", 0);
+	printToCout(timerNoter[1], 0);//full
+	printToCout(" sec\t", 0);
+	printToCout(timerNoter[2], 0);//partial
+	printToCout(" sec\t", 0);
+	printToCout(timerNoter[3], 0);//total
+	printToCout(" sec\t", 1);
 
 	
 	std::ofstream out("results.txt", std::ios_base::app);
-	out << "Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime: \n";
-	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0] << " sec\t" << timerNoter[1] << " sec\t" << timerNoter[2] << " sec" << std::endl;
+	out << "Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime\tTotalTime: \n";
+	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0] << " sec\t" << timerNoter[1] << " sec\t" << timerNoter[2] << " sec\t" << timerNoter[3] << " sec" << std::endl;
 	out.close();
 
 	return;

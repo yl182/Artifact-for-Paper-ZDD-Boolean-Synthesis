@@ -38,6 +38,8 @@ int main (int argc, char *argv[])
 	//"2QBF2016/2QBF/tree-exa10-30.qdimacs";
 	CNFtoZDDconverter c(0,0);
 	c.convertCNFtoZDD(str1);
+
+	
 	/*
 	std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
 	std::cout << "starting counting time..." << std::endl;
