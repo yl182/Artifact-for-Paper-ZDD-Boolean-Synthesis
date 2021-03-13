@@ -3,6 +3,7 @@
 #SBATCH --nodes=1 --exclusive
 #SBATCH --export=ALL
 #SBATCH --partition=commons
+#SBATCH --mem-per-cpu=1024M
 #SBATCH --job-name=compilReal
 #SBATCH --cpus-per-task=1
 #SBATCH --constraint=ivybridge
@@ -13,15 +14,15 @@
 #SBATCH --output=out/compilReal-%j.out
 #SBATCH --error=err/compilReal-%j.err
 
-compilReal=${HOME}/zdd/Gitrepo/compilationRealizabilityWitnesses/
+compilReal=${HOME}/zdd/Gitrepo/compilationRealizabilityWitnesses/cudd0
 benchmarks=${HOME}/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF
 results=${HOME}/zdd/Gitrepo/compilationRealizabilityWitnesses/NOTSresults
 
-timefile=${results}/${filename}.compilReal.time
-outfile=${results}/${filename}.compilReal.out
+outfile=${results}/${filename}.out
 
-specfile=${benchmarks}/${filename}.compilReal
+specfile=${benchmarks}/${filename}.qdimacs
+echo "This is the outfile for ${filename}"
 
->&2 echo "Running ${filename} using compilReal..."
 
-(/usr/bin/time -f "%e %S %U" ${compilReal} ${specfile} > ${outfile}) 2> ${timefile}
+${compilReal} ${specfile} > ${outfile}
+
