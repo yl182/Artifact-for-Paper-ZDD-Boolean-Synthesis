@@ -1,0 +1,2 @@
+/var/spool/slurm/job2708258/slurm_script: line 27: 54182 Killed                  ${compilReal} ${specfile} > ${outfile}
+slurmstepd: error: Detected 1 oom-kill event(s) in step 2708258.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

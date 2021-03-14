@@ -3,7 +3,7 @@
 #SBATCH --nodes=1 --exclusive
 #SBATCH --export=ALL
 #SBATCH --partition=commons
-#SBATCH --mem-per-cpu=1024M
+#SBATCH --mem=32g
 #SBATCH --job-name=compilReal
 #SBATCH --cpus-per-task=1
 #SBATCH --constraint=ivybridge
@@ -25,4 +25,5 @@ echo "This is the outfile for ${filename}"
 
 
 ${compilReal} ${specfile} > ${outfile}
+
 
