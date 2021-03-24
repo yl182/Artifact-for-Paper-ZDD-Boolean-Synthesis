@@ -139,3 +139,61 @@ Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizability
 /home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt137_903_911.qdimacs	YES	YES	0.198655 sec	271.664 sec	271.665 sec	271.863 sec
 Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
 /home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt16_818_819.qdimacs	YES	YES	0.072985 sec	1142.07 sec	1142.07 sec	1142.14 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_20_21.qdimacs	YES	YES	0.0144353 sec	0.00219059 sec	0.00225394 sec	0.0166999 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_145_146.qdimacs	YES	YES	0.0129266 sec	0.00337648 sec	0.00345905 sec	0.0163954 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_811_812.qdimacs	YES	YES	0.0329314 sec	0.180219 sec	0.180426 sec	0.213369 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt21_326_327.qdimacs	YES	YES	0.266123 sec	11.4389 sec	11.4394 sec	11.7055 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_919_920.qdimacs	YES	YES	0.162444 sec	134.483 sec	134.483 sec	134.646 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_148_149.qdimacs	YES	YES	0.0201932 sec	0.00274289 sec	0.00282018 sec	0.0230228 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_292_293.qdimacs	YES	YES	0.0875254 sec	3.67677 sec	3.67707 sec	3.76461 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_7_8.qdimacs	YES	YES	0.0124558 sec	0.0002342 sec	0.00026758 sec	0.0127338 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_765_766.qdimacs	YES	YES	0.20842 sec	6778.51 sec	6778.51 sec	6778.72 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt27_296_297.qdimacs	YES	YES	0.0940254 sec	3.73823 sec	3.73853 sec	3.83257 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_107_108.qdimacs	YES	YES	0.00553393 sec	0.000598107 sec	0.000632316 sec	0.00617644 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt3_639_640.qdimacs	YES	YES	0.0586151 sec	1.40741 sec	1.40768 sec	1.46631 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt70_191_213.qdimacs	YES	YES	0.0708442 sec	1.03528 sec	1.03551 sec	1.10637 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_435_436.qdimacs	YES	YES	0.10899 sec	8.60561 sec	8.60595 sec	8.71496 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt70_854_859.qdimacs	YES	YES	0.153637 sec	116.112 sec	116.113 sec	116.266 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt82_224_225.qdimacs	YES	YES	0.086455 sec	1.22315 sec	1.2234 sec	1.30988 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_916_917.qdimacs	YES	YES	0.159575 sec	132.23 sec	132.23 sec	132.39 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt9_350_351.qdimacs	YES	YES	0.0645134 sec	1.95512 sec	1.9554 sec	2.01993 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_649_647.qdimacs	YES	YES	0.100721 sec	137.13 sec	137.13 sec	137.231 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_649_723.qdimacs	YES	YES	0.102066 sec	256.221 sec	256.221 sec	256.323 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt72_696_721.qdimacs	YES	YES	0.199628 sec	244.819 sec	244.819 sec	245.019 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt70_495_501.qdimacs	YES	YES	0.250728 sec	571.887 sec	571.888 sec	572.138 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt41_738_737.qdimacs	YES	YES	0.189205 sec	631.556 sec	631.556 sec	631.745 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_554_555.qdimacs	YES	YES	0.255821 sec	671.146 sec	671.146 sec	671.402 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_480_551.qdimacs	YES	YES	0.194754 sec	1296.84 sec	1296.84 sec	1297.04 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt27_584_603.qdimacs	YES	YES	0.28785 sec	41771.8 sec	41771.8 sec	41772 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_554_604.qdimacs	YES	YES	0.263198 sec	3162.77 sec	3162.77 sec	3163.03 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt32_570_572.qdimacs	YES	YES	0.273837 sec	3227.82 sec	3227.82 sec	3228.09 sec
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt7_33_34.qdimacs	YES	YES	0.293757 sec	11230.8 sec	11230.8 sec	11231.1 sec
