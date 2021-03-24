@@ -77,6 +77,8 @@ void CNFtoZDDconverter::printToCout(double a, bool newline) const {
 	}
 	return;
 }
+
+
 /*void CNFtoZDDconverter::printToCout(std::string a) const {
 	if (printDetails_) {
 		std::cout << a;
@@ -553,7 +555,7 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	double timeTotal = timer(tStart, tEnd);
 	timerNoter.emplace_back(timeTotal);
 
-	printToCout("Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime\tTotalTime: ", 1);
+	printToCout("Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime\tTotalTime\tPeakNodeCount\tPeakMemoryInUse: ", 1);
 	printToCout(path+":\n");
 	printToCout(fullPartial[0]+"\t"+fullPartial[1] + "\t", 0);
 	printToCout(timerNoter[0], 0);//compilation
@@ -563,12 +565,18 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	printToCout(timerNoter[2], 0);//partial
 	printToCout(" sec\t", 0);
 	printToCout(timerNoter[3], 0);//total
-	printToCout(" sec\t", 1);
+	printToCout(" sec\t", 0);
+	// peak node count
+	printToCout((double)mgr.ReadPeakNodeCount(), 0);
+	printToCout(" nodes\t", 0);
+	// peak memory in use
+	printToCout((double)mgr.ReadMemoryInUse(), 0);
+	printToCout(" bytes\t", 1);
 
 	
 	std::ofstream out("results.txt", std::ios_base::app);
-	out << "Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime\tTotalTime: \n";
-	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0] << " sec\t" << timerNoter[1] << " sec\t" << timerNoter[2] << " sec\t" << timerNoter[3] << " sec" << std::endl;
+	out << "Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime\tTotalTime\tPeakNodeCount\tPeakMemoryInUse: \n";
+	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0] << " sec\t" << timerNoter[1] << " sec\t" << timerNoter[2] << " sec\t" << timerNoter[3] << " sec\t" << (double)mgr.ReadPeakNodeCount() << " nodes\t" << (double)mgr.ReadMemoryInUse() << " bytes" << std::endl;
 	out.close();
 
 	return;
