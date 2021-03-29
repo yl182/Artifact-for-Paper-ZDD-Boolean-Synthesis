@@ -12,6 +12,7 @@
 #include <map>
 #include <algorithm>
 #include <unordered_map>
+#include <unordered_set>
 #include <stdexcept>
 #include "CnfFormula.hpp"
 #include "QCnfFormula.hpp"
@@ -30,8 +31,140 @@ CNFtoZDDconverter::CNFtoZDDconverter(bool writeDotFiles, bool printDetails) {
 }
 
 
+// MCS ordering
+std::vector<int> CNFtoZDDconverter::MCSordering(const QCnfFormula qcnf) const {
+	// CNF by file indices
+	CnfFormula cnf = qcnf.formula;
+	//const int nClauses = cnf.size();
+	std::unordered_map<int, std::unordered_set<int>> MCSmap;
+	
+	
+	
+	// insert neighbors into map
+	// note: for variables with no neighbors, there are no keys of the same name in MCSmap
+	for (CnfClause c : cnf) {
+		for (int i : c) {
+			for (int j : c) {
+				if (j != i) {
+					MCSmap[abs(i)].emplace(abs(j));
+					printToCout("inserting to MCSmap: KEY: ");
+					printToCout(abs(i));
+					printToCout(", VALUE: ");
+					printToCout(abs(j), 1);
+				}
+			}
+		}
+	}
+
+
+	// print MCSmap
+	printToCout("NOW print all K,V pairs", 1);
+	for (auto it=MCSmap.begin(); it != MCSmap.end(); it++) {
+		printToCout(" KEY: ");
+		printToCout(it->first);
+		printToCout(", VALUES: ");
+		for (int in : it->second){
+			printToCout(in);
+			printToCout(" ");
+		}  
+		printToCout("", 1);
+	}
+
+	// construct count map
+	std::vector<std::pair<int, int>> MCScount;
+	
+
+	// add variables without neighbors to MCScount
+	for (int u : qcnf.universal_vars) {
+		if (MCSmap.count(u) == 0) {
+			MCScount.emplace_back(std::make_pair(u, 0));
+			printToCout(" KEY: ");
+			printToCout(u);
+			printToCout(", COUNT: ");
+			printToCout(0, 1);
+		}
+		
+	}
+	for (int e : qcnf.existential_vars) {
+		if (MCSmap.count(e) == 0) {
+			MCScount.emplace_back(std::make_pair(e, 0));
+			printToCout(" KEY: ");
+			printToCout(e);
+			printToCout(", COUNT: ");
+			printToCout(0, 1);
+		}
+	}
+
+	// count neighbors in a factor/clause/support
+	
+	for (auto it=MCSmap.begin(); it != MCSmap.end(); it++) {
+		printToCout(" KEY: ");
+		printToCout(it->first);
+		printToCout(", COUNT: ");
+		printToCout((int)it->second.size(), 1);
+		MCScount.emplace_back(std::make_pair(it->first, it->second.size() ));
+	}
+	int tmpMax = 0;
+	int maxKey = 0;
+	int iterations = 0;
+	tmpMax = MCScount.begin()->second;
+	
+	//return the MCS ordering
+	std::vector<int> MCSorderingIndices;
+	int initSize = MCScount.size();
+	while (iterations < initSize) {
+		int i = 0;
+		auto tmpIt = MCScount.begin();
+		maxKey = 0;
+		tmpMax = 0;
+		for (auto it = MCScount.begin(); it != MCScount.end(); it++) {
+			printToCout("comparing KEY ");
+			printToCout(it->first);
+			printToCout(" with ");
+			printToCout(MCScount[maxKey].first, 1);
+
+			printToCout("VALUE ");
+			printToCout(it->second);
+			printToCout(" with VALUE ");
+			printToCout(MCScount[maxKey].second, 1);
+			if (tmpMax < MCScount[i].second) {
+				tmpMax = MCScount[i].second;
+				maxKey = i;
+				tmpIt = it;
+				printToCout("update tmpMax=");
+				printToCout(MCScount[i].second);
+				printToCout(", maxKey=");
+				printToCout(maxKey);
+				printToCout(", tmpIt points to KEY=");
+				printToCout(it->first, 1);
+			}
+			i++;
+		}
+		MCSorderingIndices.emplace_back(MCScount[maxKey].first);
+		printToCout("push ");
+		printToCout(MCScount[maxKey].first);
+		printToCout(" back to MCSordering", 1);
+		MCScount.erase(tmpIt);
+		iterations++;
+	}
+	
+	// printing
+	printToCout("MCS ordering: ");
+	std::cout << "MCS ordering: ";
+	for (int i : MCSorderingIndices) {
+		printToCout(i);
+		printToCout(" ");
+		std::cout << i << " ";
+	}
+	printToCout("", 1);
+	std::cout << std::endl;
+	return MCSorderingIndices;
+	
+}
+
+
 //timer
-double CNFtoZDDconverter::timer(const std::chrono::steady_clock::time_point t1, const std::chrono::steady_clock::time_point t2) const {
+double timer(const std::chrono::steady_clock::time_point t1, const std::chrono::steady_clock::time_point t2) {
 	std::chrono::steady_clock::duration timespan = t2-t1;
 	//std::cout << "timespan.count = " << timespan.count() << std::endl;
 	//std::cout << "std::chrono::steady_clock::period::num" << std::chrono::steady_clock::period::num << std::endl;
@@ -209,10 +342,24 @@ void CNFtoZDDconverter::ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std:
 }
 
 //resolve a variable
-ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int> y_vars) {
+ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int>& y_vars, const std::vector<int>& mcsOrder) {
+	std::cout << "RESOLVING Scope: ";
+	for (int y : y_vars) {
+		std::cout << y << " ";
+	}
+	std::cout <<std::endl;
+	
+	std::vector<int> resolveOrder;
+	for (int i : mcsOrder) {
+		if (find(y_vars.begin(), y_vars.end(), i) != y_vars.end()) {
+			resolveOrder.push_back(i);
+		}
+	}
+
 	ZDD resolvedZDD = zdd;
 	std::vector<ZDD> tmpZDDs;
-	for (int y : y_vars) {
+	for (int y : resolveOrder) {
+		std::cout << "Resolving for y=" << y << std::endl;
 		printToCout("Resolving for", 1);
 		printToCout("y posY negY ", 1);
 		int posY = indexConverter(y);
@@ -274,7 +421,7 @@ ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<i
 }
 
 // check partial realizability
-std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter) {
+std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter, std::vector<int>& mcsOrder) {
 	std::vector<std::string> fullPartial;
 
 	// check full realizability
@@ -285,7 +432,7 @@ std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& 
 	printToCout("got tBeforeRealizability time", 1);
 
 
-	ZDD resolvedYs = Resolution(mgr, zdd, qcnf2.existential_vars);
+	ZDD resolvedYs = Resolution(mgr, zdd, qcnf2.existential_vars, mcsOrder);
 
 	// time point after resolving Y's
 	std::chrono::steady_clock::time_point tAfterResolvingYs = std::chrono::steady_clock::now();
@@ -323,7 +470,7 @@ std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& 
 	std::chrono::steady_clock::time_point tBeforeResolvingXs = std::chrono::steady_clock::now();
 
 	// check partial realizability
-	ZDD resolvedYsXs = Resolution(mgr, resolvedYs, qcnf2.universal_vars);
+	ZDD resolvedYsXs = Resolution(mgr, resolvedYs, qcnf2.universal_vars, mcsOrder);
 
 	// time point after resolving X's
 	std::chrono::steady_clock::time_point tAfterResolvingXs = std::chrono::steady_clock::now();
@@ -502,6 +649,10 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	//
 	//std::unordered_map <int, int> indexToNodesMap = produceIndicesMap(maxVar);
 
+	// produce MCS ordering:
+	std::vector<int> mcs = MCSordering(qcnf);
+
+
 	// draw ZDDs of the i-th clause
 	Cudd mgr;
 	
@@ -548,7 +699,7 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 
 	//check realizability
 	
-	std::vector<std::string> fullPartial = checkFullPartialRealizability(mgr, unionedZDDs, qcnf, timerNoter);
+	std::vector<std::string> fullPartial = checkFullPartialRealizability(mgr, unionedZDDs, qcnf, timerNoter, mcs);
 
 	// count total time
 	std::chrono::steady_clock::time_point tEnd = std::chrono::steady_clock::now();
