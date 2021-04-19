@@ -356,3 +356,205 @@ Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizability
 /home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/query31_query26_1344n.qdimacs	YES	YES	0.00996581 sec	185.671 sec	185.672 sec	185.682 sec	879942 nodes	5.23889e+07 bytes
 Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
 2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES	0.0199476 sec	0.000136642 sec	0.000197629 sec	0.0201555 sec	1022 nodes	1.05869e+07 bytes
+==============================================================================================
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt11_643_645.qdimacs	YES	YES	0.173081 sec	11.5293 sec	11.53 sec	11.7031 sec	437416 nodes	5.36963e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt16_0_1.qdimacs	YES	YES	0.0308415 sec	21.0348 sec	21.0352 sec	21.066 sec	475230 nodes	2.85689e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt137_903_911.qdimacs	YES	YES	0.276968 sec	1928.55 sec	1928.55 sec	1928.82 sec	2.22898e+06 nodes	1.51727e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt18_258_260.qdimacs	YES	YES	0.10838 sec	266.875 sec	266.876 sec	266.984 sec	2.6388e+06 nodes	1.6475e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_145_146.qdimacs	YES	YES	0.0251997 sec	0.00973986 sec	0.00985971 sec	0.0350684 sec	47012 nodes	1.24282e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_20_21.qdimacs	YES	YES	0.0119633 sec	0.00424353 sec	0.00433404 sec	0.0163061 sec	26572 nodes	1.165e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_811_812.qdimacs	YES	YES	0.0595305 sec	2.86206 sec	2.86247 sec	2.92201 sec	192136 nodes	2.67094e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_919_920.qdimacs	YES	YES	0.227505 sec	1847.88 sec	1847.89 sec	1848.11 sec	1.07514e+06 nodes	1.12067e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_148_149.qdimacs	YES	YES	0.0116365 sec	0.00665811 sec	0.00677749 sec	0.0184227 sec	33726 nodes	1.19175e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_292_293.qdimacs	YES	YES	0.121827 sec	17.3235 sec	17.3241 sec	17.4459 sec	782852 nodes	9.94679e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_7_8.qdimacs	YES	YES	0.0216314 sec	0.000262366 sec	0.000308867 sec	0.021949 sec	2044 nodes	1.06218e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt27_296_297.qdimacs	YES	YES	0.132912 sec	55.2731 sec	55.2737 sec	55.4067 sec	896294 nodes	1.02777e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt27_946_955.qdimacs	YES	YES	0.275102 sec	263.064 sec	263.065 sec	263.341 sec	3.1263e+06 nodes	1.84141e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_765_766.qdimacs	YES	YES	0.253869 sec	13314.9 sec	13314.9 sec	13315.2 sec	2.95562e+06 nodes	1.79562e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_480_551.qdimacs	YES	YES	0.246653 sec	2863.88 sec	2863.88 sec	2864.13 sec	2.54887e+06 nodes	1.64922e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_649_647.qdimacs	YES	YES	0.137941 sec	183.787 sec	183.788 sec	183.926 sec	972944 nodes	1.0657e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_649_723.qdimacs	YES	YES	0.13989 sec	60.4156 sec	60.4165 sec	60.5564 sec	613200 nodes	9.3911e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_649_776.qdimacs	YES	YES	0.201107 sec	18.3544 sec	18.3556 sec	18.5567 sec	692916 nodes	9.75493e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt3_639_640.qdimacs	YES	YES	0.0821136 sec	180.474 sec	180.474 sec	180.557 sec	1.1569e+06 nodes	1.12737e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_107_108.qdimacs	YES	YES	0.0166539 sec	0.001197 sec	0.00126237 sec	0.0179257 sec	8176 nodes	1.09331e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_435_436.qdimacs	YES	YES	0.140625 sec	2991.53 sec	2991.53 sec	2991.67 sec	2.55091e+06 nodes	1.634e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_554_555.qdimacs	YES	YES	0.312859 sec	6566.28 sec	6566.28 sec	6566.6 sec	2.89533e+06 nodes	1.79143e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt70_191_213.qdimacs	YES	YES	0.102969 sec	5.65648 sec	5.65693 sec	5.75992 sec	410844 nodes	5.1779e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-2-s.qdimacs	YES	YES	0.0141383 sec	0.0045829 sec	0.00466976 sec	0.018817 sec	18396 nodes	1.34502e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt82_224_225.qdimacs	YES	YES	0.113748 sec	4.52025 sec	4.52079 sec	4.63456 sec	411866 nodes	5.20491e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-16-s.qdimacs	YES	YES	0.210997 sec	4.42578 sec	4.427 sec	4.63802 sec	203378 nodes	5.91695e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_3.qdimacs	YES	YES	0.0171091 sec	0.000235739 sec	0.000337025 sec	0.0174545 sec	3066 nodes	1.06588e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_4.qdimacs	YES	YES	0.0204475 sec	0.00130619 sec	0.00148203 sec	0.0219385 sec	19418 nodes	1.12655e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-4-s.qdimacs	YES	YES	0.0303403 sec	0.0623803 sec	0.062564 sec	0.0929205 sec	67452 nodes	2.54743e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-8-s.qdimacs	YES	YES	0.0613761 sec	0.395943 sec	0.396412 sec	0.457804 sec	107310 nodes	3.08899e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt72_696_721.qdimacs	YES	YES	0.235023 sec	56.1117 sec	56.1126 sec	56.3477 sec	735840 nodes	9.84855e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-32-s.qdimacs	YES	YES	0.766765 sec	57.0111 sec	57.0147 sec	57.7815 sec	1.04755e+06 nodes	1.40274e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-15.qdimacs	YES	YES	0.00985593 sec	0.000225913 sec	0.000372414 sec	0.0102369 sec	2044 nodes	1.06622e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES	0.028795 sec	0.000155251 sec	0.000250202 sec	0.0290539 sec	1022 nodes	1.05869e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_5.qdimacs	YES	YES	0.0817194 sec	0.0101557 sec	0.0104973 sec	0.0922263 sec	57232 nodes	1.26538e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_6.qdimacs	YES	YES	0.353154 sec	0.0773893 sec	0.0780802 sec	0.431246 sec	214620 nodes	1.83402e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_7.qdimacs	YES	YES	2.21797 sec	0.979904 sec	0.981264 sec	3.19925 sec	907536 nodes	6.8335e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_8.qdimacs	YES	YES	15.6929 sec	9.68375 sec	9.68692 sec	25.3798 sec	3.67e+06 nodes	2.00277e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-25.qdimacs	YES	YES	0.0162182 sec	0.000376442 sec	0.000619405 sec	0.0168477 sec	6132 nodes	1.08783e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-20.qdimacs	YES	YES	0.0129576 sec	0.00039869 sec	0.000582661 sec	0.0135487 sec	4088 nodes	1.07702e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-30.qdimacs	YES	YES	0.0157429 sec	0.000536867 sec	0.000810926 sec	0.016564 sec	8176 nodes	1.09863e+07 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-64-s.qdimacs	YES	YES	2.70282 sec	984.505 sec	984.517 sec	987.219 sec	4.56119e+06 nodes	3.12691e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt70_854_859.qdimacs	YES	YES	0.21409 sec	1669.91 sec	1669.91 sec	1670.13 sec	1.05368e+06 nodes	1.11369e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_916_917.qdimacs	YES	YES	0.221139 sec	8559.6 sec	8559.6 sec	8559.82 sec	1.51971e+06 nodes	1.28044e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt9_350_351.qdimacs	YES	YES	0.0894042 sec	2628.25 sec	2628.25 sec	2628.34 sec	1.41343e+06 nodes	1.22153e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt70_495_501.qdimacs	YES	YES	0.341618 sec	5047.38 sec	5047.38 sec	5047.72 sec	2.87386e+06 nodes	1.77281e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt41_738_737.qdimacs	YES	YES	0.230861 sec	13324.9 sec	13324.9 sec	13325.2 sec	3.01388e+06 nodes	1.81232e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/rankfunc37_signed_16.qdimacs	NO	YES	0.0287541 sec	2019.68 sec	2019.68 sec	2019.71 sec	4.37314e+06 nodes	1.90721e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	PeakNodeCount	PeakMemoryInUse: 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/rankfunc56_unsigned_16.qdimacs	YES	YES	0.0974633 sec	827.703 sec	827.704 sec	827.802 sec	2.21263e+07 nodes	8.89868e+08 bytes
+Filename	Full	Partial	CompilationTime	FullRealizabilityTime	PartialRealizabilityTime	TotalTime	ZDDFormulaSize	PeakNodeCount	PeakMemoryInUse: 
+2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES	0.00763524 sec	0.000159275 sec	0.000252747 sec	0.00789676 sec	56 nodes	1022 nodes	1.05869e+07 bytes
+=======================================April 14============================================================
+
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse(bytes): 
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt11_643_645.qdimacs	YES	YES	154.399 ms	12185.4 ms	12186.1 ms	12340.5 ms	2762 nodes	437416 nodes	5.36922e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt16_0_1.qdimacs	YES	YES	26.804 ms	20994.4 ms	20994.6 ms	21021.5 ms	782 nodes	428218 nodes	2.68746e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt137_903_911.qdimacs	YES	YES	266.196 ms	2.07788e+06 ms	2.07788e+06 ms	2.07815e+06 ms	3440 nodes	2.22898e+06 nodes	1.51694e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt18_258_260.qdimacs	YES	YES	117.571 ms	327396 ms	327396 ms	327514 ms	2330 nodes	2.6388e+06 nodes	1.6475e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_145_146.qdimacs	YES	YES	20.4384 ms	10.7251 ms	10.8769 ms	31.3243 ms	422 nodes	47012 nodes	1.24282e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_20_21.qdimacs	YES	YES	23.7415 ms	4.29286 ms	4.38089 ms	28.1309 ms	320 nodes	26572 nodes	1.165e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_811_812.qdimacs	YES	YES	58.5943 ms	2881.81 ms	2882.19 ms	2940.8 ms	1366 nodes	192136 nodes	2.66827e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt1_919_920.qdimacs	YES	YES	197.757 ms	1.96431e+06 ms	1.96431e+06 ms	1.96451e+06 ms	3269 nodes	1.07003e+06 nodes	1.11889e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_148_149.qdimacs	YES	YES	22.4032 ms	6.7568 ms	6.88101 ms	29.2924 ms	343 nodes	33726 nodes	1.19175e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_292_293.qdimacs	YES	YES	124.921 ms	17901.5 ms	17902.1 ms	18027 ms	2410 nodes	782852 nodes	9.94679e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_7_8.qdimacs	YES	YES	9.4461 ms	0.260644 ms	0.307054 ms	9.76359 ms	64 nodes	2044 nodes	1.06218e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt27_296_297.qdimacs	YES	YES	129.962 ms	59907.6 ms	59908.1 ms	60038.1 ms	2490 nodes	560056 nodes	9.17204e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt27_946_955.qdimacs	YES	YES	267.409 ms	247278 ms	247280 ms	247547 ms	3735 nodes	3.21828e+06 nodes	1.87317e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_649_723.qdimacs	YES	YES	137.536 ms	65430.7 ms	65431.6 ms	65569.1 ms	2733 nodes	613200 nodes	9.39376e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_649_776.qdimacs	YES	YES	205.871 ms	22166.7 ms	22168 ms	22373.9 ms	3281 nodes	692916 nodes	9.75739e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_649_647.qdimacs	YES	YES	131.341 ms	186988 ms	186989 ms	187120 ms	2645 nodes	978054 nodes	1.06819e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt2_480_551.qdimacs	YES	YES	268.627 ms	3.18917e+06 ms	3.18917e+06 ms	3.18944e+06 ms	3585 nodes	2.54682e+06 nodes	1.64902e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt3_639_640.qdimacs	YES	YES	80.3088 ms	175853 ms	175853 ms	175934 ms	2026 nodes	1.09558e+06 nodes	1.10634e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_107_108.qdimacs	YES	YES	12.8355 ms	1.13637 ms	1.18505 ms	14.0301 ms	170 nodes	8176 nodes	1.09331e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt24_765_766.qdimacs	YES	YES	303.845 ms	1.35048e+07 ms	1.35048e+07 ms	1.35051e+07 ms	3448 nodes	3.21521e+06 nodes	1.87879e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_435_436.qdimacs	YES	YES	160.165 ms	3.01322e+06 ms	3.01322e+06 ms	3.01338e+06 ms	2832 nodes	2.54376e+06 nodes	1.63185e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_554_555.qdimacs	YES	YES	335.696 ms	5.05143e+06 ms	5.05143e+06 ms	5.05177e+06 ms	4126 nodes	2.89533e+06 nodes	1.79077e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt41_738_737.qdimacs	YES	YES	235.059 ms	1.33226e+07 ms	1.33226e+07 ms	1.33228e+07 ms	3368 nodes	3.01388e+06 nodes	1.81277e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt44_916_917.qdimacs	YES	YES	211.214 ms	8.54888e+06 ms	8.54888e+06 ms	8.5491e+06 ms	3274 nodes	1.4819e+06 nodes	1.2694e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt70_191_213.qdimacs	YES	YES	95.8846 ms	9752.41 ms	9752.85 ms	9848.78 ms	2226 nodes	410844 nodes	5.17851e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt72_696_721.qdimacs	YES	YES	247.631 ms	37340.6 ms	37341.5 ms	37589.2 ms	3352 nodes	735840 nodes	9.82971e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt82_224_225.qdimacs	YES	YES	136.131 ms	5515.6 ms	5516.15 ms	5652.3 ms	2402 nodes	411866 nodes	5.20491e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt70_854_859.qdimacs	YES	YES	220.345 ms	1.65557e+06 ms	1.65557e+06 ms	1.65579e+06 ms	3264 nodes	1.07003e+06 nodes	1.1189e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-16-s.qdimacs	YES	YES	224.117 ms	4633.78 ms	4635.06 ms	4859.22 ms	3178 nodes	203378 nodes	5.91695e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-2-s.qdimacs	YES	YES	8.73097 ms	4.44605 ms	4.52679 ms	13.2676 ms	238 nodes	18396 nodes	1.34502e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-4-s.qdimacs	YES	YES	36.6408 ms	64.0196 ms	64.2087 ms	100.863 ms	658 nodes	67452 nodes	2.54743e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-32-s.qdimacs	YES	YES	769.155 ms	57665 ms	57668.7 ms	58437.9 ms	6538 nodes	1.04755e+06 nodes	1.40274e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-8-s.qdimacs	YES	YES	60.5394 ms	399.517 ms	399.988 ms	460.54 ms	1498 nodes	107310 nodes	3.08899e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_3.qdimacs	YES	YES	23.2193 ms	0.26667 ms	0.37231 ms	23.6057 ms	160 nodes	3066 nodes	1.06588e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_4.qdimacs	YES	YES	34.7956 ms	1.34247 ms	1.5309 ms	36.3358 ms	576 nodes	19418 nodes	1.12655e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_5.qdimacs	YES	YES	67.0063 ms	10.3676 ms	10.7138 ms	77.7287 ms	2176 nodes	57232 nodes	1.26538e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_6.qdimacs	YES	YES	356.395 ms	78.9482 ms	79.5875 ms	435.993 ms	8448 nodes	214620 nodes	1.83402e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES	4.61889 ms	0.149533 ms	0.236872 ms	4.86403 ms	56 nodes	1022 nodes	1.05869e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_7.qdimacs	YES	YES	2189.59 ms	985.73 ms	987.096 ms	3176.71 ms	33280 nodes	907536 nodes	6.8335e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_8.qdimacs	YES	YES	15791.4 ms	9878.32 ms	9881.3 ms	25672.7 ms	132096 nodes	3.67e+06 nodes	2.00277e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-15.qdimacs	YES	YES	11.8792 ms	0.230976 ms	0.368092 ms	12.2567 ms	86 nodes	2044 nodes	1.06622e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-20.qdimacs	YES	YES	15.1454 ms	0.380522 ms	0.556456 ms	15.7103 ms	116 nodes	4088 nodes	1.07702e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-25.qdimacs	YES	YES	6.29066 ms	0.357371 ms	0.585222 ms	6.88451 ms	146 nodes	6132 nodes	1.08783e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/tree-exa10-30.qdimacs	YES	YES	19.9306 ms	0.530745 ms	0.799424 ms	20.7401 ms	176 nodes	8176 nodes	1.09863e+07 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/mutex-64-s.qdimacs	YES	YES	2905.15 ms	1.0253e+06 ms	1.02531e+06 ms	1.02822e+06 ms	13258 nodes	4.56119e+06 nodes	3.12666e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt9_350_351.qdimacs	YES	YES	88.9357 ms	2.43374e+06 ms	2.43374e+06 ms	2.43383e+06 ms	2144 nodes	1.41343e+06 nodes	1.22262e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/stmt70_495_501.qdimacs	YES	YES	321.347 ms	4.96672e+06 ms	4.96672e+06 ms	4.96705e+06 ms	4116 nodes	2.87386e+06 nodes	1.77285e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/rankfunc37_signed_16.qdimacs	NO	YES	23.2138 ms	1.8774e+06 ms	1.8774e+06 ms	1.87742e+06 ms	735 nodes	4.37314e+06 nodes	1.90721e+08 bytes
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	TotalTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+/home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/rankfunc56_unsigned_16.qdimacs	YES	YES	85.9754 ms	840542 ms	840543 ms	840629 ms	2104 nodes	2.21263e+07 nodes	8.89868e+08 bytes
