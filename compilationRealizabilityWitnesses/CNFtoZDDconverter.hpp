@@ -34,7 +34,8 @@ public:
 
 
 	//helper functions
-
+	ZDD constructCNFWitness(Cudd& mgr, const ZDD& zdd, int y);
+	ZDD constructZDDforFYplus(Cudd& mgr, const ZDD& zdd, int y);
 	std::vector<int> MCSordering(const QCnfFormula qcnf) const;
 
 
@@ -58,11 +59,11 @@ public:
 
 
 	// check full and partial realizability
-	std::vector<std::string> checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter, std::vector<int>& mcsOrder);
+	std::vector<std::string> checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter, std::vector<int>& mcsOrder, std::vector<ZDD>& intermediateZDDs, std::vector<int>& resolvedYsIndices);
 
 	//resolution
 	//ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, const std::string& outputpath, std::unordered_map <int, int> index_map) const;
-	ZDD Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int>& y_vars, const std::vector<int>& mcsOrder);
+	ZDD Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int>& y_vars, const std::vector<int>& mcsOrder, std::vector<ZDD>& intermediateZDDs, std::vector<int>& resolveOrder);
 
 	// substitution
 	ZDD crossZDD(const ZDD& z) const;

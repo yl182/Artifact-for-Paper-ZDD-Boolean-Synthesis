@@ -22,14 +22,64 @@
 #include "cudd.h"
 
 
-
-
 //constructors
 CNFtoZDDconverter::CNFtoZDDconverter(bool writeDotFiles, bool printDetails) {
 	writeDotFiles_ = writeDotFiles;
 	printDetails_ = printDetails;
 }
 
+/*
+ZDD CNFtoZDDconverter::convertToNegative(const ZDD& zdd) {
+	
+
+}
+*/
+
+// function to construct ZDD for f_y^-
+ZDD CNFtoZDDconverter::constructCNFWitness(Cudd& mgr, const ZDD& zdd, int y) {
+	
+		
+		printToCout("Constructing CNF witness f_y^- for y = " + std::to_string(y), 1);
+		printToCout("y posY negY ", 1);
+		int posY = indexConverter(y);
+		int neg_Y = indexConverter((-1)*y);
+		printToCout(y);
+		printToCout("\t");
+		printToCout(posY);
+		printToCout("\t");
+		printToCout(neg_Y, 1);
+		
+		// build ZDDs for CNF witness f_y^-
+		ZDD witnessCNF = zdd.Subset1(neg_Y);
+		std::vector<ZDD> tmpZDDs;
+		tmpZDDs = {witnessCNF};
+		ZDDtoDot(mgr, tmpZDDs, "CNFwitnessY_" + std::to_string(y) + ".dot", NULL, NULL);
+		return witnessCNF;
+		
+}
+
+// function to construct get ZDD for f_y^+
+ZDD CNFtoZDDconverter::constructZDDforFYplus(Cudd& mgr, const ZDD& zdd, int y) {
+	
+		
+		printToCout("Constructing f_y^+ for y = " + std::to_string(y), 1);
+		printToCout("y posY negY ", 1);
+		int pos_Y = indexConverter(y);
+		int neg_Y = indexConverter((-1)*y);
+		printToCout(y);
+		printToCout("\t");
+		printToCout(pos_Y);
+		printToCout("\t");
+		printToCout(neg_Y, 1);
+		
+		// build ZDDs for CNF witness f_y^-
+		ZDD witnessCNF = zdd.Subset1(pos_Y);
+		std::vector<ZDD> tmpZDDs;
+		tmpZDDs = {witnessCNF};
+		ZDDtoDot(mgr, tmpZDDs, "f_y_plus_helperZDD_" + std::to_string(y) + ".dot", NULL, NULL);
+		return witnessCNF;
+		
+}
 
 // MCS ordering
 std::vector<int> CNFtoZDDconverter::MCSordering(const QCnfFormula qcnf) const {
@@ -341,15 +391,16 @@ void CNFtoZDDconverter::ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std:
 	
 }
 
+
 //resolve a variable
-ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int>& y_vars, const std::vector<int>& mcsOrder) {
+ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int>& y_vars, const std::vector<int>& mcsOrder, std::vector<ZDD>& intermediateZDDs, std::vector<int>& resolveOrder) {
 	std::cout << "RESOLVING Scope: ";
 	for (int y : y_vars) {
 		std::cout << y << " ";
 	}
 	std::cout <<std::endl;
 	
-	std::vector<int> resolveOrder;
+
 	for (int i : mcsOrder) {
 		if (find(y_vars.begin(), y_vars.end(), i) != y_vars.end()) {
 			resolveOrder.push_back(i);
@@ -414,6 +465,8 @@ ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<i
 		tmpZDDs = {resolvedZDD};
 		ZDDtoDot(mgr, tmpZDDs, "resolvedZDD_" + std::to_string(y) + ".dot", NULL, NULL);
 		printToCout("Done resolving.", 1);
+
+		intermediateZDDs.emplace_back(resolvedZDD);
 		
 	}
 	// core dumped before this line
@@ -421,7 +474,7 @@ ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<i
 }
 
 // check partial realizability
-std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter, std::vector<int>& mcsOrder) {
+std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter, std::vector<int>& mcsOrder, std::vector<ZDD>& intermediateZDDs, std::vector<int>& resolvedYsIndices) {
 	std::vector<std::string> fullPartial;
 
 	// check full realizability
@@ -431,8 +484,7 @@ std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& 
 	std::chrono::steady_clock::time_point tBeforeRealizability = std::chrono::steady_clock::now();
 	printToCout("got tBeforeRealizability time", 1);
 
-
-	ZDD resolvedYs = Resolution(mgr, zdd, qcnf2.existential_vars, mcsOrder);
+	ZDD resolvedYs = Resolution(mgr, zdd, qcnf2.existential_vars, mcsOrder, intermediateZDDs, resolvedYsIndices);
 
 	// time point after resolving Y's
 	std::chrono::steady_clock::time_point tAfterResolvingYs = std::chrono::steady_clock::now();
@@ -470,7 +522,9 @@ std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& 
 	std::chrono::steady_clock::time_point tBeforeResolvingXs = std::chrono::steady_clock::now();
 
 	// check partial realizability
-	ZDD resolvedYsXs = Resolution(mgr, resolvedYs, qcnf2.universal_vars, mcsOrder);
+	std::vector<ZDD> tmp1 = {};
+	std::vector<int> tmp2 = {};
+	ZDD resolvedYsXs = Resolution(mgr, resolvedYs, qcnf2.universal_vars, mcsOrder, tmp1, tmp2);
 
 	// time point after resolving X's
 	std::chrono::steady_clock::time_point tAfterResolvingXs = std::chrono::steady_clock::now();
@@ -500,8 +554,6 @@ std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& 
 	printToCout("Partial Realizability time: ", 0);
 	printToCout(tPartial, 0);
 	printToCout(" seconds.", 1);
-	
-
 
 	return fullPartial;
 	
@@ -550,7 +602,6 @@ ZDD CNFtoZDDconverter::CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_ma
 			clauseSubstitution = clauseSubstitution.ClauseDistribution(newClauseZDD);
 			newClausesZDDs.push_back(clauseSubstitution);
 
-			
 		} else if (std::find(cnf[i].begin(), cnf[i].end(), (-1)*y) != cnf[i].end()) {
 			// CASE 2: neg y occurs in clause
 			// 
@@ -679,11 +730,16 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	}
 	printToCout("Unioning ZDDs of clauses above.", 1);
 	ZDD unionedZDDs = clauseZDDs[0];
+
 	for (const ZDD& zdd : clauseZDDs) {
 		unionedZDDs = unionedZDDs.Union(zdd);
 	}
 	std::vector<ZDD> zdds = {unionedZDDs};
 	ZDDtoDot(mgr, zdds, "ZDD.dot", NULL,NULL);
+
+	// count number of nodes in ZDD of formula
+    int ZDDNodeCount = unionedZDDs.nodeCount();
+
 
 	// count compilation time
 	std::chrono::steady_clock::time_point tZDDdone = std::chrono::steady_clock::now();
@@ -698,8 +754,9 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
 
 	//check realizability
-	
-	std::vector<std::string> fullPartial = checkFullPartialRealizability(mgr, unionedZDDs, qcnf, timerNoter, mcs);
+	std::vector<ZDD> intermediateZDDs = {};
+	std::vector<int> resolvedYsIndices = {};
+	std::vector<std::string> fullPartial = checkFullPartialRealizability(mgr, unionedZDDs, qcnf, timerNoter, mcs, intermediateZDDs, resolvedYsIndices);
 
 	// count total time
 	std::chrono::steady_clock::time_point tEnd = std::chrono::steady_clock::now();
@@ -717,6 +774,9 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	printToCout(" sec\t", 0);
 	printToCout(timerNoter[3], 0);//total
 	printToCout(" sec\t", 0);
+	// ZDD Size of Formula
+	printToCout(ZDDNodeCount, 0);
+	printToCout(" nodes\t", 0);
 	// peak node count
 	printToCout((double)mgr.ReadPeakNodeCount(), 0);
 	printToCout(" nodes\t", 0);
@@ -726,9 +786,55 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 
 	
 	std::ofstream out("results.txt", std::ios_base::app);
-	out << "Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime\tTotalTime\tPeakNodeCount\tPeakMemoryInUse: \n";
-	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0] << " sec\t" << timerNoter[1] << " sec\t" << timerNoter[2] << " sec\t" << timerNoter[3] << " sec\t" << (double)mgr.ReadPeakNodeCount() << " nodes\t" << (double)mgr.ReadMemoryInUse() << " bytes" << std::endl;
+	out << "Filename\tFull\tPartial\tCompilationTime(ms)\tFullRealizabilityTime(ms)\tPartialRealizabilityTime(ms)\tTotalTime(ms)\tZDDFormulaSize(nodes)\tPeakNodeCount(nodes)\tPeakMemoryInUse:(bytes) \n";
+	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0]*1000 << " ms\t" << timerNoter[1]*1000 << " ms\t" << timerNoter[2]*1000 << " ms\t" << timerNoter[3]*1000 << " ms\t" << ZDDNodeCount << " nodes\t" << (double)mgr.ReadPeakNodeCount() << " nodes\t" << (double)mgr.ReadMemoryInUse() << " bytes" << std::endl;
 	out.close();
+
+	std::ofstream outCSV("results.csv", std::ios_base::app);
+	outCSV << path << "," << fullPartial[0] << "," << fullPartial[1] << "," << timerNoter[0]*1000 << "," << timerNoter[1]*1000 << "," << timerNoter[2]*1000 << "," << timerNoter[3]*1000 << "," << ZDDNodeCount << "," << (double)mgr.ReadPeakNodeCount() << "," << (double)mgr.ReadMemoryInUse() << "," << std::endl;
+	outCSV.close();
+
+	// start construction of witnesses
+	// suppose order of y's are MCS ordering
+	// intermediateZDDs in order
+	// resolvedYsIndices y's in order
+
+	int s = intermediateZDDs.size();
+	int s2 = resolvedYsIndices.size();
+	printToCout(s, 0);
+	printToCout(s2, 0);
+	int countSteps;
+	countSteps = 0;
+	std::vector<ZDD> witnesses = {};
+	std::vector<int> witnessIndices = {};
+	ZDD wCNF;
+	ZDD currentZDD, nextZDD;
+	ZDD tmpZDD, tmp2ZDD;
+	while (countSteps < s) {
+		currentZDD = intermediateZDDs[s-countSteps-1]; // have only one y_i
+		int currentY = resolvedYsIndices[s-countSteps-1];
+		//	substitutions for previous y's
+		for (int i = 0; i < countSteps; i++) {
+			// clause distribution between f_y^+ and CNF witness
+			// then union 
+			tmpZDD = constructZDDforFYplus(mgr, currentZDD, witnessIndices[i]);
+			//currentZDD.Subset0(indexy)
+			tmp2ZDD = currentZDD.Subset0(indexConverter(currentY));
+			// use substitution to update the ZDD
+			currentZDD = tmpZDD.ClauseDistribution(witnesses[i]).SubSumptionFreeUnion(tmp2ZDD);
+		}
+		// now currentZDD up-to-date with only 1 y
+		// update witness
+		wCNF = constructCNFWitness(mgr, currentZDD, currentY);
+		witnesses.emplace_back(wCNF);
+		witnessIndices.emplace_back(currentY);
+
+		countSteps++;
+	}
+	for (int j = 0; j < s; j++) {
+		ZDDtoDot(mgr, {witnesses[j]}, "witness_"+ std::to_string(witnessIndices[j]) +".dot", NULL, NULL);
+		printToCout("Outputting witness for "+std::to_string(witnessIndices[j])+"to ZDD in dotFile.", 1);
+	}
 
 	return;
 	
