@@ -562,19 +562,13 @@ std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& 
 //substitution helper function: cross(z)
 
 ZDD CNFtoZDDconverter::crossZDD(const ZDD& z) const {
-	printToCout("no errors until this line000111", 1);
 	Cudd mgr0;
-
-	//??????????????????????????
-	// only ZDD parameter, or more parameters like literals?
-	printToCout("no errors until this line000222", 1);
 	return mgr0.zddZero();
 	
 }
 
 ZDD CNFtoZDDconverter::negCrossZDD(const ZDD& z) const {
 	Cudd mgr0;
-	//??????????????????????????
 	return mgr0.zddZero();
 
 }
