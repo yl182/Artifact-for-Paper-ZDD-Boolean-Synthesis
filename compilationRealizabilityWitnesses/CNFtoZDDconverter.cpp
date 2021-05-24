@@ -81,6 +81,8 @@ ZDD CNFtoZDDconverter::constructZDDforFYplus(Cudd& mgr, const ZDD& zdd, int y) {
 		
 }
 
+
+
 // MCS ordering
 std::vector<int> CNFtoZDDconverter::MCSordering(const QCnfFormula qcnf) const {
 	// CNF by file indices
@@ -560,20 +562,90 @@ std::vector<std::string> CNFtoZDDconverter::checkFullPartialRealizability(Cudd& 
 }
 
 //substitution helper function: cross(z)
+ZDD CNFtoZDDconverter::crossZDD(const ZDD& z, Cudd& mgr) const {
+	int rootIndex = z.NodeReadIndex();
+	ZDD zdd0 = mgr.zddZero();
+	ZDD zdd1 = mgr.zddOne(5);
+	if (zdd0 == z) {
+		return zdd1;
+	}
+	if (z.Count() == 0) {
+		return zdd0;
+	}
+	// 0-child sub-ZDD of z
+	ZDD zleft = z.Subset0(rootIndex);
+	// 1-child sub-ZDD of z
+	ZDD zright = z.Subset1(rootIndex).Change(rootIndex);
+	// new z_r = ZDDunion(Z_l, Z_r)
+	ZDD z_r = zleft.Union(zright);
+	// new z_ll = cross(Z_r)
+	ZDD z_ll = crossZDD(z_r, mgr);
+	// update z_r = cross(zright)
+	z_r = crossZDD(zleft, mgr);
+	// new z_hh = nonsup(z_r, z_ll)
+	ZDD z_hh = nonsup(mgr, z_r, z_ll);
+	// return new z' = newZDD(rootnode, z_ll, z_hh)
+	return z.Ite(z_ll, z_hh);
 
-ZDD CNFtoZDDconverter::crossZDD(const ZDD& z) const {
-	Cudd mgr0;
-	return mgr0.zddZero();
+
+	//std::cout << z.NodeReadIndex() << std::endl;
+	//std::cout << z.printRootIndex() << std::endl;
+	return z;
 	
 }
-
-ZDD CNFtoZDDconverter::negCrossZDD(const ZDD& z) const {
-	Cudd mgr0;
-	return mgr0.zddZero();
-
+ZDD CNFtoZDDconverter::nonsup(Cudd& mgr, const ZDD& z_this, const ZDD& z) const {
+	// implemented as DIFF function (speedup version of nonsup)
+	ZDD z0 = mgr.zddZero();
+	if (z ==z0) {
+		return z_this;
+	}
+	if ( (z_this == z0) or (z.Count() == 0) or (z_this == z)) {
+		return z0;
+	}
+	// f_v, g_v as indices of rootnodes
+	int f_v = z_this.NodeReadIndex();
+	int g_v = z.NodeReadIndex();
+	ZDD g_l = z.Subset0(g_v);
+	ZDD f_l = z_this.Subset0(f_v);
+	ZDD f_h = z_this.Subset1(f_v).Change(f_v);
+	ZDD g_h = z.Subset1(g_v).Change(g_v);
+	ZDD r_l, r_h; // new ZDDs for constructing return value
+	if (f_v > g_v) {
+		return nonsup(mgr, z_this, g_l);
+	} 
+	if (f_v < g_v) {
+		r_l = nonsup(mgr, f_l, z);
+		r_h = f_h;
+	} else {
+		r_l = nonsup(mgr, f_l, g_l);
+		r_h = nonsup(mgr, f_h, g_h);
+	}
+	return z_this.Ite(r_l, r_h);
 }
 
+// function to negate indices (returns the ZDD )
+ZDD CNFtoZDDconverter::negateDnfZDD(const ZDD& z, int maxVar, std::vector<int>& ys, Cudd& mgr) {
+	int a,b;
+	ZDD z1, tmpZ;
+	tmpZ = z;
+	for (int y : ys) {
+		a = indexConverter(y);
+		b = indexConverter((-1)*y);
+		// replace x+1: 1,3,5,... to 2*maxVar+themselves
+		z1 = tmpZ.Subset0(b).SubSumptionFreeUnion(z.Subset1(b).Change(2*maxVar+b)); // since subset1 already removes b from clauses
+		// p to not p
+		z1 = z1.Subset1(a).Change(b).SubSumptionFreeUnion(z1.Subset0(a));
+		// not p to p
+		z1 = z1.Subset1(2*maxVar+b).Change(a).SubSumptionFreeUnion(z1.Subset0(2*maxVar+b));
+		tmpZ = z1;
+	}
+	return tmpZ;
+}
+
+
 // substitution function
+// actually not calling this function in final version
+/*
 ZDD CNFtoZDDconverter::CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_map <int, int>& index_map, int maxVar, const ZDD& z, CnfFormula& cnf, std::vector<ZDD>& Clause_ZDDs) {
 	
 	int num_clauses = cnf.size();
@@ -622,7 +694,7 @@ ZDD CNFtoZDDconverter::CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_ma
 
 	return substitutedZDD;
 }
-
+*/
 //main converter
 void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
@@ -793,22 +865,25 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	// intermediateZDDs in order
 	// resolvedYsIndices y's in order
 
-	int s = intermediateZDDs.size();
-	int s2 = resolvedYsIndices.size();
-	printToCout(s, 0);
-	printToCout(s2, 0);
+	int n = intermediateZDDs.size();
+	int n2 = resolvedYsIndices.size();
+	printToCout(n, 0);
+	printToCout(n2, 0);
 	int countSteps;
-	countSteps = 0;
+	
 	std::vector<ZDD> witnesses = {};
+	std::vector<ZDD> crossWitnesses = {};
 	std::vector<int> witnessIndices = {};
-	ZDD wCNF;
+	ZDD wCNF, wDNF, neg_wDNF;
 	ZDD currentZDD, nextZDD;
 	ZDD tmpZDD, tmp2ZDD;
-	while (countSteps < s) {
-		currentZDD = intermediateZDDs[s-countSteps-1]; // have only one y_i
-		int currentY = resolvedYsIndices[s-countSteps-1];
-		//	substitutions for previous y's
+	countSteps = 0;
+	while (countSteps < n) {
+		currentZDD = intermediateZDDs[n-countSteps-1]; // phi_i, which has only one y_i
+		int currentY = resolvedYsIndices[n-countSteps-1];
+		//	substitutions for previous positive y's
 		for (int i = 0; i < countSteps; i++) {
+			// for positive occurrences of y
 			// clause distribution between f_y^+ and CNF witness
 			// then union 
 			tmpZDD = constructZDDforFYplus(mgr, currentZDD, witnessIndices[i]);
@@ -817,17 +892,36 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 			// use substitution to update the ZDD
 			currentZDD = tmpZDD.ClauseDistribution(witnesses[i]).SubSumptionFreeUnion(tmp2ZDD);
 		}
+		//substitutions for previous negative y's
+
+		for (int i = 0; i < countSteps; i++) {
+			// for negative occurrences of y's
+			// 1. cross: CNF witness -> DNF witness
+			wDNF = crossWitnesses[i];
+
+			// 2. negate, since occurrences are neg y, by switching the indices to their partner-indices
+			neg_wDNF = negateDnfZDD(wDNF, maxVar, resolvedYsIndices,mgr);
+			// 3. f_y^- clauseDistribution with witness (result of step 2), and then subsumptionfreeunion with subset0(neg y)
+			tmpZDD = currentZDD.Subset1(indexConverter(currentY*(-1)));
+			tmp2ZDD = currentZDD.Subset0(indexConverter(currentY*(-1)));
+			currentZDD = tmpZDD.ClauseDistribution(wDNF).SubSumptionFreeUnion(tmp2ZDD);
+		}
 		// now currentZDD up-to-date with only 1 y
 		// update witness
 		wCNF = constructCNFWitness(mgr, currentZDD, currentY);
+		//cross: CNF witness -> DNF witness
+		wDNF = crossZDD(wCNF, mgr);
+
 		witnesses.emplace_back(wCNF);
+		crossWitnesses.emplace_back(wDNF);
 		witnessIndices.emplace_back(currentY);
 
 		countSteps++;
 	}
-	for (int j = 0; j < s; j++) {
-		ZDDtoDot(mgr, {witnesses[j]}, "witness_"+ std::to_string(witnessIndices[j]) +".dot", NULL, NULL);
-		printToCout("Outputting witness for "+std::to_string(witnessIndices[j])+"to ZDD in dotFile.", 1);
+	for (int j = 0; j < n; j++) {
+		// note: only output CNF witness
+		ZDDtoDot(mgr, {witnesses[j]}, "CNFwitness_"+ std::to_string(witnessIndices[j]) +".dot", NULL, NULL);
+		printToCout("Outputting CNF witness for "+std::to_string(witnessIndices[j])+"to ZDD in dotFile.", 1);
 	}
 
 	return;

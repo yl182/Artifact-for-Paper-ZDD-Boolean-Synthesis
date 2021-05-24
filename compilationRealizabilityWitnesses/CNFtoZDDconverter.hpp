@@ -66,9 +66,10 @@ public:
 	ZDD Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int>& y_vars, const std::vector<int>& mcsOrder, std::vector<ZDD>& intermediateZDDs, std::vector<int>& resolveOrder);
 
 	// substitution
-	ZDD crossZDD(const ZDD& z) const;
+	ZDD crossZDD(const ZDD& z, Cudd& mgr) const;
+	ZDD nonsup(Cudd& mgr, const ZDD& z_this, const ZDD& z) const;
+	ZDD negateDnfZDD(const ZDD& z, int maxVar, std::vector<int>& ys, Cudd& mgr);
 
-	ZDD negCrossZDD(const ZDD& z) const;
 
 	ZDD CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_map <int, int>& index_map, int maxVar, const ZDD& z, CnfFormula& cnf, std::vector<ZDD>& Clause_ZDDs);
 
