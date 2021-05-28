@@ -1,0 +1,2 @@
+Filename,Full,Partial,CompilationTime(ms),FullRealizabilityTime(ms),PartialRealizabilityTime(ms),RealizabilityTotalTime,SynthesisTime(ms),formulaZDDSize(nodes),PeakNodeCount(nodes),PeakMemoryInUse(Bytes)
+tree-exa10-10.qdimacs,YES,YES,34.2417,3.2705,4.6542,4.6674,11.9434,56,2044,1.07239e+07

@@ -1,0 +1,2 @@
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	RealizabilityTime(ms)	SynthesisTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+tree-exa10-10.qdimacs	YES	YES	34.2417 ms	3.2705 ms	4.6542 ms	4.6674 ms	11.9434 ms	56 nodes	2044 nodes	1.07239e+07 bytes
