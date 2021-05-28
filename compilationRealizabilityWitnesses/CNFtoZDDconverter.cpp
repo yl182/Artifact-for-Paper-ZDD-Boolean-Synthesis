@@ -929,7 +929,7 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 
 	
 	std::ofstream out("resultsSynthesis.txt", std::ios_base::app);
-	out << "Filename\tFull\tPartial\tCompilationTime(ms)\tFullRealizabilityTime(ms)\tPartialRealizabilityTime(ms)\tRealizabilityTime(ms)\tSynthesisTime(ms)\tZDDFormulaSize(nodes)\tPeakNodeCount(nodes)\tPeakMemoryInUse:(bytes) \n";
+	//out << "Filename\tFull\tPartial\tCompilationTime(ms)\tFullRealizabilityTime(ms)\tPartialRealizabilityTime(ms)\tRealizabilityTime(ms)\tSynthesisTime(ms)\tZDDFormulaSize(nodes)\tPeakNodeCount(nodes)\tPeakMemoryInUse:(bytes) \n";
 	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0]*1000 << " ms\t" << timerNoter[1]*1000 << " ms\t" << timerNoter[2]*1000 << " ms\t" << timerNoter[3]*1000 << " ms\t" << timerNoter[4]*1000 << " ms\t" << ZDDNodeCount << " nodes\t" << (double)mgr.ReadPeakNodeCount() << " nodes\t" << (double)mgr.ReadMemoryInUse() << " bytes" << std::endl;
 	out.close();
 
