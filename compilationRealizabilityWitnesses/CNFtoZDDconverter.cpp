@@ -59,7 +59,7 @@ ZDD CNFtoZDDconverter::constructCNFWitness(Cudd& mgr, const ZDD& zdd, int y) {
 }
 
 // function to construct get ZDD for f_y^+
-ZDD CNFtoZDDconverter::constructZDDforFYplus(Cudd& mgr, const ZDD& zdd, int y) {
+ZDD CNFtoZDDconverter::constructZDDforFYminus(Cudd& mgr, const ZDD& zdd, int y) {
 	
 		
 		printToCout("Constructing f_y^+ for y = " + std::to_string(y), 1);
@@ -73,7 +73,7 @@ ZDD CNFtoZDDconverter::constructZDDforFYplus(Cudd& mgr, const ZDD& zdd, int y) {
 		printToCout(neg_Y, 1);
 		
 		// build ZDDs for CNF witness f_y^-
-		ZDD witnessCNF = zdd.Subset1(pos_Y);
+		ZDD witnessCNF = zdd.Subset0(pos_Y);
 		std::vector<ZDD> tmpZDDs;
 		tmpZDDs = {witnessCNF};
 		ZDDtoDot(mgr, tmpZDDs, "f_y_plus_helperZDD_" + std::to_string(y) + ".dot", NULL, NULL);
@@ -859,7 +859,7 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 			// for positive occurrences of y
 			// clause distribution between f_y^+ and CNF witness
 			// then union 
-			tmpZDD = constructZDDforFYplus(mgr, currentZDD, witnessIndices[i]);
+			tmpZDD = constructZDDforFYminus(mgr, currentZDD, witnessIndices[i]);
 			//currentZDD.Subset0(indexy)
 			tmp2ZDD = currentZDD.Subset0(indexConverter(currentY));
 			// use substitution to update the ZDD
