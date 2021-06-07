@@ -816,6 +816,9 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	printToCout(" seconds.", 1);
 	timerNoter.emplace_back(timeCompilation);
 	
+	// record compilation part memory cost
+	double compNodeCount = (double)mgr.ReadPeakNodeCount();//peak node count (compilation)
+	double compPeakMem = (double)mgr.ReadMemoryInUse(); // peak memory (compilation)
 
 	//timenoter: 0:compilation, 1:full, 2:partial, 3: realizability, 4:
 
@@ -828,7 +831,9 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	std::chrono::steady_clock::time_point tEndOfRealizability = std::chrono::steady_clock::now();
 	double timeForRealizability = timer(tZDDdone, tEndOfRealizability);
 	timerNoter.emplace_back(timeForRealizability);
-
+	// record realizability part memory cost
+	double realNodeCount = (double)mgr.ReadPeakNodeCount();//peak node count (realizability)
+	double realPeakMem = (double)mgr.ReadMemoryInUse(); // peak memory (realizability)
 	
 
 	
@@ -902,8 +907,12 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	double timeForSynthesis = timer(tEndOfRealizability, tEndOfSynthesis);
 	timerNoter.emplace_back(timeForSynthesis); // timeNoter[4], time for synthesis
 
+	// record synthesis part memory cost
+	double synthNodeCount = (double)mgr.ReadPeakNodeCount();//peak node count (synthesis)
+	double synthPeakMem = (double)mgr.ReadMemoryInUse(); // peak memory (synthesis)
+
 	// print out and results
-	printToCout("Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime\tRealizabilityTime\tSynthesisTime\tZDDFormulaSize\tPeakNodeCount\tPeakMemoryInUse: ", 1);
+	printToCout("Filename\tFull\tPartial\tCompilationTime\tFullRealizabilityTime\tPartialRealizabilityTime\tRealizabilityTime\tSynthesisTime\tZDDFormulaSize\tCompPeakNode\tCompPeakMemory\tRealPeakNode\tRealPeakMemory\tSynthPeakNode\tSynthPeakMemory: ", 1);
 	printToCout(path+":\n");//filename
 	printToCout(fullPartial[0]+"\t"+fullPartial[1] + "\t", 0);//full partial
 	printToCout(timerNoter[0], 0);//compilation time
@@ -920,21 +929,39 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	// ZDD Size of Formula
 	printToCout(ZDDNodeCount, 0);//ZDD formula size
 	printToCout(" nodes\t", 0);
-	// peak node count
-	printToCout((double)mgr.ReadPeakNodeCount(), 0);//peak node count
+
+	// peak node count (compiltion)
+	printToCout(compNodeCount, 0);//peak node count (compilation)
 	printToCout(" nodes\t", 0);
-	// peak memory in use
-	printToCout((double)mgr.ReadMemoryInUse(), 0);//peak memory count
+	// peak memory in use (compilation)
+	printToCout(compPeakMem, 0);//peak memory count (compilation)
+	printToCout(" bytes\t", 0);
+
+	// peak node count (realizability)
+	printToCout(realNodeCount, 0);//peak node count (realizability)
+	printToCout(" nodes\t", 0);
+	// peak memory in use (realizability)
+	printToCout(realPeakMem, 0);//peak memory count (realizability)
+	printToCout(" bytes\t", 0);
+
+	// peak node count (synthesis)
+	printToCout(synthNodeCount, 0);//peak node count (synthesis)
+	printToCout(" nodes\t", 0);
+	// peak memory in use (synthesis)
+	printToCout(synthPeakMem, 0);//peak memory count (synthesis)
+
 	printToCout(" bytes\t", 1);
 
 	
 	std::ofstream out("resultsSynthesis.txt", std::ios_base::app);
-	//out << "Filename\tFull\tPartial\tCompilationTime(ms)\tFullRealizabilityTime(ms)\tPartialRealizabilityTime(ms)\tRealizabilityTime(ms)\tSynthesisTime(ms)\tZDDFormulaSize(nodes)\tPeakNodeCount(nodes)\tPeakMemoryInUse:(bytes) \n";
-	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0]*1000 << " ms\t" << timerNoter[1]*1000 << " ms\t" << timerNoter[2]*1000 << " ms\t" << timerNoter[3]*1000 << " ms\t" << timerNoter[4]*1000 << " ms\t" << ZDDNodeCount << " nodes\t" << (double)mgr.ReadPeakNodeCount() << " nodes\t" << (double)mgr.ReadMemoryInUse() << " bytes" << std::endl;
+	//out << "Filename\tFull\tPartial\tCompilationTime(ms)\tFullRealizabilityTime(ms)\tPartialRealizabilityTime(ms)\tRealizabilityTime(ms)\tSynthesisTime(ms)\tZDDFormulaSize(nodes)\tCompPeakNode(nodes)\tCompPeakMemory(bytes)\tRealPeakNode(nodes)\tRealPeakMemory(bytes)\tRealPeakNode(nodes)\tRealPeakMemory(bytes) \n";
+	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0]*1000 << " ms\t" << timerNoter[1]*1000 << " ms\t" << timerNoter[2]*1000 << " ms\t" << timerNoter[3]*1000 << " ms\t" << timerNoter[4]*1000 << " ms\t" << ZDDNodeCount << " nodes\t" << compNodeCount << " nodes\t" << compPeakMem << " bytes\t" << realNodeCount << " nodes\t" << realPeakMem << " bytes\t" << synthNodeCount << " nodes\t" << synthPeakMem << " bytes" << std::endl;
+
 	out.close();
 
 	std::ofstream outCSV("resultsSynthesis.csv", std::ios_base::app);
-	outCSV << path << "," << fullPartial[0] << "," << fullPartial[1] << "," << timerNoter[0]*1000 << "," << timerNoter[1]*1000 << "," << timerNoter[2]*1000 << "," << timerNoter[3]*1000 << "," << timerNoter[4]*1000 << "," << ZDDNodeCount << "," << (double)mgr.ReadPeakNodeCount() << "," << (double)mgr.ReadMemoryInUse() << "," << std::endl;
+	outCSV << path << "," << fullPartial[0] << "," << fullPartial[1] << "," << timerNoter[0]*1000 << "," << timerNoter[1]*1000 << "," << timerNoter[2]*1000 << "," << timerNoter[3]*1000 << "," << timerNoter[4]*1000 << "," << ZDDNodeCount << "," << compNodeCount << "," << compPeakMem << "," << realNodeCount << "," << realPeakMem << "," << synthNodeCount << "," << synthPeakMem << ","<< std::endl;
+
 	outCSV.close();
 	return;
 	

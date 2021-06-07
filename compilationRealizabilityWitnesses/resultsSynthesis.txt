@@ -1,4 +1,4 @@
-Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	RealizabilityTime(ms)	SynthesisTime(ms)	ZDDFormulaSize(nodes)	PeakNodeCount(nodes)	PeakMemoryInUse:(bytes) 
+Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	RealizabilityTime(ms)	SynthesisTime(ms)	ZDDFormulaSize(nodes)	CompPeakNode(nodes) CompPeakMemory(bytes)   RealPeakNode(nodes) RealPeakMemory(bytes)   SynthPeakNode(nodes)    SynthPeakMemory(bytes)
 /home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_3.qdimacs	YES	YES	8.00059 ms	0.25365 ms	0.363753 ms	0.374884 ms	0.718725 ms	160 nodes	4088 nodes	1.07809e+07 bytes
 /home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_4.qdimacs	YES	YES	20.2193 ms	1.34074 ms	1.52703 ms	1.53811 ms	4.84389 ms	576 nodes	22484 nodes	1.15169e+07 bytes
 /home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/qshifter_5.qdimacs	YES	YES	78.0365 ms	9.51242 ms	9.92212 ms	9.93546 ms	58.6113 ms	2176 nodes	68474 nodes	1.33487e+07 bytes
