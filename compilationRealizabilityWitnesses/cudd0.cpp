@@ -36,8 +36,14 @@ int main (int argc, char *argv[])
 	}
 	const std::string str1(argv[1]);
 	//"2QBF2016/2QBF/tree-exa10-30.qdimacs";
+	
 	CNFtoZDDconverter c(0,0);
 	c.convertCNFtoZDD(str1);
+
+
+
+	//std::cerr
+	// >: redirect &2: tostderr?
 
 	
 	/*
@@ -58,12 +64,28 @@ int main (int argc, char *argv[])
 	std::cout << "num " << std::chrono::steady_clock::period::num << std::endl;
 	std::cout << "den " << std::chrono::steady_clock::period::den << std::endl;
 	*/
-	/*Cudd mgr;
-	ZDD z =mgr.zddOne(5).Change(1).Change(0);
+	
+	/*
+	Cudd mgr;
+	ZDD z =mgr.zddOne(50);// this is the 1-ZDD
+	z = z.Change(21).Change(0);
+	//ZDD z0 = mgr.zdd();//this is the 0-ZDD
 	//.Change(0).Change(5);
+	
+	z = z.Change(3).Change(4).Change(0);
+	ZDD z_ = mgr.zddOne(50).Change(10).Change(20).Change(3);
+	z = z.Union(z_);
+	BDD b = z.PortToBdd();// convert to BDD's isop
+
 	std::vector<ZDD> zdd = {z};
-	mgr.DumpDot(zdd, NULL, NULL, fopen("try1ZDD.dot", "w"));
+	std::vector<BDD> bdd = {b};
+	mgr.zddPrintSubtable();
+	mgr.DumpDot(bdd, NULL, NULL, fopen("portToBdd.dot", "w"));
+	std::cout << z.NodeReadIndex() << std::endl;// function of DD class to find root node's index
+	
 	*/
+	//std::cout << (z == z0) << std::endl;
+
 	/*Cudd mgr;
 	
 	ZDD z = mgr.zddVar(0).Subset0(1).Subset0(2).Change(1);

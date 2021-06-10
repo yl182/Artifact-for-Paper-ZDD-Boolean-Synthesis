@@ -35,7 +35,7 @@ public:
 
 	//helper functions
 	ZDD constructCNFWitness(Cudd& mgr, const ZDD& zdd, int y);
-	ZDD constructZDDforFYminus(Cudd& mgr, const ZDD& zdd, int y);
+	ZDD constructZDDforFYminus(Cudd& mgr, const ZDD& zdd, int y, bool flag);
 	std::vector<int> MCSordering(const QCnfFormula qcnf) const;
 
 
