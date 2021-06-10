@@ -74,10 +74,10 @@ ZDD CNFtoZDDconverter::constructZDDforFYminus(Cudd& mgr, const ZDD& zdd, int y, 
 		printToCout(neg_Y, 1);
 		
 		ZDD witnessCNF;
-		if (flag) {
+		if (flag) {//flag == 1, normal build
 			// build ZDDs for CNF witness f_y^-
 			witnessCNF = zdd.Subset1(neg_Y);
-		} else {
+		} else {//flag = 0, for use witness with BDD
 			// build ZDDs for CNF witness f_y^- \land f_y'
 			witnessCNF = zdd.Subset1(neg_Y).Union(zdd.Subset0(pos_Y).Subset0(neg_Y));
 		}
