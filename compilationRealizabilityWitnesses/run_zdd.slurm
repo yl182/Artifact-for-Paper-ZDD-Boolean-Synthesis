@@ -3,11 +3,11 @@
 #SBATCH --nodes=1 --exclusive
 #SBATCH --export=ALL
 #SBATCH --partition=commons
-#SBATCH --job-name=compilReal
+#SBATCH --job-name=compilRealSyn
 #SBATCH --cpus-per-task=1
 #SBATCH --constraint=ivybridge
 #SBATCH --ntasks=1
-#SBATCH --time=24:00:00
+#SBATCH --time=08:00:00
 #SBATCH --mem=64g
 #SBATCH --mail-user=yl182@rice.edu
 #SBATCH --mail-type=ALL

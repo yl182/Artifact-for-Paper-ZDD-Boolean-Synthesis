@@ -1,3 +1,81 @@
+MCS ordering: 3 1 2 19 11 18 10 17 9 16 8 4 15 14 12 13 5 6 7 
+RESOLVING Scope: 12 13 14 15 16 17 18 19 
+Resolving for y=19
+start of clauseDistribution function in cuddObj.c
+Resolving for y=18
+start of clauseDistribution function in cuddObj.c
+Resolving for y=17
+start of clauseDistribution function in cuddObj.c
+Resolving for y=16
+start of clauseDistribution function in cuddObj.c
+Resolving for y=15
+start of clauseDistribution function in cuddObj.c
+Resolving for y=14
+start of clauseDistribution function in cuddObj.c
+Resolving for y=12
+start of clauseDistribution function in cuddObj.c
+Resolving for y=13
+start of clauseDistribution function in cuddObj.c
+RESOLVING Scope: 1 2 3 4 5 6 7 8 9 10 11 
+Resolving for y=3
+start of clauseDistribution function in cuddObj.c
+Resolving for y=1
+start of clauseDistribution function in cuddObj.c
+Resolving for y=2
+start of clauseDistribution function in cuddObj.c
+Resolving for y=11
+start of clauseDistribution function in cuddObj.c
+Resolving for y=10
+start of clauseDistribution function in cuddObj.c
+Resolving for y=9
+start of clauseDistribution function in cuddObj.c
+Resolving for y=8
+start of clauseDistribution function in cuddObj.c
+Resolving for y=4
+start of clauseDistribution function in cuddObj.c
+Resolving for y=5
+start of clauseDistribution function in cuddObj.c
+Resolving for y=6
+start of clauseDistribution function in cuddObj.c
+Resolving for y=7
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
+start of clauseDistribution function in cuddObj.c
 start of clauseDistribution function in cuddObj.c
 start of clauseDistribution function in cuddObj.c
 start of clauseDistribution function in cuddObj.c
