@@ -1,4 +1,4 @@
-# ZDD Boolean Synthesis
+# Artifact for paper "ZDD Boolean Synthesis"
 
 This is a ZDD-based synthesis tool as the artifact for research paper ``ZDD Boolean Synthesis`` for TACAS submission 2022. This tool is used in the paper compared to RSynth in previous work.
 
