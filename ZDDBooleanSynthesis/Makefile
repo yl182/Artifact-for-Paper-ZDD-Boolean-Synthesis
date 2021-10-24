@@ -1,5 +1,4 @@
 main:
-	
 
 	g++ -std=c++11 -g -c CNFtoZDDconverter.cpp -I qdimacs-reader -I cudd-release/cudd -I cudd-release/cplusplus
 
@@ -9,9 +8,8 @@ main:
 
 
 	
-	#./cudd0 <argument>
-	
-	#bash dot2png.sh
+sampleScriptForSeriesOfExecution:
+	bash dot2png.sh
 	
 
 clean:
@@ -22,15 +20,7 @@ clean:
 	rm -f *.o
 	rm -f *.pdf
 
-saved:
-	g++  -g cudd0.cpp qdimacs-reader/QDimacsReader.cpp CNFtoZDDconverter.cpp qdimacs-reader/QCnfFormula.cpp qdimacs-reader/CnfFormula.cpp QMRes/manip.c cudd-release/cplusplus/cuddObj.cc cudd-release/cudd/cuddZddGroup.c cudd-release/cudd/cuddAPI.c -I cudd-release -I cudd-release/cplusplus -I cudd-release/cudd -I cudd-release/util -I cudd-release/st -I cudd-release/mtr -I cudd-release/epd -I qdimacs-reader -I QMRes -I cudd-release/cplusplus -lcudd -L cudd-release/cudd -L qdimacs-reader -o cudd0
-
-	gcc -g -c QMRes/manip.c -I cudd-release/cudd -I cudd-release/epd -I QMRes -I cudd-release/util -I cudd-release -I cudd-release/st -I cudd-release/mtr 
-	./cudd0
+sampleExecutionScript:
+	./cudd0 <argument>
+sampleDotToFigureScript:
 	dot ZDD.dot -Tpng -o ZDD.png
-
-	#dot try1ZDD.dot -Tpng -o try1ZDD.png
-	#dot try2ZDD.dot -Tpng -o try2ZDD.png
-	#dot try3ZDD.dot -Tpng -o try3ZDD.png
-
-	

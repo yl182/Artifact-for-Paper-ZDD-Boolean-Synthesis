@@ -1,3 +1,0 @@
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  Unable to open file /home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/k_phâ€_n-1.qdimacs.qdimacs
-/var/spool/slurm/job2708302/slurm_script: line 27: 46893 Aborted                 ${compilReal} ${specfile} > ${outfile}
