@@ -10,7 +10,7 @@ The source code are placed under the top layer of directories.
 
 To compile, just run ``make`` under ZDDBooleanSynthesis directory.
 
-To remove .dot files after running, run ``make clean``.
+To remove .dot files after running, run ``make clean``. This command does not eliminate previous running results in ``resultsSynthesis.txt`` and ``resultsSynthesis.csv``.
 
 The ``Makefile`` also includes sample scripts for usage listed below.
 
@@ -50,3 +50,5 @@ To run on a new additional benchmark, simple use ```./cudd0 <benchmark-filepath>
 
 ## Results collection
   The results are reported in resultsSynthesis.txt and resultsSynthesis.csv, where the first row labels what the columns represent.
+## Publicity of repository
+We can make the code public on Zenodo after acceptance or further refinement.
