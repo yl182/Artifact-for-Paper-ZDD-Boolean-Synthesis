@@ -6,9 +6,7 @@ This is a ZDD-based synthesis tool as the artifact for research paper ``ZDD Bool
 
 This project requires C++ of version at least 11, and includes a modified ``CUDD`` package in cudd-release. It also includes the ``QMRes`` functions from previous work by Pan and Vardi under QMRes directory.
 
-The source code are placed under the top layer of directories.
-
-To compile, just run ``make`` under ZDDBooleanSynthesis directory.
+To compile, just run ``make`` under the top level of directory.
 
 To remove .dot files after running, run ``make clean``. This command does not eliminate previous running results in ``resultsSynthesis.txt`` and ``resultsSynthesis.csv``.
 
@@ -30,7 +28,7 @@ which can be then converted to figures by ``dot <ZDD-name.dot> -Tpng -o <ZDD-nam
 
 As another example, ``` ./cudd0 2QBF2016/2QBF/tree-exa10-10.qdimacs 0 0``` runs on the same benchmark file, with concise standard output and no dot files produced, but the result will also be reported in ``resultsSynthesis.csv`` and ``resultsSynthesis.txt``.
 ## Run all benchmarks in a specific family
-To run a benchmark in a specific family, use the .sh scripts provided, or the following in ZDDBooleanSynthesis directory:
+To run a benchmark in a specific family, use the .sh scripts provided, or the following from the top level directory:
 ```
 for fn in $2QBF2016/2QBF/*<keyword-for-the-family>*.qdimacs
 do
