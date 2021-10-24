@@ -51,4 +51,4 @@ To run on a new additional benchmark, simple use ```./cudd0 <benchmark-filepath>
 ## Results collection
   The results are reported in resultsSynthesis.txt and resultsSynthesis.csv, where the first row labels what the columns represent.
 ## Publicity of repository
-We can make the code public on Zenodo after acceptance or further refinement.
+We can make the code public on Zenodo after acceptance.
