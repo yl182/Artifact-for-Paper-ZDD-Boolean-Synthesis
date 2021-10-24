@@ -966,12 +966,13 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 
 	
 	std::ofstream out("resultsSynthesis.txt", std::ios_base::app);
-	//out << "Filename\tFull\tPartial\tCompilationTime(ms)\tFullRealizabilityTime(ms)\tPartialRealizabilityTime(ms)\tRealizabilityTime(ms)\tSynthesisTime(ms)\tZDDFormulaSize(nodes)\tCompPeakNode(nodes)\tCompPeakMemory(bytes)\tRealPeakNode(nodes)\tRealPeakMemory(bytes)\tRealPeakNode(nodes)\tRealPeakMemory(bytes) \n";
+	out << "Filename\tFull\tPartial\tCompilationTime(ms)\tFullRealizabilityTime(ms)\tPartialRealizabilityTime(ms)\tRealizabilityTime(ms)\tSynthesisTime(ms)\tZDDFormulaSize(nodes)\tCompPeakNode(nodes)\tCompPeakMemory(bytes)\tRealPeakNode(nodes)\tRealPeakMemory(bytes)\tRealPeakNode(nodes)\tRealPeakMemory(bytes) \n";
 	out << path << "\t" << fullPartial[0] << "\t" << fullPartial[1] << "\t" << timerNoter[0]*1000 << " ms\t" << timerNoter[1]*1000 << " ms\t" << timerNoter[2]*1000 << " ms\t" << timerNoter[3]*1000 << " ms\t" << timerNoter[4]*1000 << " ms\t" << ZDDNodeCount << " nodes\t" << compNodeCount << " nodes\t" << compPeakMem << " bytes\t" << realNodeCount << " nodes\t" << realPeakMem << " bytes\t" << synthNodeCount << " nodes\t" << synthPeakMem << " bytes" << std::endl;
 
 	out.close();
 
 	std::ofstream outCSV("resultsSynthesis.csv", std::ios_base::app);
+	outCSV << "Filename" << "," << "Full" << "," << "Partial" << "," << "CompilationTime(ms)" << "," << "FullRealizabilityTime(ms)" << "," << "PartialRealizabilityTime(ms)" << "," << "RealizabilityTime(ms)" << "," << "SynthesisTime(ms)" << "," << "ZDDFormulaSize(nodes)" << "," << "CompPeakNode(nodes)CompPeakMemory(bytes)" << "," << "RealPeakNode(nodes)"<< "," << "RealPeakMemory(bytes)" << "," << "RealPeakNode(nodes)" << "," << "RealPeakMemory(bytes) \n";
 	outCSV << path << "," << fullPartial[0] << "," << fullPartial[1] << "," << timerNoter[0]*1000 << "," << timerNoter[1]*1000 << "," << timerNoter[2]*1000 << "," << timerNoter[3]*1000 << "," << timerNoter[4]*1000 << "," << ZDDNodeCount << "," << compNodeCount << "," << compPeakMem << "," << realNodeCount << "," << realPeakMem << "," << synthNodeCount << "," << synthPeakMem << ","<< std::endl;
 
 	outCSV.close();
