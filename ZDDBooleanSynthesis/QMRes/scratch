@@ -1,0 +1,287 @@
+let size_order_clause_set s1 s2 = 
+  if (clause_set_size s1) > (clause_set_size s2) then (s2, s1) else (s1, s2)
+
+let check_zres_result s = 
+  if s=empty_set then 
+    true 
+  else if s=empty_clause then
+    false
+  else (
+    print_string "bad_result\n";
+    false
+  )
+
+let rec and_quant qt qv l =
+  let q = bdd_var qv in
+  match l with
+      [] -> bdd_one
+    | [x] -> ( match qt with
+		   `Exists -> bdd_exists q x
+		 | `Forall -> bdd_forall q x
+	     )
+    | [x;y] -> (match qt with
+		    `Exists -> bdd_andexist x y q
+		  | `Forall -> bdd_forall q (bdd_and x y)
+	       )
+    | hd::(h2::tl) -> and_quant qt qv ((bdd_and hd h2)::tl)
+
+let sort_quantifiers q = 
+  List.map (fun q -> match q with
+		(`Exists,l) -> (`Exists, (List.sort Pervasives.compare l))
+	      | (`Forall,l) -> (`Forall, (List.sort Pervasives.compare l))
+	   ) q
+
+exception ZR_QBF_BRANCH
+
+let make_clause_zres c = 
+  match c with
+      `Prop(v) -> build_clause [v]
+    | `Not(`Prop(v)) -> build_clause [(-v)]
+    | `Or(l) -> let l' = List.map (fun f -> match f with 
+				       `Prop(v) -> v
+				     | `Not(`Prop(v)) -> (-v)
+				     | _ -> raise Bad_formula
+				  ) l in
+	build_clause l'
+    | _ -> raise Bad_formula
+
+let rec univ_var_list q c =
+  let univ_var q c =
+    let (t,f,n) = split_subset q c in
+      subsumption_free_union t (subsumption_free_union f n)
+  in
+    match q with 
+	[] -> c
+      | hd::tl -> univ_var_list tl (univ_var hd c)
+
+exception ZR_UNSAT
+
+let rec bucket_elim_zres q s vf vl =
+  let s' = 
+    if (not q.(vf)) then (
+      if !debug_dump then ( print_string "Resolving var "; print_int vf; print_string " "; flush_all () ) else ();
+      let (t,f,n) = split_subset vf s in
+      let _ = (print_int (clause_set_size t); print_string "-";print_int (clause_set_size f); print_string "\n"; flush_all ()) in
+	if (vf<>vl & !use_splitting & (clause_set_size t) > !split_threshold & (clause_set_size f) > !split_threshold) then (
+	  print_string "Splitting ";
+	  print_int vl;
+	  print_string "\n";
+	  let (t,f,n) = split_subset vl s in
+	  let _ = (print_int (clause_set_size t); print_string "-";print_int (clause_set_size f); print_string "\n"; flush_all ()) in
+	  let t' = subsumption_free_union t n in
+	  let f' = subsumption_free_union f n in
+	  let res = bucket_elim_zres q t' vf (vl-1) in
+	    if (not q.(vl)) then (
+	      if (res = empty_set) then (
+		res
+	      ) else (
+		bucket_elim_zres q f' vf (vl-1)
+	      )
+	    ) else (
+	      if (res = empty_clause) then (
+		res
+	      ) else (
+		bucket_elim_zres q f' vf (vl-1)
+	      )
+	    )
+	) else (
+	  subsumption_free_union (clause_distribution t f) n
+	)
+    ) else (
+      if !debug_dump then ( print_string "Clearing var "; print_int vf; print_string "\n"; flush_all () ) else ();
+      let (t,f,n) = split_subset vf s in
+	subsumption_free_union (subsumption_free_union t f) n
+    ) in
+    if (s' = empty_set or s' = empty_clause or vf=vl) then 
+      s' 
+    else 
+      bucket_elim_zres q s' (vf+1) vl
+
+let qzres qo bq s = 
+  match qo with
+      [] -> check_zres_result (clear_universal_literals s) 
+    | hd::tl -> (
+	let (t,f,n) = split_subset hd s in
+	  if (!use_splitting&(clause_set_size t)>!splitting_threshold&(clause_set_size f)>!splitting_threshold) then (
+	    let hdq::tlq = bq in
+	    let (qop, qvarl) = hdq in
+	    let branch_var = choose_branch_var qvarl t f in
+	    let bq' = remove_from_branch_order bq branch_var in
+	    let (bt, bf, bn) = split_subset branch_var s in
+	    let bt' = clear_universal_literals (subsumption_free_union bt bn) in
+	    let bf' = clear_universal_literals (subsumption_free_union bf bn) in
+	    let (s1, s2) = size_order_clause_set bt' bf' in
+	    let res = qzres qo bq' s1 in
+	      if (qop=`Exists & res)or(qop=`Forall & not res) then
+		res
+	      else
+		qzres qo bq' s2
+	  ) else (
+	    let s' = subsumption_free_union (clause_distribution t f) n in
+	    let s'' = clear_universal_literals s' in
+	      qzres tl bq s''
+	  )
+      )
+
+let qbf_cnf_zr f = 
+  let (bo,vo,f') = sort_vars f in
+  let cl = ref empty_set in
+  let _ = make_clause_set f cl in
+  let cl' = bucket_elim_zres qm !cl 0 vf' in
+    cl'
+
+let rec split_min comp l =
+  match l with
+      [x] -> (x,[])
+    | hd::tl -> let (m,l') = split_min comp tl in
+	if (comp hd m)<0 then (hd,m::l') else (m,hd::l')
+
+
+let shuffle_vars f =
+  let vf = props f in
+  let (f',q') = prenex_noshare_split f in
+  match f' with
+      `And(l) ->
+	let ls = List.map support l in
+	let vs = List.fold_right IntSet.union ls IntSet.empty in
+	let vo = max_cardinality_ordering ls vs in
+	let vo' = Array.make (vf+1) 0 in
+	let vo'' = Array.of_list vo in
+	let _ = Array.iteri (fun i x -> vo'.(x) <- i) vo'' in
+	let f' = map_vars vo' f in
+	  f'
+    | _ -> f    
+
+
+let bdd_cons x y =
+  if (x = y) then x else bdd_constrain x y
+
+let rec factor f =
+  if (f = bdd_zero or f = bdd_one) then f
+  else (
+    let v = bdd_top f in
+    let ft = bdd_t f in
+    let ff = bdd_e f in
+    let fd = bdd_or ft ff in
+    let fp = bdd_cons ft fd in
+    let fn = bdd_cons ff fd in
+    let fd' = factor fd in
+    let fp' = factor fp in
+    let fn' = factor fn in
+    let t = bdd_make_node (v*2+1) fn' fd' in
+    let tt = bdd_make_node (v*2) fp' t in
+      tt
+  )
+      
+let qbf_cnf_bdd f =
+  let rec bucket_elim_all quants l =
+    let rec bucket_elim quant l =
+      let bucket qt qv l =
+	print_int qv;
+	print_string " ";
+	flush_all ();
+	let (c,r) = List.partition (fun f -> is_var_used f qv) l in
+	let c' = and_quant qt qv c in
+	  print_int (bdd_size c');
+(*	  print_string " ";
+	  print_int (bdd_size c'');*)
+	  print_string "\n";
+	  flush_all ();
+	  c'::r
+      in
+      match quant with
+	  (_,[]) -> l
+	| (q,hd::tl) -> let l' = bucket q hd l in
+	    bucket_elim (q,tl) l'
+    in
+    match quants with
+	[] -> (
+	  match l with
+	      [x] -> x
+	    | hd::tl -> List.fold_left bdd_and hd tl
+	)
+      | hd::tl -> let l' = bucket_elim hd l in
+	  bucket_elim_all tl l'
+  in
+  let vf = props f in
+  let (f',q') = prenex_noshare_split f in
+  let q'' = sort_quantifiers q' in
+  let q = List.rev_append q'' [] in
+  let make_dd_lits l =
+    let l' = List.map (fun f -> match f with
+			   `Prop(v) -> bdd_var v
+			 | `Not(`Prop(v)) -> bdd_not (bdd_var v)
+			 | _ -> raise Not_found) l in
+      List.fold_left bdd_or bdd_zero l'
+  in
+  match f' with
+      `And(l) -> (
+	let l' = List.map (fun f -> match f with
+			       `Or(l) -> make_dd_lits l
+			     | `Prop(v) -> make_dd_lits [f]
+			     | `Not(`Prop(v)) -> make_dd_lits [f]
+			     | _ -> raise Bad_formula
+			  ) l in
+	  print_string "Starting\n";
+	  flush_all ();
+	let result = bucket_elim_all q l' in
+	  result
+      )
+    | _ -> raise Bad_formula
+
+    if (Array.length Sys.argv) = 3 then 
+      if Sys.argv.(2) = "-z" then
+	try 
+
+      else 
+	let d = qbf_cnf_bdd f' in
+	  if (d = bdd_zero) then false else true
+    else 
+      let d = qbf_cnf_bdd f' in
+	if (d = bdd_zero) then false else true
+
+module type AbstractResolution = sig
+  exception Completed
+  type t
+  val resolve: t -> int -> t list
+  val erase_universal: t -> int -> t
+  val erase_universal_self: t -> t
+  val check: t -> sat_result
+  val size: t -> int
+  val make: Qbf.formula -> t
+end
+
+module type ResolutionOrder = sig
+  module Resolution: AbstractResolution
+  type t = Resolution.t
+  val compare: t -> t -> int
+end
+
+module type BranchHeuristics = sig
+  type t
+  val branch: t -> int list -> t list
+end
+
+  
+module ResolutionWithZR = 
+  functor (B:BranchHeuristics with t=clause_set) -> struct
+    exception Completed
+    type t = { c:clause_set; q:int list; b:(bool * (int list)) list }
+    let size T = clause_set_size c
+    let make f = 
+      let (bo, ro, f') = sort_vars f in
+      let c = make_clause_set f' in
+	{ c=c;q=ro;b=bo }
+  end	
+
+module DepthFirstResolutionOrder = struct
+  module Resolution = ResolutionWithZR
+  type t = Resolution.t
+  let compare a b = Pervasives.compare (List.length a.q) (List.length b.q)
+end
+
+module BreadthFirstResolutionOrder = struct
+  module Resolution = ResolutionWithZR
+  type t = Resolution.t
+  let compare a b = - (DepthFirstResolutionOrder a b)
+end

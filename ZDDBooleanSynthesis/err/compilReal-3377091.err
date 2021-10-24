@@ -1,0 +1,3 @@
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Unable to open file /home/yl182/zdd/Gitrepo/compilationRealizabilityWitnesses/2QBF2016/2QBF/decomposition128.qdimacs
+/var/spool/slurm/job3377091/slurm_script: line 27: 41308 Aborted                 ${compilReal} ${specfile} > ${outfile}

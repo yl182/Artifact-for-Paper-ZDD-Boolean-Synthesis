@@ -1,0 +1,10 @@
+c This QDIMACS file encodes the formula   
+c x, y1, y2
+c (x or y1) and (neg_x or y2) and (neg_y2) and (neg_y1)
+p cnf 3 4                                 
+a 1 0                                     
+e 2 3 0                                       
+1 2 0                                      
+-1 3 0
+-3 0
+-2 0                                      
