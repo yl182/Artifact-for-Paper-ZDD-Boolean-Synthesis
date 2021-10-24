@@ -1,4 +1,0 @@
-Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	RealizabilityTime(ms)	SynthesisTime(ms)	ZDDFormulaSize(nodes)	CompPeakNode(nodes)	CompPeakMemory(bytes)	RealPeakNode(nodes)	RealPeakMemory(bytes)	RealPeakNode(nodes)	RealPeakMemory(bytes) 
-2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES	6.79779 ms	0.191016 ms	0.269466 ms	0.282261 ms	0.823789 ms	56 nodes	1022 nodes	1.05869e+07 bytes	1022 nodes	1.05869e+07 bytes	2044 nodes	1.07239e+07 bytes
-Filename	Full	Partial	CompilationTime(ms)	FullRealizabilityTime(ms)	PartialRealizabilityTime(ms)	RealizabilityTime(ms)	SynthesisTime(ms)	ZDDFormulaSize(nodes)	CompPeakNode(nodes)	CompPeakMemory(bytes)	RealPeakNode(nodes)	RealPeakMemory(bytes)	RealPeakNode(nodes)	RealPeakMemory(bytes) 
-2QBF2016/2QBF/tree-exa10-10.qdimacs	YES	YES	6.96338 ms	0.162343 ms	0.251691 ms	0.264077 ms	0.91029 ms	56 nodes	1022 nodes	1.05869e+07 bytes	1022 nodes	1.05869e+07 bytes	2044 nodes	1.07239e+07 bytes

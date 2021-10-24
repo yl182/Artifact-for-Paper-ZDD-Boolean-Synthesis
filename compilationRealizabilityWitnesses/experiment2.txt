@@ -1,6 +1,0 @@
-c This QDIMACS file encodes the formula     
-c y  is represented by number 1
-p cnf 1 1                                                                  
-a 0                                     
-e 1 0                                       
-1 -1 0                                          
