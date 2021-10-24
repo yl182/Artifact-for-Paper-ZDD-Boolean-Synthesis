@@ -972,7 +972,6 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	out.close();
 
 	std::ofstream outCSV("resultsSynthesis.csv", std::ios_base::app);
-	outCSV << "Filename" << "," << "Full" << "," << "Partial" << "," << "CompilationTime(ms)" << "," << "FullRealizabilityTime(ms)" << "," << "PartialRealizabilityTime(ms)" << "," << "RealizabilityTime(ms)" << "," << "SynthesisTime(ms)" << "," << "ZDDFormulaSize(nodes)" << "," << "CompPeakNode(nodes)CompPeakMemory(bytes)" << "," << "RealPeakNode(nodes)"<< "," << "RealPeakMemory(bytes)" << "," << "RealPeakNode(nodes)" << "," << "RealPeakMemory(bytes) \n";
 	outCSV << path << "," << fullPartial[0] << "," << fullPartial[1] << "," << timerNoter[0]*1000 << "," << timerNoter[1]*1000 << "," << timerNoter[2]*1000 << "," << timerNoter[3]*1000 << "," << timerNoter[4]*1000 << "," << ZDDNodeCount << "," << compNodeCount << "," << compPeakMem << "," << realNodeCount << "," << realPeakMem << "," << synthNodeCount << "," << synthPeakMem << ","<< std::endl;
 
 	outCSV.close();
