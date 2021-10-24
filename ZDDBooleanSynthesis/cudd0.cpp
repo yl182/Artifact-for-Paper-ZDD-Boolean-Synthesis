@@ -30,18 +30,21 @@ void printZDD (ZDD z)
 // ZDD with more vars---define zdd at the last step
 int main (int argc, char *argv[])
 {
-	if (argc < 2 or argc > 4) {
-		std::cout << "Usage: " << std::string(argv[0]) << " <filename>" << std::endl;
+	// std::cout << "argc = " << argc << std::endl;
+	if (argc < 4 or argc > 4) {
+		std::cout << "Usage: " << std::string(argv[0]) << " <filename> <flag for output ZDDs as dot files> <flag for printing details>" << std::endl;
 		return 0;
 	}
 	const std::string str1(argv[1]);
 	
 	// by default, do not write to dot file, and do not output all details
-	// can enable if set to 1
+	// can enable if set to "yes":
 	// first flag = 1 means enabling the functionality to produce dot files (which can be converted to PNGs or PDFS) throught the end-to-end procedure 
-	// second flag = 2 means enabling the functionlity to write all details of intermediate steps to output stream
+	// second flag = 1 means enabling the functionlity to write all details of intermediate steps to output stream
 	// default setting for flags are disabled, and under this mode the experimental results are written to csv and txt files.
-	CNFtoZDDconverter c(argv[2],argv[3]);
+	
+	//std::cout << "argv[2] = " << argv[2] << "\n" << "argv[3] = " << argv[3] << std::endl;
+	CNFtoZDDconverter c(strcmp(argv[2],"1")==0,strcmp(argv[3], "1")==0);
 	// CNFtoZDDconverter c(0,0);
 	c.convertCNFtoZDD(str1);
 

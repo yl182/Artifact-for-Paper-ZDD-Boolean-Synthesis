@@ -409,9 +409,10 @@ void CNFtoZDDconverter::ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std:
 ZDD CNFtoZDDconverter::Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int>& y_vars, const std::vector<int>& mcsOrder, std::vector<ZDD>& intermediateZDDs, std::vector<int>& resolveOrder) {
 	std::cout << "RESOLVING Scope: ";
 	for (int y : y_vars) {
-		std::cout << y << " ";
+		printToCout(y);
+		printToCout(" ");
 	}
-	std::cout <<std::endl;
+	printToCout("", 1);
 	
 
 	for (int i : mcsOrder) {
