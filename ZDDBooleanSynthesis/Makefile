@@ -21,6 +21,7 @@ clean:
 	rm -f *.pdf
 
 sampleExecutionScript:
-	./cudd0 <argument>
-sampleDotToFigureScript:
-	dot ZDD.dot -Tpng -o ZDD.png
+	./cudd0 <argument> <Flag to enable outputting ZDDs as dot files> <Flag to enable writing out all details>
+sampleToConvertZDDToFigureScript:
+	dot <ZDD.dot> -Tpng -o <ZDD.png>
+	dot <ZDD.dot> -Tpdf -o <ZDD.pdf>

@@ -30,14 +30,19 @@ void printZDD (ZDD z)
 // ZDD with more vars---define zdd at the last step
 int main (int argc, char *argv[])
 {
-	if (argc < 2) {
+	if (argc < 2 or argc > 4) {
 		std::cout << "Usage: " << std::string(argv[0]) << " <filename>" << std::endl;
 		return 0;
 	}
 	const std::string str1(argv[1]);
-	//"2QBF2016/2QBF/tree-exa10-30.qdimacs";
 	
-	CNFtoZDDconverter c(0,0);
+	// by default, do not write to dot file, and do not output all details
+	// can enable if set to 1
+	// first flag = 1 means enabling the functionality to produce dot files (which can be converted to PNGs or PDFS) throught the end-to-end procedure 
+	// second flag = 2 means enabling the functionlity to write all details of intermediate steps to output stream
+	// default setting for flags are disabled, and under this mode the experimental results are written to csv and txt files.
+	CNFtoZDDconverter c(argv[2],argv[3]);
+	// CNFtoZDDconverter c(0,0);
 	c.convertCNFtoZDD(str1);
 
 

@@ -24,7 +24,10 @@
 
 //constructors
 CNFtoZDDconverter::CNFtoZDDconverter(bool writeDotFiles, bool printDetails) {
+	// write ZDDs to dot file if first flag is enabled
 	writeDotFiles_ = writeDotFiles;
+
+	// write details to output if second flag is enabled
 	printDetails_ = printDetails;
 }
 
