@@ -49,20 +49,15 @@ public:
 	
 	// draw ZDD if set on
 	void ZDDtoDot(Cudd& mgr, const std::vector<ZDD> z, const std::string dotfile, char** inames, char** onames);
-	// print if set on
-	//template <typename T>
 	void printToCout(std::string a, bool newline=0) const;
 	void printToCout(int a, bool newline=0) const;
 	void printToCout(double a, bool newline=0) const;
-	//void printToCout(T a) const;
-	//void printToCout(int a) const;
 
 
 	// check full and partial realizability
 	std::vector<std::string> checkFullPartialRealizability(Cudd& mgr, const ZDD& zdd, QCnfFormula& qcnf2, std::vector<double>& timerNoter, std::vector<int>& mcsOrder, std::vector<ZDD>& intermediateZDDs, std::vector<int>& resolvedYsIndices);
 
 	//resolution
-	//ZDD Resolution(const ZDD& zdd, const std::vector<int> y_vars, const std::string& outputpath, std::unordered_map <int, int> index_map) const;
 	ZDD Resolution(Cudd& mgr, const ZDD& zdd, const std::vector<int>& y_vars, const std::vector<int>& mcsOrder, std::vector<ZDD>& intermediateZDDs, std::vector<int>& resolveOrder);
 
 	// substitution

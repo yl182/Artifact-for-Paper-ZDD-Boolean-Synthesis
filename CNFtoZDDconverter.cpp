@@ -31,13 +31,6 @@ CNFtoZDDconverter::CNFtoZDDconverter(bool writeDotFiles, bool printDetails) {
 	printDetails_ = printDetails;
 }
 
-/*
-ZDD CNFtoZDDconverter::convertToNegative(const ZDD& zdd) {
-	
-
-}
-*/
-
 // function to construct ZDD for f_y^-
 ZDD CNFtoZDDconverter::constructCNFWitness(Cudd& mgr, const ZDD& zdd, int y) {
 	
@@ -239,11 +232,6 @@ double timer(const std::chrono::steady_clock::time_point t1, const std::chrono::
 
 
 
-
-//template <typename T>
-// notes: overloaded/multiple-signature functions must have equal number of parameters
-// if use template: then printToCout(T a, bool newline) const, and
-// in calling it must specify printToCout<int>(...) or printToCout<std::string>(...) everytime
 void CNFtoZDDconverter::printToCout(std::string a, bool newline) const {
 	if (printDetails_) {
 		std::cout << a;
@@ -274,19 +262,6 @@ void CNFtoZDDconverter::printToCout(double a, bool newline) const {
 	return;
 }
 
-
-/*void CNFtoZDDconverter::printToCout(std::string a) const {
-	if (printDetails_) {
-		std::cout << a;
-	}
-	return;
-}
-void CNFtoZDDconverter::printToCout(int a) const {
-	if (printDetails_) {
-		std::cout << a;
-	}
-	return;
-}*/
 std::runtime_error CNFtoZDDconverter::EmptyFormulaException(const std::string& filepath) const {
 	return std::runtime_error(filepath + ", formula is empty, 0 clause-ZDDs");
 }		
@@ -301,35 +276,6 @@ ZDD CNFtoZDDconverter::ClausetoZDD(const CnfClause& cl, Cudd& mgr, int maxRange)
 		printToCout(i, 1);
 		
 	}
-// saved version
-/*
-	// draw ZDD for the clause
-	ZDD newZDDofClause = mgr.zddVar(cl[0]);
-	//return newZDDofClause;
-	printToCout("Start with Node ", 0);
-	printToCout(cl[0], 1);
-	
-	//std::vector<int> subset0list;
-	//std::vector<int> changelist;
-	
-	// eliminate other variables
-	for (int i = 0; i <= 2*maxRange-1; i++) {					
-		if (i != cl[0]) {
-			newZDDofClause = newZDDofClause.Subset0(i);			
-			printToCout("Subset0 with Node ", 0);
-			printToCout(i, 1);		
-		}
-	}
-	// append other variables to the clause
-	
-	for (int i : cl) {
-		if (i != cl[0]) {
-			newZDDofClause =newZDDofClause.Change(i);				
-			printToCout("Change with Node ");
-			printToCout(i, 1);
-		}
-	}
-*/
 	// return the ZDD of the clause
 	printToCout("Done Building ZDD for the clause above.", 1);
 	
@@ -655,58 +601,7 @@ ZDD CNFtoZDDconverter::negateDnfZDD(const ZDD& z, int maxVar, std::vector<int>& 
 }
 
 
-// substitution function
-// actually not calling this function in final version
-/*
-ZDD CNFtoZDDconverter::CNFtoDNF_Substitution(Cudd& mgr, int y, std::unordered_map <int, int>& index_map, int maxVar, const ZDD& z, CnfFormula& cnf, std::vector<ZDD>& Clause_ZDDs) {
-	
-	int num_clauses = cnf.size();
-	std::vector<ZDD> newClausesZDDs;
-	for (int i = 0; i < num_clauses; i++) {
-		
-		if (std::find(cnf[i].begin(), cnf[i].end(), y) != cnf[i].end()) {
-			// CASE 1: pos y occurs
-			// cnf[i].
-			ZDD Z_cl = ClausetoZDD(cnf[i], mgr, maxVar);//clause ZDD
 
-			int posY = index_map[y];
-			int negY = index_map[(-1)*y];
-			//ZDD f_y_minus = Z_cl.Subset1(negY).Change(negY);//witness we select (assume g0)
-			ZDD newClauseZDD = Z_cl.Subset0(posY);
-
-			// cross
-			ZDD clauseSubstitution = crossZDD(Z_cl);
-			printToCout("after calling crossZDD() the first time in substitution function", 1);
-			clauseSubstitution = clauseSubstitution.ClauseDistribution(newClauseZDD);
-			newClausesZDDs.push_back(clauseSubstitution);
-
-		} else if (std::find(cnf[i].begin(), cnf[i].end(), (-1)*y) != cnf[i].end()) {
-			// CASE 2: neg y occurs in clause
-			// 
-			ZDD Z_cl = ClausetoZDD(cnf[i], mgr, maxVar);//clause ZDD
-			int posY = index_map[y];
-			int negY = index_map[(-1)*y];
-			//ZDD f_y_minus = Z_cl.Subset1(negY).Change(negY);//witness we select (assume g0)
-			ZDD newClauseZDD = Z_cl.Subset0(negY);
-
-			// cross
-			ZDD clauseSubstitution = negCrossZDD(Z_cl).ClauseDistribution(newClauseZDD);
-			newClausesZDDs.push_back(clauseSubstitution);
-
-		} 
-		// CASE 3: neither pos y nor neg y occurs
-		ZDD Z_cl = ClausetoZDD(cnf[i], mgr, maxVar);// clause ZDD
-		newClausesZDDs.push_back(Z_cl);
-	}
-
-	ZDD substitutedZDD = newClausesZDDs[0];
-	for (const ZDD& zdd : newClausesZDDs) {
-		substitutedZDD = substitutedZDD.Union(zdd);
-	}
-
-	return substitutedZDD;
-}
-*/
 //main converter
 void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
@@ -775,8 +670,6 @@ void CNFtoZDDconverter::convertCNFtoZDD(const std::string& path) {
 	
 	
 	// produce map of given indices and node indices
-	//
-	//std::unordered_map <int, int> indexToNodesMap = produceIndicesMap(maxVar);
 
 	// produce MCS ordering:
 	std::vector<int> mcs = MCSordering(qcnf);
