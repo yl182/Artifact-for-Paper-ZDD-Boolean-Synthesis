@@ -1,0 +1,1 @@
+Filename,Full Realizability,Partial Realizability,CompilationTime(ms),FullRealizabilityTime(ms),PartialRealizabilityTime(ms),RealizabilityTime(ms),End-to-End-minus-Realizability(ms),ZDDFormulaSize(nodes),CompPeakNode(nodes),CompPeakMemory(bytes),RealPeakNode(nodes),RealPeakMemory(bytes),RealPeakNode(nodes),RealPeakMemory(bytes)
