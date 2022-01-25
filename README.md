@@ -1,8 +1,14 @@
+# New Version
+
+An updated version of this artifact is permanently publicly available at https://zenodo.org/record/5898695#.YfBUKv7MJPY.
+
 # ZDD Boolean Synthesis
 
 This is a ZDD-based synthesis tool as the artifact for research paper ``ZDD Boolean Synthesis`` for TACAS submission 2022. This tool is used in the paper compared to RSynth in previous work.
 
 ## installation and compilation
+
+Please first extract the tarball "ZDDSynthesisTarball.tar.gz" and follow steps below.
 
 This project requires C++ of version at least 11, and includes a modified ``CUDD`` package in cudd-release. It also includes the ``QMRes`` functions from previous work by Pan and Vardi under QMRes directory.
 
@@ -66,8 +72,7 @@ Note that every time the running time and space can be various, but the data you
 
 Figure.1 in paper comes from ```DataReferenceTables/CompilationTime.csv```, using filenames as the X-axis and compilation time in milliseconds as the Y-axis; Fig. 2 in paper comes from ```DataReferenceTables/PercentageRealizability.csv```, using the log-scale time increased by 10x as the X-axis and percentage of total number of finished tests as Y-axis; Fig. 3 in paper comes from ```DataReferenceTables/PercentageEndToEnd.csv```, similarly to Fig. 2 but considers the sum of compilation time, realizability time and witness-construction time ; Fig. 4 in paper comes from ```DataReferenceTables/Scalable.csv```, using files as X-axis and the passed time as primary Y-axis for items on time comparison, while number of nodes as the secondary Y-axis for space.
 
-The RSynth tool we compare ZSynth with is documented by RSynth authors here: https://www.cs.rice.edu/~lm30/RSynth/CAV2016.pdf.
-For your convenience, the RSynth data are also included in correspondence columns of data attached in ```DataReferenceTables```.
+The RSynth tool we compare ZSynth with is documented by RSynth authors here: bitbucket.org/lucas-mt/RSynth. For your convenience, the RSynth data are also included in correspondence columns of data attached in ```DataReferenceTables```.
 
 The ```QMRes``` directory contains libraries for a few of our functions. It is not a tool we compare the performance of ZSynth with.
 
@@ -76,14 +81,3 @@ A set of small test files reside in ```testFiles```.
 The tool is for experiments on academic uses to observe the time and space performance of ZSynth, not a mature industrial product. The format of generated ZDDs are .dot. The ZDDs for the original formula and the witnesses (indexed with variable indices) are output as ``.dot`` files. To check for correctness, simply use ```dot ZDD.dot -Tpng -o ZDD.png``` or ```dot ZDD.dot -Tpdf -o ZDD.pdf```, etc., to view the diagrams in image formats, with relevant command-line tools installed.
 
 CPU details for NOTS, where we ran the experiments on, are here: https://kb.rice.edu/page.php?id=108237.
-
-
-
-
-
-
-
-
-
-
-
